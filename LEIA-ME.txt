@@ -1,0 +1,12 @@
+PESQUISA NCE - como instalar no Android (100% offline depois da 1ª abertura)
+
+1) Publique esta pasta inteira num site HTTPS gratuito (necessário só para instalar e usar a câmera):
+   - Netlify Drop: acesse app.netlify.com/drop e arraste a pasta PesquisaProduct (~25 MB).
+   - ou GitHub Pages / Cloudflare Pages.
+2) No celular, abra o link no Chrome > menu (⋮) > "Instalar app".
+3) Abra o app UMA vez com internet e espere uns segundos (ele guarda o leitor de OCR no celular).
+   Depois disso tudo funciona sem internet: fotos, leitura, busca.
+
+Teste no PC: nesta pasta rode "python -m http.server 8123" e abra http://localhost:8123
+
+Leitor: PaddleOCR (modelos ONNX, latino/português) rodando no próprio celular.

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b5fff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Pesquisa NCE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Pesquisa NCE</h1>
+  <span id="total" class="muted"></span>
+</header>
+
+<main>
+  <!-- BUSCA -->
+  <section id="tab-busca" class="tab active">
+    <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Código NCE (6 dígitos) ou nome">
+    <div id="resultados"></div>
+  </section>
+
+  <!-- ESCANEAR -->
+  <section id="tab-scan" class="tab">
+    <p class="hint">Fotografe cada folha A4 inteira, bem reta e com boa luz. Pode enviar várias fotos de uma vez.</p>
+    <div class="row">
+      <label class="btn primary">📷 Tirar foto
+        <input id="cam" type="file" accept="image/*" capture="environment" hidden>
+      </label>
+      <label class="btn">🖼️ Da galeria
+        <input id="gal" type="file" accept="image/*" multiple hidden>
+      </label>
+    </div>
+    <div id="fila"></div>
+    <div id="progresso" class="progress" hidden><div id="barra"></div><span id="ptxt"></span></div>
+    <div id="revisao" hidden>
+      <h2>Revisar dados lidos</h2>
+      <p class="hint">Confira o código, produto, qtd e preço. Corrija o que estiver errado ou apague linhas inválidas.</p>
+      <div id="linhas"></div>
+      <div class="row">
+        <button id="salvar" class="btn primary">Salvar na tabela</button>
+        <button id="descartar" class="btn">Descartar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABELA -->
+  <section id="tab-tabela" class="tab">
+    <div class="row">
+      <button id="csv" class="btn">Exportar CSV</button>
+      <button id="backup" class="btn">Backup</button>
+      <label class="btn">Restaurar<input id="restore" type="file" accept="application/json" hidden></label>
+    </div>
+    <div id="folhas"></div>
+  </section>
+</main>
+
+<nav>
+  <button data-tab="busca" class="on">🔍<span>Buscar</span></button>
+  <button data-tab="scan">📷<span>Escanear</span></button>
+  <button data-tab="tabela">📋<span>Tabela</span></button>
+</nav>
+
+<div id="toast"></div>
+<script src="ocr/ort/ort.wasm.min.js"></script>
+<script src="paddle.js"></script>
+<script src="parser.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
