@@ -117,7 +117,8 @@ function getWorker() {
     if (!p) return;
     if (tipo === 'prog') return p.onProg && p.onProg(e.data.f, e.data.txt);
     pend.delete(id);
-    if (tipo === 'ok') p.res({ linhas: e.data.linhas, meta: e.data.meta, info: e.data.info }); else p.rej(new Error(e.data.msg));
+    if (tipo === 'ok') p.res({ linhas: e.data.linhas, meta: e.data.meta, info: e.data.info });
+    else { const er = new Error(e.data.msg); er.prep = !!e.data.prep; p.rej(er); }
   };
   worker.onerror = ev => {
     const w = worker; worker = null; w.terminate(); // próximo uso recria o leitor
@@ -125,13 +126,27 @@ function getWorker() {
   };
   return worker;
 }
+// Entrada: { file } (o worker decodifica a foto) ou { data, width, height } (já decodificada)
 function lerNoWorker(img, onProg) {
   return new Promise((res, rej) => {
     const id = ++seq;
     pend.set(id, { res, rej, onProg });
-    // transfere o buffer (sem copiar) para o worker
-    getWorker().postMessage({ id, buffer: img.data.buffer, width: img.width, height: img.height }, [img.data.buffer]);
+    if (img.file) getWorker().postMessage({ id, file: img.file });
+    else getWorker().postMessage({ id, buffer: img.data.buffer, width: img.width, height: img.height }, [img.data.buffer]); // transfere sem copiar
   });
+}
+function cancelarLeitura() {
+  if (worker) { worker.terminate(); worker = null; }
+  falharPendentes(new Error('cancelado'));
+}
+// miniatura pequena da foto (decodifica já reduzida: barato mesmo em foto de 50 MP)
+async function miniatura(file) {
+  try {
+    const b = await createImageBitmap(file, { imageOrientation: 'from-image', resizeWidth: 64, resizeQuality: 'low' });
+    const t = document.createElement('canvas'); t.width = 64; t.height = Math.max(1, Math.round(64 * b.height / b.width));
+    t.getContext('2d').drawImage(b, 0, 0, t.width, t.height); b.close();
+    return t.toDataURL('image/jpeg', .6);
+  } catch { return ''; }
 }
 
 async function prepararImagem(file) {
@@ -148,11 +163,17 @@ async function prepararImagem(file) {
   return { img: { data: d.data, width: c.width, height: c.height }, thumb: t.toDataURL('image/jpeg', .6) };
 }
 
+let progTxt = '', progT0 = 0, progTimer = null;
+function mostraTxt() { $('#ptxt').textContent = progTxt + ' · ' + Math.round((Date.now() - progT0) / 1000) + 's'; }
 function setProg(f, txt) {
-  $('#progresso').hidden = false;
-  $('#barra').style.width = Math.round(f * 100) + '%';
-  if (txt) $('#ptxt').textContent = txt;
+  $('#progresso').hidden = false; $('#cancelar').hidden = false;
+  $('#barra').style.width = Math.max(2, Math.round(f * 100)) + '%';
+  if (txt) progTxt = txt;
+  if (!progTimer) { progT0 = Date.now(); progTimer = setInterval(mostraTxt, 1000); }
+  mostraTxt();
 }
+function fimProg() { $('#progresso').hidden = true; $('#cancelar').hidden = true; clearInterval(progTimer); progTimer = null; }
+$('#cancelar').onclick = cancelarLeitura;
 
 let ocupado = false;
 async function processar(files) {
@@ -163,10 +184,17 @@ async function processar(files) {
   try {
     for (let n = 0; n < files.length; n++) {
       const rot = `Lendo foto ${n + 1} de ${files.length}…`;
-      setProg(0, rot);
-      const { img, thumb } = await prepararImagem(files[n]);
-      $('#fila').insertAdjacentHTML('beforeend', `<img class="thumb" src="${thumb}">`);
-      const { linhas, meta } = await lerNoWorker(img, (f, txt) => setProg(f, txt || rot));
+      setProg(0.01, rot + ' (no celular leva alguns minutos)');
+      const thumb = await miniatura(files[n]);
+      if (thumb) $('#fila').insertAdjacentHTML('beforeend', `<img class="thumb" src="${thumb}">`);
+      const onp = (f, txt) => setProg(f, txt || rot);
+      let lido;
+      if (typeof OffscreenCanvas !== 'undefined') {
+        try { lido = await lerNoWorker({ file: files[n] }, onp); }
+        catch (e) { if (!e.prep) throw e; } // o worker não conseguiu decodificar: tenta pelo jeito antigo
+      }
+      if (!lido) { const { img } = await prepararImagem(files[n]); lido = await lerNoWorker(img, onp); }
+      const { linhas, meta } = lido;
       const tipo = Parser.detectarTipo(linhas), itens = Parser.parsePagina(linhas, tipo, meta);
       const problemas = Parser.problemasDaPagina(itens, tipo, meta);
       const pg = { pagina: lote.length + recusadas.length + 1, tipo, linhas, meta, itens, problemas };
@@ -180,11 +208,11 @@ async function processar(files) {
         toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'garantia' : 'produtos'}, ${itens.length} linhas`);
       }
     }
-    $('#progresso').hidden = true;
+    fimProg();
     renderRecusa(); renderRevisao();
   } catch (e) {
-    console.error(e); toast('Erro ao ler a imagem: ' + (e.message || e));
-    $('#progresso').hidden = true;
+    console.error(e); toast(e.message === 'cancelado' ? 'Leitura cancelada' : 'Erro ao ler a imagem: ' + (e.message || e));
+    fimProg();
   } finally { ocupado = false; }
 }
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };

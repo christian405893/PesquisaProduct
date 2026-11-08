@@ -220,13 +220,18 @@
     return textos;
   }
 
+  function prepararDict(dictText) {
+    const dict = dictText.split('\n').map(s => s.replace(/\r$/, ''));
+    if (dict[dict.length - 1] === '') dict.pop();
+    dict.push(' ');
+    return dict;
+  }
+
   async function criar(ort, detBuf, recBuf, dictText, opts = {}) {
     const so = opts.sessionOptions || {};
     const det = await ort.InferenceSession.create(detBuf, so);
     const rec = await ort.InferenceSession.create(recBuf, so);
-    const dict = dictText.split('\n').map(s => s.replace(/\r$/, ''));
-    if (dict[dict.length - 1] === '') dict.pop();
-    dict.push(' ');
+    const dict = prepararDict(dictText);
     return {
       async ler(img, onProgress) {
         const prog = f => onProgress && onProgress(Math.min(1, f));
@@ -247,15 +252,20 @@
           boxes = boxes.map(b => ({ x0: W - b.x1, y0: H - b.y1, x1: W - b.x0, y1: H - b.y0 }));
         }
         // 3) lê cada pedaço de texto
-        const frags = [];
+        const frags = [], idx = [], crops = [];
         for (let i = 0; i < boxes.length; i++) {
           const crop = recortar(im, boxes[i]);
-          if (crop.width >= 2 && crop.height >= 2) {
-            const r = await reconhecer(ort, rec, dict, crop);
-            if (r.text.trim()) frags.push({ b: boxes[i], text: r.text, conf: r.conf, confs: r.confs });
-          }
-          prog(0.2 + 0.8 * (i + 1) / boxes.length);
+          if (crop.width >= 2 && crop.height >= 2) { idx.push(i); crops.push(crop); }
         }
+        let res;
+        if (opts.pool && crops.length > 12) {
+          // vários leitores em paralelo (cada um é uma thread separada do celular)
+          res = await opts.pool.map(crops, k => prog(0.2 + 0.8 * k / crops.length), i => reconhecer(ort, rec, dict, crops[i]));
+        } else {
+          res = [];
+          for (let k = 0; k < crops.length; k++) { res.push(await reconhecer(ort, rec, dict, crops[k])); prog(0.2 + 0.8 * (k + 1) / crops.length); }
+        }
+        res.forEach((r, k) => { if (r.text.trim()) frags.push({ b: boxes[idx[k]], text: r.text, conf: r.conf, confs: r.confs }); });
         const linhas = montarLinhas(frags);
         linhas.info = { angulo, invertida };
         linhas.meta = linhas.meta; // posição vertical e confiança de cada caractere, por linha
@@ -265,6 +275,6 @@
     };
   }
 
-  const api = { criar, montarLinhas, achar_angulo, pontosDoMapa, girar };
+  const api = { criar, reconhecer, prepararDict, montarLinhas, achar_angulo, pontosDoMapa, girar };
   if (typeof module !== 'undefined') module.exports = api; else root.Paddle = api;
 })(typeof self !== 'undefined' ? self : this);
