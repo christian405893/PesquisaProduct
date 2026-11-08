@@ -269,18 +269,19 @@
 
   // ---------- a foto está boa o bastante para guardar sem erro? ----------
   // Devolve a lista de motivos para RECUSAR a foto (vazia = pode aceitar).
-  const LIM = 0.8;        // confiança mínima de cada caractere nos campos que valem dinheiro (NCE, qtd, preço, garantias)
+  const LIM = 0.8;        // confiança mínima de cada caractere nos campos que valem dinheiro (NCE, qtd, preço, seguros)
   const mediana = a => { const b = [...a].sort((x, y) => x - y); return b.length ? b[b.length >> 1] : 0; };
   function problemasDaPagina(itens, tipo, meta) {
-    const P = [], rot = { nce: 'NCE', qtd: 'quantidade', preco: 'preço', g1: 'garantia 1 ano', g2: 'garantia 2 anos' };
+    const P = [], rot = { nce: 'NCE', qtd: 'quantidade', preco: 'preço', g1: 'seguro 1 ano', g2: 'seguro 2 anos' };
     const campos = tipo === 'seguro' ? ['nce', 'g1', 'g2'] : tipo === 'esq' ? ['nce'] : tipo === 'dir' ? ['qtd', 'preco'] : ['nce', 'qtd', 'preco'];
     if (!itens.length) return ['Não achei nenhuma linha de produto nesta foto.'];
-    const vistos = new Map();
+    const vistos = new Map(), ruins = new Set();
     for (const it of itens) {
+      const antes = P.length;
       const id = it.nce ? 'NCE ' + it.nce : 'linha "' + (it.nome || it.raw || '?').slice(0, 28) + '"';
-      if (it.semPar) { P.push(id + (it.semPar === 'dir' ? ': não achei a linha dele na foto da direita.' : ': linha da foto da direita sem par na foto da esquerda.')); continue; }
+      if (it.semPar) { P.push(id + (it.semPar === 'dir' ? ': não achei a linha dele na foto da direita.' : ': linha da foto da direita sem par na foto da esquerda.')); ruins.add(it); continue; }
       if (it.sim !== undefined && it.sim < SIM_BOA) P.push(id + ': ligação entre as duas fotos duvidosa (a descrição não bate direito).');
-      if (tipo !== 'dir' && !/^\d{6}$/.test(it.nce || '')) { P.push(id + ': NCE não lido por completo.'); continue; }
+      if (tipo !== 'dir' && !/^\d{6}$/.test(it.nce || '')) { P.push(id + ': NCE não lido por completo.'); ruins.add(it); continue; }
       if (it.partida) P.push(id + ': a linha saiu partida em duas (foto torta ou tremida).');
       for (const f of campos) {
         const v = String(it[f] ?? '').trim();
@@ -290,9 +291,10 @@
       if ((tipo === 'produtos' || tipo === 'dir') && it.qtdBruto && !/,00$/.test(it.qtdBruto)) P.push(id + ': quantidade ' + it.qtdBruto + ' não é número inteiro.');
       if (tipo === 'seguro' && it.g1 && it.g2) {
         const r = valor(it.g2) / valor(it.g1);
-        if (!(r > RAZAO[0] && r < RAZAO[1])) P.push(id + ': garantia 2 anos (' + it.g2 + ') não bate com a de 1 ano (' + it.g1 + ').');
+        if (!(r > RAZAO[0] && r < RAZAO[1])) P.push(id + ': seguro 2 anos (' + it.g2 + ') não bate com o de 1 ano (' + it.g1 + ').');
       }
       if (it.nce) { if (vistos.has(it.nce)) P.push(id + ': aparece duas vezes na mesma foto.'); else vistos.set(it.nce, 1); }
+      if (P.length > antes) ruins.add(it);
     }
     for (const sb of itens.sobras || []) P.push('Linha com número que não consegui ligar a um produto: "' + sb.texto.slice(0, 40) + '".');
     // falta de linha: espaço vertical muito maior que o normal entre dois produtos seguidos
@@ -306,6 +308,7 @@
         if (g > med * 1.8 && com[k].li - com[k - 1].li === 1) P.push('Parece faltar uma linha entre NCE ' + com[k - 1].nce + ' e NCE ' + com[k].nce + '.');
       }
     }
+    P.total = itens.length; P.ruins = ruins.size; // linhas lidas / linhas com algum problema
     return P;
   }
 

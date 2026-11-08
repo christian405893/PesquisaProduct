@@ -70,8 +70,8 @@ function cardHTML(i) {
       <div>Quebrados<b class="${i.defeito ? 'bad' : ''}">${i.defeito || 0}</b></div>
       <div>Disponível<b class="${disp === 0 ? 'bad' : 'ok'}">${disp ?? '—'}</b></div>
       <div>Preço<b>${i.preco ? 'R$ ' + esc(i.preco) : '—'}</b></div></div>
-    ${i.g1 || i.g2 ? `<div class="gar">Garantia: 1 ano <b>${i.g1 ? 'R$ ' + esc(i.g1) : '—'}</b> · 2 anos <b>${i.g2 ? 'R$ ' + esc(i.g2) : '—'}</b></div>` : ''}
-    <div class="src">${i.folha ? 'Folha ' + esc(i.folha) : 'Só garantia'} · toque para ver e simular ›</div></div>`;
+    ${i.g1 || i.g2 ? `<div class="gar">Seguro: 1 ano <b>${i.g1 ? 'R$ ' + esc(i.g1) : '—'}</b> · 2 anos <b>${i.g2 ? 'R$ ' + esc(i.g2) : '—'}</b></div>` : ''}
+    <div class="src">${i.folha ? 'Folha ' + esc(i.folha) : 'Só seguro'} · toque para ver e simular ›</div></div>`;
 }
 $('#resultados').addEventListener('click', e => {
   const c = e.target.closest('.card[data-id]');
@@ -216,7 +216,7 @@ async function processar(files) {
         tentarJuntar();
       } else {
         lote.push(pg);
-        toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'garantia' : 'produtos'}, ${itens.length} linhas`);
+        toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'seguro' : 'produtos'}, ${itens.length} linhas`);
       }
     }
     fimProg();
@@ -256,11 +256,12 @@ function renderRecusa() {
   box.innerHTML = '<h2>⚠️ Foto recusada — tire outra</h2>' + recusadas.map((pg, ri) => {
     const podeForcar = pg.tipo === 'produtos' || pg.tipo === 'seguro';
     const nomeFoto = pg.partes ? 'Fotos da esquerda + direita' : `Foto ${pg.pagina}${pg.tipo === 'esq' ? ' (parte esquerda)' : pg.tipo === 'dir' ? ' (parte direita)' : ''}`;
-    const max = 8, mot = pg.problemas.slice(0, max).map(m => `<li>${esc(m)}</li>`).join('');
-    return `<div class="rec"><b>${nomeFoto}</b> · ${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza:<ul>${mot}</ul>`
-      + (pg.problemas.length > max ? `<p class="hint">… e mais ${pg.problemas.length - max}.</p>` : '')
-      + (podeForcar ? `<button class="mini" data-forcar="${ri}">revisar mesmo assim</button>` : '') + '</div>';
-  }).join('') + '<p class="hint">Dicas: folha bem esticada e de frente, boa luz, sem sombra nem reflexo, foto nítida (sem tremer). Depois é só tirar outra foto da mesma folha.</p>';
+    const max = 5, mot = pg.problemas.slice(0, max).map(m => `<li>${esc(m)}</li>`).join('');
+    const resumo = pg.problemas.total ? `${pg.problemas.total} linhas lidas, ${pg.problemas.ruins} com dúvida.` : `${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza.`;
+    return `<div class="rec"><b>${nomeFoto}</b> · ${resumo}<ul>${mot}</ul>`
+      + (pg.problemas.length > max ? `<p class="hint">… e mais ${pg.problemas.length - max}. (Dá para ver tudo em "Corrigir à mão".)</p>` : '')
+      + (podeForcar ? `<button class="btn" data-forcar="${ri}">✏️ Corrigir à mão (revisar mesmo assim)</button>` : '') + '</div>';
+  }).join('') + '<div class="row"><label class="btn primary" for="cam">📷 Tirar outra foto</label><label class="btn" for="gal">🖼️ Escolher fotos</label></div><p class="hint">Dicas: folha bem esticada e de frente, boa luz, sem sombra nem reflexo, foto nítida (sem tremer). Depois é só tirar outra foto da mesma folha.</p>';
 }
 $('#recusa').addEventListener('click', e => {
   const b = e.target.closest && e.target.closest('[data-forcar]'); if (!b) return;
@@ -279,8 +280,8 @@ function renderRevisao() {
   $('#revisao').hidden = false;
   box.innerHTML = lote.map((pg, pi) => {
     const sel = t => (pg.tipo === t ? ' selected' : '');
-    const cab = pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de garantia (seguro)</option></select> · ${pg.itens.length} linhas</div>`
-      + (pg.tipo === 'seguro' ? '<p class="hint">Garantia: só atualiza os valores de 1 ano e 2 anos dos produtos. Campos em laranja: confira.</p>' : '');
+    const cab = pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
+      + (pg.tipo === 'seguro' ? '<p class="hint">Seguro: só atualiza os valores de seguro de 1 ano e 2 anos dos produtos. Campos em vermelho ou laranja: confira.</p>' : '');
     const linhas = pg.itens.map((it, ii) => `<div class="ln${pg.tipo === 'seguro' ? ' seg' : ''}" data-p="${pi}" data-i="${ii}">` +
       CAMPOS[pg.tipo].map(([f, modo, ph]) => {
         let cls = '';
@@ -323,7 +324,7 @@ $('#salvar').onclick = async () => {
   if (!itens.length) return toast('Nada para salvar');
   await salvarItens(itens);
   const ns = itens.filter(i => i.tipo === 'seguro').length, np = itens.length - ns;
-  toast([np && `${np} produtos`, ns && `${ns} garantias`].filter(Boolean).join(' e ') + ' salvos');
+  toast([np && `${np} produtos`, ns && `${ns} seguros`].filter(Boolean).join(' e ') + ' salvos');
   limparLote(); buscar();
 };
 $('#descartar').onclick = limparLote;
@@ -335,7 +336,7 @@ async function renderTabela() {
   const por = {};
   itens.forEach(i => (por[i.folha] ||= []).push(i));
   const ks = Object.keys(por).sort((a, b) => b - a);
-  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Só garantia (sem folha de produtos)' : 'Folha ' + k} · ${por[k].length} itens</summary>
+  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Só seguro (sem folha de produtos)' : 'Folha ' + k} · ${por[k].length} itens</summary>
     <button data-delf="${k}" style="border:0;background:none;color:var(--bad)">Apagar esta folha</button>
     <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th><th>G1</th><th>G2</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td><td>${esc(i.g1)}</td><td>${esc(i.g2)}</td></tr>`).join('')}</table></details>`).join('')
     : '<div class="empty">Tabela vazia.</div>';
@@ -354,7 +355,7 @@ function baixar(nome, texto, tipo) {
 $('#csv').onclick = async () => {
   const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
   const l = (await todos()).map(i => [i.nce, i.nome, i.qtd, i.defeito || 0, i.preco, i.g1, i.g2, i.folha].map(q).join(';'));
-  baixar('produtos-nce.csv', '﻿NCE;Produto;Qtd;Quebrados;Preço;Garantia 1 ano;Garantia 2 anos;Folha\n' + l.join('\n'), 'text/csv');
+  baixar('produtos-nce.csv', '﻿NCE;Produto;Qtd;Quebrados;Preço;Seguro 1 ano;Seguro 2 anos;Folha\n' + l.join('\n'), 'text/csv');
 };
 $('#backup').onclick = async () => baixar('backup-nce.json', JSON.stringify(await todos()), 'application/json');
 $('#restore').onchange = async e => {
@@ -389,7 +390,7 @@ async function abrirProduto(id) {
   $('#entrada').value = '';
   $('#simBox').hidden = true; $('#simBtn').hidden = false;
   renderEstoque();
-  $('#estCard').hidden = !atual.qtd && !atual.defeito; // produto só da folha de garantia não tem estoque
+  $('#estCard').hidden = !atual.qtd && !atual.defeito; // produto só da folha de seguro não tem estoque
   $('#sheet').hidden = false; $('#sheet').scrollTop = 0;
   document.body.style.overflow = 'hidden';
   history.pushState({ sheet: 1 }, ''); // o botão "voltar" do celular fecha a tela do produto
@@ -442,10 +443,10 @@ $('#simGar').addEventListener('click', e => {
 function renderGarantias() {
   document.querySelectorAll('#simTipo [data-tipo]').forEach(b => b.classList.toggle('on', b.dataset.tipo === sim.tipo));
   const v = k => { const c = Sim.cents(atual[k]); return c ? ' · ' + Sim.brl(c) : ' · informe o valor'; };
-  const op = [['g1', 'Garantia 1 ano' + v('g1')], ['g2', 'Garantia 2 anos' + v('g2')]];
-  if (sim.tipo === 'cartao') op.unshift(['nenhuma', 'Sem garantia']);
+  const op = [['g1', 'Seguro 1 ano' + v('g1')], ['g2', 'Seguro 2 anos' + v('g2')]];
+  if (sim.tipo === 'cartao') op.unshift(['nenhuma', 'Sem seguro']);
   $('#simGar').innerHTML = op.map(([k, t]) => `<button class="btn chip${sim.gar === k ? ' on' : ''}" data-gar="${k}">${t}</button>`).join('') +
-    // crediário sem garantia: botão discreto, só para quando o cliente desiste
+    // crediário sem seguro: botão discreto, só para quando o cliente desiste
     (sim.tipo === 'crediario' ? `<button class="mini${sim.gar === 'nenhuma' ? ' on' : ''}" data-gar="nenhuma">cliente não vai comprar</button>` : '');
 }
 
@@ -455,17 +456,17 @@ function renderSim() {
   const cred = sim.tipo === 'crediario';
   const preco = Sim.cents(atual.preco);
   if (!preco) return msg('Informe o preço à vista do produto.');
-  if (!sim.gar) return msg('Escolha a garantia: no crediário ela é obrigatória.');
+  if (!sim.gar) return msg('Escolha o seguro: no crediário ele é obrigatório.');
   let garantia = 0;
   if (sim.gar !== 'nenhuma') {
     garantia = Sim.cents(atual[sim.gar]);
-    if (!garantia) return msg('Informe o valor dessa garantia no campo acima.');
+    if (!garantia) return msg('Informe o valor desse seguro no campo acima.');
   }
   const entrada = Sim.cents($('#entrada').value);
   const r = (cred ? Sim.crediario : Sim.cartao)({ preco, garantia, entrada });
   if (r.financiado <= 0) return msg('A entrada cobre o valor total.');
   box.innerHTML =
-    `<p class="hint">A parcelar: <b>${Sim.brl(r.financiado)}</b> (${Sim.brl(preco)}${garantia ? ' + garantia ' + Sim.brl(garantia) : ''}${entrada ? ' − entrada ' + Sim.brl(entrada) : ''})</p>` +
+    `<p class="hint">A parcelar: <b>${Sim.brl(r.financiado)}</b> (${Sim.brl(preco)}${garantia ? ' + seguro ' + Sim.brl(garantia) : ''}${entrada ? ' − entrada ' + Sim.brl(entrada) : ''})</p>` +
     r.lista.map(l => l.semTaxa ? `<div class="par"><span>${l.n}x</span><small class="tot">taxa ainda não cadastrada</small><span></span><span></span></div>` : `<div class="par"><span>${l.n}x de</span><b>${Sim.brl(l.parcela)}</b>
       <small class="tot">total ${Sim.brl(l.total)}</small>${l.semJuros ? '<small class="sj">(SEM JUROS)</small>' : '<span></span>'}</div>`).join('') +
     (cred && entrada > 0 ? '<p class="hint">Com entrada, o crediário vai até 11x.</p>' : '') +

@@ -29,7 +29,7 @@
     return { n, parcela: p, total: p * n + entrada, semJuros: !taxa };
   }
 
-  // Crediário: obrigatoriamente com garantia (o app exige a escolha). 1x a 3x sem juros;
+  // Crediário: obrigatoriamente com seguro (o app exige a escolha). 1x a 3x sem juros;
   // até 12x sem entrada, até 11x com entrada.
   function crediario({ preco, garantia = 0, entrada = 0 }) {
     const c = CFG.crediario, financiado = preco + garantia - entrada;
