@@ -1,6 +1,6 @@
-const CACHE = "nce-v3";
+const CACHE = "nce-v7";
 const FILES = [
-  "./", "index.html", "app.js", "parser.js", "paddle.js", "style.css", "manifest.webmanifest",
+  "./", "index.html", "app.js", "ocr-worker.js", "simulador.js", "parser.js", "paddle.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
   "ocr/ort/ort.wasm.min.js", "ocr/ort/ort-wasm-simd-threaded.mjs", "ocr/ort/ort-wasm-simd-threaded.wasm",
   "ocr/paddle/det.onnx", "ocr/paddle/rec.onnx", "ocr/paddle/dict.txt"

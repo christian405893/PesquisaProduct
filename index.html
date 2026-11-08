@@ -36,6 +36,7 @@
     </div>
     <div id="fila"></div>
     <div id="progresso" class="progress" hidden><div id="barra"></div><span id="ptxt"></span></div>
+    <div id="recusa" class="recusa" hidden></div>
     <div id="revisao" hidden>
       <h2>Revisar dados lidos</h2>
       <p class="hint">Confira o código, produto, qtd e preço. Corrija o que estiver errado ou apague linhas inválidas.</p>
@@ -64,9 +65,40 @@
   <button data-tab="tabela">📋<span>Tabela</span></button>
 </nav>
 
+<!-- PRODUTO (estoque + simulação) -->
+<div id="sheet" hidden>
+  <div class="sh">
+    <button id="sheetFechar" aria-label="Voltar">←</button>
+    <div><div id="shNce" class="shnce"></div><div id="shNome"></div></div>
+  </div>
+  <div class="shbody">
+    <div class="card">
+      <div class="meta">
+        <div>Estoque<b id="eQtd"></b></div>
+        <div>Quebrados<span class="step"><button id="defMenos" aria-label="Menos um quebrado">−</button><b id="eDef"></b><button id="defMais" aria-label="Mais um quebrado">+</button></span></div>
+        <div>Disponível<b id="eDisp"></b></div>
+      </div>
+    </div>
+    <div class="card">
+      <label class="fld">Preço à vista (R$)<input id="fPreco" type="text" inputmode="decimal" autocomplete="off"></label>
+      <label class="fld">Garantia 1 ano (R$)<input id="fG1" type="text" inputmode="decimal" autocomplete="off"></label>
+      <label class="fld">Garantia 2 anos (R$)<input id="fG2" type="text" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <button id="simBtn" class="btn primary big">Simulação sem compromisso</button>
+    <div id="simBox" hidden>
+      <div id="simTipo" class="row seg">
+        <button class="btn on" data-tipo="crediario">Crediário</button>
+        <button class="btn" data-tipo="cartao">Cartão de crédito</button>
+      </div>
+      <div id="simGar" class="row seg col"></div>
+      <label class="fld">Entrada (R$)<input id="entrada" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00"></label>
+      <div id="simRes"></div>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
-<script src="ocr/ort/ort.wasm.min.js"></script>
-<script src="paddle.js"></script>
+<script src="simulador.js"></script>
 <script src="parser.js"></script>
 <script src="app.js"></script>
 </body>

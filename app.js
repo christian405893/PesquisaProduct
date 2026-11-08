@@ -20,14 +20,29 @@ const tx = (mode = 'readonly') => db.transaction('itens', mode).objectStore('ite
 const req = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
 const todos = () => req(tx().getAll());
 
+// Mescla pelo NCE: a folha de produtos traz nome/estoque/preço; a folha de garantia (seguro) traz g1/g2.
+// Cada uma só mexe nos seus campos; o que o vendedor anotou (quebrados) é mantido.
 async function salvarItens(itens) {
   const all = await todos();
   const folha = all.reduce((m, i) => Math.max(m, i.folha || 0), 0);
-  const t = db.transaction('itens', 'readwrite');
-  const s = t.objectStore('itens');
-  const nces = new Set(itens.map(i => i.nce));
-  all.filter(i => nces.has(i.nce)).forEach(i => s.delete(i.id)); // nova leitura substitui a antiga do mesmo NCE
-  itens.forEach(i => s.add({ ...i, folha: folha + i.pagina }));
+  const porNce = {};
+  all.forEach(i => { porNce[i.nce] = i; });
+  const t = db.transaction('itens', 'readwrite'), s = t.objectStore('itens');
+  const mantidos = new Set(Object.values(porNce));
+  all.filter(i => !mantidos.has(i)).forEach(i => s.delete(i.id)); // repetidos antigos do mesmo NCE
+  const tocados = new Set();
+  itens.forEach(it => {
+    const r = porNce[it.nce] || { nce: it.nce, nome: '', qtd: '', preco: '', g1: '', g2: '', defeito: 0, folha: 0 };
+    if (it.tipo === 'seguro') {
+      r.g1 = it.g1; r.g2 = it.g2;
+      if (!r.nome) r.nome = it.nome;
+    } else {
+      r.nome = it.nome || r.nome; r.qtd = it.qtd; r.preco = it.preco; r.cor = it.cor || r.cor || '';
+      r.folha = folha + it.pagina; r.raw = it.raw;
+    }
+    porNce[it.nce] = r; tocados.add(r);
+  });
+  tocados.forEach(r => (r.id === undefined ? s.add(r) : s.put(r)));
   await new Promise((res, rej) => { t.oncomplete = res; t.onerror = () => rej(t.error); });
 }
 
@@ -45,12 +60,22 @@ function toast(msg) {
 
 /* ---------- Busca ---------- */
 const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const numInt = v => { const n = parseInt(v, 10); return isNaN(n) ? null : n; };
+const disponivel = i => { const q = numInt(i.qtd); return q === null ? null : Math.max(0, q - (i.defeito || 0)); };
 function cardHTML(i) {
-  return `<div class="card"><div class="nce">NCE: ${esc(i.nce)}</div>
+  const disp = disponivel(i);
+  return `<div class="card click" data-id="${i.id}"><div class="nce">NCE: ${esc(i.nce)}</div>
     <div class="nome">${esc(i.nome) || '<i>(sem descrição)</i>'}</div>
-    <div class="meta"><div>Qtd<b>${esc(i.qtd) || '—'}</b></div><div>Preço<b>${i.preco ? 'R$ ' + esc(i.preco) : '—'}</b></div></div>
-    <div class="src">Folha ${esc(i.folha)}</div></div>`;
+    <div class="meta"><div>Estoque<b>${esc(i.qtd) || '—'}</b></div>
+      <div>Quebrados<b class="${i.defeito ? 'bad' : ''}">${i.defeito || 0}</b></div>
+      <div>Disponível<b class="${disp === 0 ? 'bad' : 'ok'}">${disp ?? '—'}</b></div>
+      <div>Preço<b>${i.preco ? 'R$ ' + esc(i.preco) : '—'}</b></div></div>
+    <div class="src">Folha ${esc(i.folha)} · toque para ver e simular ›</div></div>`;
 }
+$('#resultados').addEventListener('click', e => {
+  const c = e.target.closest('.card[data-id]');
+  if (c) abrirProduto(+c.dataset.id);
+});
 async function buscar() {
   const raw = $('#q').value.trim();
   const itens = await todos();
@@ -73,17 +98,40 @@ async function buscar() {
 $('#q').addEventListener('input', buscar);
 
 /* ---------- Escanear (OCR offline - PaddleOCR) ---------- */
-let motor, lote = []; // lote: [{pagina, itens:[...]}]
+let lote = []; // lote: [{pagina, itens:[...]}]
+let recusadas = []; // fotos recusadas por ter caractere duvidoso: [{pagina, tipo, itens, problemas}]
 
-async function getMotor() {
-  if (motor) return motor;
-  setProg(0.05, 'Carregando leitor offline (1ª vez demora um pouco)…');
-  ort.env.wasm.wasmPaths = new URL('ocr/ort/', location.href).href;
-  ort.env.wasm.numThreads = 1;
-  const buf = async f => (await fetch('ocr/paddle/' + f)).arrayBuffer();
-  const [det, rec, dict] = await Promise.all([buf('det.onnx'), buf('rec.onnx'), fetch('ocr/paddle/dict.txt').then(r => r.text())]);
-  motor = await Paddle.criar(ort, new Uint8Array(det), new Uint8Array(rec), dict, { sessionOptions: { executionProviders: ['wasm'] } });
-  return motor;
+// O OCR roda num Web Worker (ocr-worker.js) para não travar a tela do celular.
+let worker = null, seq = 0;
+const pend = new Map(); // id -> { res, rej, onProg }
+
+function falharPendentes(err) {
+  pend.forEach(p => p.rej(err));
+  pend.clear();
+}
+function getWorker() {
+  if (worker) return worker;
+  worker = new Worker('ocr-worker.js');
+  worker.onmessage = e => {
+    const { id, tipo } = e.data, p = pend.get(id);
+    if (!p) return;
+    if (tipo === 'prog') return p.onProg && p.onProg(e.data.f, e.data.txt);
+    pend.delete(id);
+    if (tipo === 'ok') p.res({ linhas: e.data.linhas, meta: e.data.meta, info: e.data.info }); else p.rej(new Error(e.data.msg));
+  };
+  worker.onerror = ev => {
+    const w = worker; worker = null; w.terminate(); // próximo uso recria o leitor
+    falharPendentes(new Error(ev.message || 'falha no leitor de OCR'));
+  };
+  return worker;
+}
+function lerNoWorker(img, onProg) {
+  return new Promise((res, rej) => {
+    const id = ++seq;
+    pend.set(id, { res, rej, onProg });
+    // transfere o buffer (sem copiar) para o worker
+    getWorker().postMessage({ id, buffer: img.data.buffer, width: img.width, height: img.height }, [img.data.buffer]);
+  });
 }
 
 async function prepararImagem(file) {
@@ -109,23 +157,31 @@ function setProg(f, txt) {
 let ocupado = false;
 async function processar(files) {
   files = [...files].filter(f => f.type.startsWith('image/'));
-  if (!files.length || ocupado) return;
+  if (!files.length) return;
+  if (ocupado) return toast('Aguarde: ainda lendo as fotos anteriores');
   ocupado = true;
   try {
-    const m = await getMotor();
     for (let n = 0; n < files.length; n++) {
       const rot = `Lendo foto ${n + 1} de ${files.length}…`;
       setProg(0, rot);
       const { img, thumb } = await prepararImagem(files[n]);
       $('#fila').insertAdjacentHTML('beforeend', `<img class="thumb" src="${thumb}">`);
-      await new Promise(r => setTimeout(r, 30)); // deixa a tela atualizar
-      const linhas = await m.ler(img, f => setProg(f, rot));
-      const itens = Parser.parseLines(linhas);
-      lote.push({ pagina: lote.length + 1, itens });
-      toast(`Foto ${n + 1}: ${itens.length} produtos encontrados`);
+      const { linhas, meta } = await lerNoWorker(img, (f, txt) => setProg(f, txt || rot));
+      const tipo = Parser.detectarTipo(linhas), itens = Parser.parsePagina(linhas, tipo, meta);
+      const problemas = Parser.problemasDaPagina(itens, tipo, meta);
+      const pg = { pagina: lote.length + recusadas.length + 1, tipo, linhas, meta, itens, problemas };
+      if (problemas.length) {
+        // qualquer caractere duvidoso: a foto é recusada e o vendedor tira outra
+        recusadas.push(pg);
+        const fila = $('#fila'); if (fila.lastElementChild) fila.lastElementChild.remove();
+        toast(`Foto ${n + 1} recusada: tire outra`);
+      } else {
+        lote.push(pg);
+        toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'garantia' : 'produtos'}, ${itens.length} linhas`);
+      }
     }
     $('#progresso').hidden = true;
-    renderRevisao();
+    renderRecusa(); renderRevisao();
   } catch (e) {
     console.error(e); toast('Erro ao ler a imagem: ' + (e.message || e));
     $('#progresso').hidden = true;
@@ -134,22 +190,58 @@ async function processar(files) {
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };
 $('#gal').onchange = e => { processar(e.target.files); e.target.value = ''; };
 
+function renderRecusa() {
+  const box = $('#recusa');
+  if (!recusadas.length) { box.hidden = true; box.innerHTML = ''; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>⚠️ Foto recusada — tire outra</h2>' + recusadas.map((pg, ri) => {
+    const max = 8, mot = pg.problemas.slice(0, max).map(m => `<li>${esc(m)}</li>`).join('');
+    return `<div class="rec"><b>Foto ${pg.pagina}</b> · ${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza:<ul>${mot}</ul>`
+      + (pg.problemas.length > max ? `<p class="hint">… e mais ${pg.problemas.length - max}.</p>` : '')
+      + `<button class="mini" data-forcar="${ri}">revisar mesmo assim</button></div>`;
+  }).join('') + '<p class="hint">Dicas: folha bem esticada e de frente, boa luz, sem sombra nem reflexo, foto nítida (sem tremer). Depois é só tirar outra foto da mesma folha.</p>';
+}
+$('#recusa').addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('[data-forcar]'); if (!b) return;
+  const pg = recusadas.splice(Number(b.dataset.forcar), 1)[0];
+  if (pg) lote.push(pg);
+  renderRecusa(); renderRevisao();
+});
+
+const CAMPOS = {
+  produtos: [['nce', 'numeric', 'NCE'], ['nome', 'text', 'produto'], ['qtd', 'numeric', 'qtd'], ['preco', 'decimal', 'R$']],
+  seguro: [['nce', 'numeric', 'NCE'], ['nome', 'text', 'produto'], ['g1', 'decimal', '1 ano'], ['g2', 'decimal', '2 anos']]
+};
 function renderRevisao() {
   const box = $('#linhas');
   if (!lote.length) { $('#revisao').hidden = true; return; }
   $('#revisao').hidden = false;
-  box.innerHTML = lote.map((pg, pi) => `<div class="pg">Foto ${pg.pagina} — ${pg.itens.length} produtos</div>` +
-    pg.itens.map((it, ii) => `<div class="ln" data-p="${pi}" data-i="${ii}">
-      <input data-f="nce" inputmode="numeric" value="${esc(it.nce)}" class="${/^\d{6}$/.test(it.nce) ? (it.duvida ? 'warn' : '') : 'bad'}">
-      <input data-f="nome" value="${esc(it.nome)}" class="${it.duvida ? 'warn' : ''}">
-      <input data-f="qtd" inputmode="numeric" value="${esc(it.qtd)}" placeholder="qtd">
-      <input data-f="preco" inputmode="decimal" value="${esc(it.preco)}" placeholder="R$">
-      <button data-del title="Apagar">✕</button></div>`).join('') +
-    (pg.itens.length ? '' : '<p class="hint">Nenhum código lido nesta foto. Tente de novo com mais luz e a folha reta.</p>')).join('');
+  box.innerHTML = lote.map((pg, pi) => {
+    const sel = t => (pg.tipo === t ? ' selected' : '');
+    const cab = `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de garantia (seguro)</option></select> · ${pg.itens.length} linhas</div>`
+      + (pg.tipo === 'seguro' ? '<p class="hint">Garantia: só atualiza os valores de 1 ano e 2 anos dos produtos. Campos em laranja: confira.</p>' : '');
+    const linhas = pg.itens.map((it, ii) => `<div class="ln${pg.tipo === 'seguro' ? ' seg' : ''}" data-p="${pi}" data-i="${ii}">` +
+      CAMPOS[pg.tipo].map(([f, modo, ph]) => {
+        let cls = '';
+        if (it.conf && it.conf[f] !== undefined && it.conf[f] < Parser.LIM) cls = 'bad';
+        else if (f === 'nce') cls = /^\d{6}$/.test(it.nce) ? (it.duvida ? 'warn' : '') : 'bad';
+        else if (pg.tipo === 'seguro') cls = it.duvida && f !== 'nome' ? 'warn' : '';
+        else cls = String(it[f] ?? '').trim() ? '' : 'warn';
+        return `<input data-f="${f}" inputmode="${modo}" value="${esc(it[f])}" placeholder="${ph}" class="${cls}">`;
+      }).join('') + '<button data-del title="Apagar">✕</button></div>').join('');
+    return cab + linhas + (pg.itens.length ? '' : '<p class="hint">Nenhum código lido nesta foto. Tente de novo com mais luz e a folha reta.</p>');
+  }).join('');
 }
 $('#linhas').addEventListener('input', e => {
   const ln = e.target.closest('.ln'); if (!ln) return;
-  lote[ln.dataset.p].itens[ln.dataset.i][e.target.dataset.f] = e.target.value;
+  const it = lote[ln.dataset.p].itens[ln.dataset.i]; it[e.target.dataset.f] = e.target.value;
+  if (it.conf) it.conf[e.target.dataset.f] = 1; // corrigido à mão
+});
+$('#linhas').addEventListener('change', e => {
+  if (!e.target.matches('[data-tipo]')) return;
+  const pg = lote[e.target.dataset.p];
+  pg.tipo = e.target.value; pg.itens = Parser.parsePagina(pg.linhas, pg.tipo, pg.meta); // lê a mesma foto como o outro tipo de folha
+  renderRevisao();
 });
 $('#linhas').addEventListener('click', e => {
   if (!e.target.matches('[data-del]')) return;
@@ -158,17 +250,23 @@ $('#linhas').addEventListener('click', e => {
   renderRevisao();
 });
 $('#salvar').onclick = async () => {
-  const itens = [];
-  lote.forEach(pg => pg.itens.forEach(it => {
-    if (it.nce && String(it.nce).trim()) itens.push({ nce: String(it.nce).replace(/\D/g, ''), nome: it.nome.trim(), qtd: String(it.qtd).trim(), preco: String(it.preco).trim(), pagina: pg.pagina, raw: it.raw });
-  }));
+  const itens = [], t = v => String(v ?? '').trim();
+  let folhaN = 0;
+  lote.forEach(pg => {
+    if (pg.tipo === 'produtos') folhaN++;
+    pg.itens.forEach(it => {
+      const nce = t(it.nce).replace(/\D/g, '');
+      if (nce) itens.push({ tipo: pg.tipo, nce, nome: t(it.nome), cor: it.cor || '', qtd: t(it.qtd), preco: t(it.preco), g1: t(it.g1), g2: t(it.g2), pagina: folhaN, raw: it.raw });
+    });
+  });
   if (!itens.length) return toast('Nada para salvar');
   await salvarItens(itens);
-  toast(`${itens.length} produtos salvos`);
+  const ns = itens.filter(i => i.tipo === 'seguro').length, np = itens.length - ns;
+  toast([np && `${np} produtos`, ns && `${ns} garantias`].filter(Boolean).join(' e ') + ' salvos');
   limparLote(); buscar();
 };
 $('#descartar').onclick = limparLote;
-function limparLote() { lote = []; $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
+function limparLote() { lote = []; recusadas = []; renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
 
 /* ---------- Tabela / backup ---------- */
 async function renderTabela() {
@@ -176,9 +274,9 @@ async function renderTabela() {
   const por = {};
   itens.forEach(i => (por[i.folha] ||= []).push(i));
   const ks = Object.keys(por).sort((a, b) => b - a);
-  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">Folha ${k} · ${por[k].length} itens</summary>
+  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Só garantia (sem folha de produtos)' : 'Folha ' + k} · ${por[k].length} itens</summary>
     <button data-delf="${k}" style="border:0;background:none;color:var(--bad)">Apagar esta folha</button>
-    <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td></tr>`).join('')}</table></details>`).join('')
+    <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th><th>G1</th><th>G2</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td><td>${esc(i.g1)}</td><td>${esc(i.g2)}</td></tr>`).join('')}</table></details>`).join('')
     : '<div class="empty">Tabela vazia.</div>';
 }
 $('#folhas').addEventListener('click', async e => {
@@ -194,8 +292,8 @@ function baixar(nome, texto, tipo) {
 }
 $('#csv').onclick = async () => {
   const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
-  const l = (await todos()).map(i => [i.nce, i.nome, i.qtd, i.preco, i.folha].map(q).join(';'));
-  baixar('produtos-nce.csv', '﻿NCE;Produto;Qtd;Preço;Folha\n' + l.join('\n'), 'text/csv');
+  const l = (await todos()).map(i => [i.nce, i.nome, i.qtd, i.defeito || 0, i.preco, i.g1, i.g2, i.folha].map(q).join(';'));
+  baixar('produtos-nce.csv', '﻿NCE;Produto;Qtd;Quebrados;Preço;Garantia 1 ano;Garantia 2 anos;Folha\n' + l.join('\n'), 'text/csv');
 };
 $('#backup').onclick = async () => baixar('backup-nce.json', JSON.stringify(await todos()), 'application/json');
 $('#restore').onchange = async e => {
@@ -207,6 +305,109 @@ $('#restore').onchange = async e => {
   } catch { toast('Arquivo inválido'); }
   e.target.value = '';
 };
+
+/* ---------- Produto: estoque, quebrados e simulação ---------- */
+const Sim = Simulador;
+let atual = null, sim = { tipo: 'crediario', gar: '' }, tSalvar;
+
+function salvarAtual() { clearTimeout(tSalvar); tSalvar = setTimeout(salvarAgora, 400); }
+async function salvarAgora() {
+  clearTimeout(tSalvar);
+  if (atual) await req(tx('readwrite').put(atual));
+}
+
+async function abrirProduto(id) {
+  atual = (await todos()).find(i => i.id === id);
+  if (!atual) return;
+  sim = { tipo: 'crediario', gar: '' };
+  $('#shNce').textContent = 'NCE: ' + atual.nce;
+  $('#shNome').textContent = atual.nome || '(sem descrição)';
+  $('#fPreco').value = atual.preco || '';
+  $('#fG1').value = atual.g1 || '';
+  $('#fG2').value = atual.g2 || '';
+  $('#entrada').value = '';
+  $('#simBox').hidden = true; $('#simBtn').hidden = false;
+  renderEstoque();
+  $('#sheet').hidden = false; $('#sheet').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  history.pushState({ sheet: 1 }, ''); // o botão "voltar" do celular fecha a tela do produto
+  if (document.activeElement) document.activeElement.blur();
+}
+async function fecharSheet() {
+  if ($('#sheet').hidden) return;
+  await salvarAgora();
+  $('#sheet').hidden = true; document.body.style.overflow = ''; atual = null;
+  buscar();
+}
+$('#sheetFechar').onclick = () => history.back();
+addEventListener('popstate', () => fecharSheet());
+
+function renderEstoque() {
+  const d = disponivel(atual);
+  $('#eQtd').textContent = atual.qtd || '—';
+  $('#eDef').textContent = atual.defeito || 0;
+  const el = $('#eDisp'); el.textContent = d ?? '—'; el.className = d === 0 ? 'bad' : 'ok';
+}
+function mudarDef(d) {
+  const q = numInt(atual.qtd);
+  let v = Math.max(0, (atual.defeito || 0) + d);
+  if (q !== null) v = Math.min(q, v);
+  atual.defeito = v; salvarAtual(); renderEstoque();
+}
+$('#defMenos').onclick = () => mudarDef(-1);
+$('#defMais').onclick = () => mudarDef(1);
+
+[['#fPreco', 'preco'], ['#fG1', 'g1'], ['#fG2', 'g2']].forEach(([sel, campo]) =>
+  $(sel).addEventListener('input', e => {
+    atual[campo] = e.target.value.trim(); salvarAtual(); renderGarantias(); renderSim();
+  }));
+$('#entrada').addEventListener('input', renderSim);
+
+$('#simBtn').onclick = () => { $('#simBtn').hidden = true; $('#simBox').hidden = false; renderGarantias(); renderSim(); };
+$('#simTipo').addEventListener('click', e => {
+  const b = e.target.closest('[data-tipo]'); if (!b) return;
+  sim.tipo = b.dataset.tipo;
+  if (sim.tipo === 'cartao' && !sim.gar) sim.gar = 'nenhuma';          // no cartão a garantia é opcional
+  if (sim.tipo === 'crediario' && sim.gar === 'nenhuma') sim.gar = ''; // no crediário é obrigatória
+  renderGarantias(); renderSim();
+});
+$('#simGar').addEventListener('click', e => {
+  const b = e.target.closest('[data-gar]'); if (!b) return;
+  sim.gar = b.dataset.gar; renderGarantias(); renderSim();
+});
+
+function renderGarantias() {
+  document.querySelectorAll('#simTipo [data-tipo]').forEach(b => b.classList.toggle('on', b.dataset.tipo === sim.tipo));
+  const v = k => { const c = Sim.cents(atual[k]); return c ? ' · ' + Sim.brl(c) : ' · informe o valor'; };
+  const op = [['g1', 'Garantia 1 ano' + v('g1')], ['g2', 'Garantia 2 anos' + v('g2')]];
+  if (sim.tipo === 'cartao') op.unshift(['nenhuma', 'Sem garantia']);
+  $('#simGar').innerHTML = op.map(([k, t]) => `<button class="btn chip${sim.gar === k ? ' on' : ''}" data-gar="${k}">${t}</button>`).join('') +
+    // crediário sem garantia: botão discreto, só para quando o cliente desiste
+    (sim.tipo === 'crediario' ? `<button class="mini${sim.gar === 'nenhuma' ? ' on' : ''}" data-gar="nenhuma">cliente não vai comprar</button>` : '');
+}
+
+function renderSim() {
+  if ($('#simBox').hidden) return;
+  const box = $('#simRes'), msg = t => { box.innerHTML = `<div class="empty">${t}</div>`; };
+  const cred = sim.tipo === 'crediario';
+  const preco = Sim.cents(atual.preco);
+  if (!preco) return msg('Informe o preço à vista do produto.');
+  if (!sim.gar) return msg('Escolha a garantia: no crediário ela é obrigatória.');
+  let garantia = 0;
+  if (sim.gar !== 'nenhuma') {
+    garantia = Sim.cents(atual[sim.gar]);
+    if (!garantia) return msg('Informe o valor dessa garantia no campo acima.');
+  }
+  const entrada = Sim.cents($('#entrada').value);
+  const r = (cred ? Sim.crediario : Sim.cartao)({ preco, garantia, entrada });
+  if (r.financiado <= 0) return msg('A entrada cobre o valor total.');
+  box.innerHTML =
+    `<p class="hint">A parcelar: <b>${Sim.brl(r.financiado)}</b> (${Sim.brl(preco)}${garantia ? ' + garantia ' + Sim.brl(garantia) : ''}${entrada ? ' − entrada ' + Sim.brl(entrada) : ''})</p>` +
+    r.lista.map(l => l.semTaxa ? `<div class="par"><span>${l.n}x</span><small class="tot">taxa ainda não cadastrada</small><span></span><span></span></div>` : `<div class="par"><span>${l.n}x de</span><b>${Sim.brl(l.parcela)}</b>
+      <small class="tot">total ${Sim.brl(l.total)}</small>${l.semJuros ? '<small class="sj">(SEM JUROS)</small>' : '<span></span>'}</div>`).join('') +
+    (cred && entrada > 0 ? '<p class="hint">Com entrada, o crediário vai até 11x.</p>' : '') +
+    (!cred && r.faltaTaxa ? '<p class="hint">7x a 12x com juros: taxa ainda não cadastrada no app.</p>' : '');
+}
 
 /* ---------- Início ---------- */
 openDB().then(buscar);
