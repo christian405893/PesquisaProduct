@@ -97,6 +97,89 @@
     return { tipo: 'produtos', nce: c.code, nome, cor, qtd: saldo, qtdBruto: saldoBruto, preco, conf, duvida: c.duvida || !nome || !saldo || !preco, raw: linha };
   }
 
+  // ---------- foto só da parte ESQUERDA da tabela: NCE | Cor | Nome da Cor | Descrição ----------
+  function parseEsq(linha, confs) {
+    const r = parseProduto(linha, confs); if (!r) return null;
+    return { tipo: 'esq', nce: r.nce, nome: r.nome, cor: r.cor, conf: { nce: r.conf.nce }, duvida: r.duvida || !r.nome, raw: r.raw };
+  }
+
+  // ---------- foto só da parte DIREITA: Descrição | Saldo | Cubagem | Pco Venda (sem NCE) ----------
+  function parseDir(linha, confs) {
+    const { l, cf } = prep(linha, confs); linha = l;
+    const cm = linha.match(CUB); if (!cm) return null;
+    const antes = linha.slice(0, cm.index), baseD = cm.index + cm[0].length;
+    const depois = moedas(linha.slice(baseD)), a = moedas(antes);
+    let preco = '', saldo = '', saldoBruto = '', spP = null, spS = null, corta = antes.length;
+    if (depois.length) { preco = depois[0].t; spP = spanM(baseD, depois[0]); }
+    if (a.length) { const u = a[a.length - 1]; saldo = saldoTexto(u.t); saldoBruto = u.t; spS = spanM(0, u); corta = u.i; }
+    const nome = limpaNome(antes.slice(0, corta));
+    const conf = { qtd: spS ? minConf(cf, spS[0], spS[1]) : 0, preco: spP ? minConf(cf, spP[0], spP[1]) : 0 };
+    return { tipo: 'dir', nce: '', nome, qtd: saldo, qtdBruto: saldoBruto, preco, conf, duvida: !nome || !saldo || !preco, raw: linha };
+  }
+
+  // ---------- junta a foto da esquerda com a da direita ----------
+  // As duas fotos têm a coluna "Descrição" em comum. Cada linha da esquerda é ligada à linha da direita
+  // com descrição parecida, respeitando a ordem de cima para baixo. Ligação duvidosa = foto recusada.
+  const canon = s => String(s || '').toUpperCase().replace(/[OQD]/g, '0').replace(/[IL|!]/g, '1').replace(/S/g, '5').replace(/B/g, '8').replace(/Z/g, '2').replace(/[^A-Z0-9]/g, '');
+  function distSub(s, t) { // menor nº de erros para achar s dentro de t (começo e fim livres)
+    const m = s.length, n = t.length; let prev = new Array(n + 1).fill(0);
+    for (let i = 1; i <= m; i++) {
+      const cur = [i];
+      for (let j = 1; j <= n; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (s[i - 1] === t[j - 1] ? 0 : 1));
+      prev = cur;
+    }
+    return Math.min(...prev);
+  }
+  function similaridade(a, b) {
+    const A = canon(a), B = canon(b), [s, t] = A.length <= B.length ? [A, B] : [B, A];
+    if (s.length < 6) return 0;
+    return Math.max(0, 1 - distSub(s, t) / s.length);
+  }
+  const SIM_MIN = 0.6, SIM_BOA = 0.8;
+  function juntarPartes(esq, dir) {
+    const n = esq.length, m = dir.length, S = [];
+    for (let i = 0; i < n; i++) { S.push([]); for (let j = 0; j < m; j++) S[i].push(similaridade(esq[i].nome, dir[j].nome)); }
+    const W = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) {
+      const sim = S[i - 1][j - 1];
+      W[i][j] = Math.max(W[i - 1][j], W[i][j - 1], sim >= SIM_MIN ? W[i - 1][j - 1] + sim : -1);
+    }
+    const par = new Array(n).fill(-1), usadaD = new Array(m).fill(false);
+    for (let i = n, j = m; i > 0 && j > 0;) {
+      const sim = S[i - 1][j - 1];
+      if (sim >= SIM_MIN && Math.abs(W[i][j] - (W[i - 1][j - 1] + sim)) < 1e-9) { par[i - 1] = j - 1; usadaD[j - 1] = true; i--; j--; }
+      else if (W[i][j] === W[i - 1][j]) i--; else j--;
+    }
+    // linhas sem descrição legível (cortada na borda da foto): se entre duas ligações seguras sobraram
+    // exatamente as mesmas quantidades dos dois lados, a ordem de cima para baixo decide
+    const ancoras = [[-1, -1]];
+    par.forEach((j, i) => { if (j >= 0) ancoras.push([i, j]); });
+    ancoras.push([n, m]);
+    const posicional = new Array(n).fill(false);
+    for (let k = 1; k < ancoras.length; k++) {
+      const [i0, j0] = ancoras[k - 1], [i1, j1] = ancoras[k], li = [], lj = [];
+      for (let i = i0 + 1; i < i1; i++) if (par[i] < 0) li.push(i);
+      for (let j = j0 + 1; j < j1; j++) if (!usadaD[j]) lj.push(j);
+      if (li.length && li.length === lj.length && li.every((i, q) => canon(dir[lj[q]].nome).length < 6 || S[i][lj[q]] >= 0.45))
+        li.forEach((i, q) => { par[i] = lj[q]; usadaD[lj[q]] = true; posicional[i] = true; });
+    }
+    const out = [];
+    esq.forEach((e, i) => {
+      const d = par[i] >= 0 ? dir[par[i]] : null;
+      const nome = d && d.nome.length > e.nome.length ? d.nome : e.nome; // o mais completo
+      out.push({
+        tipo: 'produtos', nce: e.nce, nome, cor: e.cor || '', qtd: d ? d.qtd : '', qtdBruto: d ? d.qtdBruto : '', preco: d ? d.preco : '',
+        conf: { nce: e.conf.nce, qtd: d ? d.conf.qtd : 0, preco: d ? d.conf.preco : 0 },
+        sim: d ? (posicional[i] ? SIM_BOA : S[i][par[i]]) : 0, posicional: posicional[i], semPar: d ? '' : 'dir', duvida: !d || posicional[i] || S[i][par[i]] < SIM_BOA, raw: e.raw + ' || ' + (d ? d.raw : '')
+      });
+    });
+    dir.forEach((d, j) => {
+      if (usadaD[j]) return;
+      out.push({ tipo: 'produtos', nce: '', nome: d.nome, cor: '', qtd: d.qtd, qtdBruto: d.qtdBruto, preco: d.preco, conf: { nce: 0, qtd: d.conf.qtd, preco: d.conf.preco }, sim: 0, semPar: 'esq', duvida: true, raw: d.raw });
+    });
+    return out;
+  }
+
   // ---------- folha de seguro (garantia) ----------
   function parseSeguro(linha, confs) {
     const { l, cf } = prep(linha, confs); linha = l;
@@ -124,21 +207,29 @@
 
   // ---------- qual das duas folhas é? ----------
   function detectarTipo(linhas) {
-    let prod = 0, seg = 0;
+    let prod = 0, seg = 0, cheia = 0, esq = 0, dir = 0;
     for (const l of linhas) {
+      const temCod = /(?<![\d.,])\d{6}(?![\d.,])/.test(l), temCub = CUB.test(l);
+      if (temCod && temCub) cheia++;
+      else if (temCub) dir++;
+      else if (temCod && !/\d+[.,]\d{2}\s+\d+[.,]\d{2}\s*$/.test(l) && (l.match(/[A-Za-z]/g) || []).length >= 8) esq++;
       if (/saldo|cubagem|pco\s*venda|mercadorias|nome\s*da\s*cor/i.test(l)) prod += 3;
       if (/seguro|\baon\b|subgru/i.test(l)) seg += 3;
       if (CUB.test(l)) prod++;
       else if (/\d+[.,]\d{2}\s+\d+[.,]\d{2}\s*$/.test(l) && /(?<![\d.,])\d{6}(?![\d.,])/.test(l)) seg++;
     }
-    return seg > prod ? 'seguro' : 'produtos';
+    if (seg > prod) return 'seguro';
+    // foto de só um lado da tabela: parte da direita (sem NCE) ou da esquerda (sem saldo/preço)
+    if (dir >= 3 && dir > 2 * cheia) return 'dir';
+    if (esq >= 3 && esq > 2 * cheia && dir * 3 < esq) return 'esq';
+    return 'produtos';
   }
 
   const CABECALHO = /c[oó]d|produto|descri|\bqtd|quant|pre[cç]o|valor|folha|p[aá]gina|saldo|cubagem|seguro|grupo|almox|situa|relac|\bpag\b|\bcor\b|loja/i;
 
   function parsePagina(linhas, tipo, meta) {
     tipo = tipo || detectarTipo(linhas);
-    const parse = tipo === 'seguro' ? parseSeguro : parseProduto, out = [];
+    const parse = tipo === 'seguro' ? parseSeguro : tipo === 'esq' ? parseEsq : tipo === 'dir' ? parseDir : parseProduto, out = [];
     out.sobras = []; // linhas com número/código que não consegui encaixar em nenhum produto
     for (let li = 0; li < linhas.length; li++) {
       const l = linhas[li];
@@ -159,7 +250,7 @@
           } else out.push({ li, conf: {}, tipo, nce: '', nome: limpaNome(t.slice(0, a.length ? a[a.length - 1].i : cm.index)), cor: '', qtd: saldo, preco, duvida: true, raw: t });
           continue;
         }
-      } else {
+      } else if (tipo === 'seguro') {
         const m = moedas(t);
         if (m.length >= 2 && /[A-Za-z]{3,}/.test(t) && !CABECALHO.test(t)) {
           out.push({ li, conf: {}, tipo, nce: '', nome: limpaNome(t.slice(0, m[m.length - 2].i).replace(/(\s+\d{1,4}){1,3}\s*$/, '')), g1: m[m.length - 2].t, g2: m[m.length - 1].t, duvida: true, raw: t });
@@ -182,29 +273,31 @@
   const mediana = a => { const b = [...a].sort((x, y) => x - y); return b.length ? b[b.length >> 1] : 0; };
   function problemasDaPagina(itens, tipo, meta) {
     const P = [], rot = { nce: 'NCE', qtd: 'quantidade', preco: 'preço', g1: 'garantia 1 ano', g2: 'garantia 2 anos' };
-    const campos = tipo === 'seguro' ? ['nce', 'g1', 'g2'] : ['nce', 'qtd', 'preco'];
+    const campos = tipo === 'seguro' ? ['nce', 'g1', 'g2'] : tipo === 'esq' ? ['nce'] : tipo === 'dir' ? ['qtd', 'preco'] : ['nce', 'qtd', 'preco'];
     if (!itens.length) return ['Não achei nenhuma linha de produto nesta foto.'];
     const vistos = new Map();
     for (const it of itens) {
       const id = it.nce ? 'NCE ' + it.nce : 'linha "' + (it.nome || it.raw || '?').slice(0, 28) + '"';
-      if (!/^\d{6}$/.test(it.nce || '')) { P.push(id + ': NCE não lido por completo.'); continue; }
+      if (it.semPar) { P.push(id + (it.semPar === 'dir' ? ': não achei a linha dele na foto da direita.' : ': linha da foto da direita sem par na foto da esquerda.')); continue; }
+      if (it.sim !== undefined && it.sim < SIM_BOA) P.push(id + ': ligação entre as duas fotos duvidosa (a descrição não bate direito).');
+      if (tipo !== 'dir' && !/^\d{6}$/.test(it.nce || '')) { P.push(id + ': NCE não lido por completo.'); continue; }
       if (it.partida) P.push(id + ': a linha saiu partida em duas (foto torta ou tremida).');
       for (const f of campos) {
         const v = String(it[f] ?? '').trim();
         if (!v) { P.push(id + ': ' + rot[f] + ' não foi lido.'); continue; }
         if ((it.conf && it.conf[f] !== undefined ? it.conf[f] : 0) < LIM) P.push(id + ': ' + rot[f] + ' com caractere duvidoso (' + v + ').');
       }
-      if (tipo === 'produtos' && it.qtdBruto && !/,00$/.test(it.qtdBruto)) P.push(id + ': quantidade ' + it.qtdBruto + ' não é número inteiro.');
+      if ((tipo === 'produtos' || tipo === 'dir') && it.qtdBruto && !/,00$/.test(it.qtdBruto)) P.push(id + ': quantidade ' + it.qtdBruto + ' não é número inteiro.');
       if (tipo === 'seguro' && it.g1 && it.g2) {
         const r = valor(it.g2) / valor(it.g1);
         if (!(r > RAZAO[0] && r < RAZAO[1])) P.push(id + ': garantia 2 anos (' + it.g2 + ') não bate com a de 1 ano (' + it.g1 + ').');
       }
-      if (vistos.has(it.nce)) P.push(id + ': aparece duas vezes na mesma foto.'); else vistos.set(it.nce, 1);
+      if (it.nce) { if (vistos.has(it.nce)) P.push(id + ': aparece duas vezes na mesma foto.'); else vistos.set(it.nce, 1); }
     }
     for (const sb of itens.sobras || []) P.push('Linha com número que não consegui ligar a um produto: "' + sb.texto.slice(0, 40) + '".');
     // falta de linha: espaço vertical muito maior que o normal entre dois produtos seguidos
     if (meta) {
-      const com = itens.filter(i => i.li !== undefined && meta[i.li] && i.nce);
+      const com = itens.filter(i => i.li !== undefined && meta[i.li] && (i.nce || tipo === 'dir'));
       const d = [];
       for (let k = 1; k < com.length; k++) d.push(meta[com[k].li].cy - meta[com[k - 1].li].cy);
       const med = mediana(d);
@@ -216,6 +309,6 @@
     return P;
   }
 
-  const api = { parseProduto, parseSeguro, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
+  const api = { parseProduto, parseSeguro, parseEsq, parseDir, juntarPartes, similaridade, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
   if (typeof module !== 'undefined') module.exports = api; else root.Parser = api;
 })(typeof self !== 'undefined' ? self : this);

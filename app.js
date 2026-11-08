@@ -99,6 +99,7 @@ $('#q').addEventListener('input', buscar);
 
 /* ---------- Escanear (OCR offline - PaddleOCR) ---------- */
 let lote = []; // lote: [{pagina, itens:[...]}]
+let pendentes = { esq: [], dir: [] }; // partes da tabela já lidas, esperando a outra metade
 let recusadas = []; // fotos recusadas por ter caractere duvidoso: [{pagina, tipo, itens, problemas}]
 
 // O OCR roda num Web Worker (ocr-worker.js) para não travar a tela do celular.
@@ -203,13 +204,17 @@ async function processar(files) {
         recusadas.push(pg);
         const fila = $('#fila'); if (fila.lastElementChild) fila.lastElementChild.remove();
         toast(`Foto ${n + 1} recusada: tire outra`);
+      } else if (tipo === 'esq' || tipo === 'dir') {
+        pendentes[tipo].push(pg);
+        toast(`Foto ${n + 1}: parte ${tipo === 'esq' ? 'esquerda' : 'direita'} lida (${itens.length} linhas)`);
+        tentarJuntar();
       } else {
         lote.push(pg);
         toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'garantia' : 'produtos'}, ${itens.length} linhas`);
       }
     }
     fimProg();
-    renderRecusa(); renderRevisao();
+    renderPartes(); renderRecusa(); renderRevisao();
   } catch (e) {
     console.error(e); toast(e.message === 'cancelado' ? 'Leitura cancelada' : 'Erro ao ler a imagem: ' + (e.message || e));
     fimProg();
@@ -218,15 +223,37 @@ async function processar(files) {
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };
 $('#gal').onchange = e => { processar(e.target.files); e.target.value = ''; };
 
+// Junta a foto da esquerda com a da direita (na ordem em que foram lidas) assim que as duas existirem
+function tentarJuntar() {
+  while (pendentes.esq.length && pendentes.dir.length) {
+    const e = pendentes.esq.shift(), d = pendentes.dir.shift();
+    const itens = Parser.juntarPartes(e.itens, d.itens), problemas = Parser.problemasDaPagina(itens, 'produtos');
+    const pg = { pagina: lote.length + recusadas.length + 1, tipo: 'produtos', partes: true, linhas: [], meta: null, itens, problemas };
+    if (problemas.length) recusadas.push(pg); else lote.push(pg);
+  }
+}
+function renderPartes() {
+  const box = $('#partes'), e = pendentes.esq.length, d = pendentes.dir.length;
+  if (!e && !d) { box.hidden = true; box.innerHTML = ''; return; }
+  box.hidden = false;
+  const falta = e ? 'direita (da Descrição até o Preço)' : 'esquerda (do NCE até a Descrição)';
+  box.innerHTML = `Parte ${e ? 'esquerda' : 'direita'} lida ✔ — agora tire a foto da parte <b>${falta}</b>. <button class="mini" data-descartar-partes>descartar</button>`;
+}
+$('#partes').addEventListener('click', e => {
+  if (e.target.matches && e.target.matches('[data-descartar-partes]')) { pendentes = { esq: [], dir: [] }; renderPartes(); }
+});
+
 function renderRecusa() {
   const box = $('#recusa');
   if (!recusadas.length) { box.hidden = true; box.innerHTML = ''; return; }
   box.hidden = false;
   box.innerHTML = '<h2>⚠️ Foto recusada — tire outra</h2>' + recusadas.map((pg, ri) => {
+    const podeForcar = pg.tipo === 'produtos' || pg.tipo === 'seguro';
+    const nomeFoto = pg.partes ? 'Fotos da esquerda + direita' : `Foto ${pg.pagina}${pg.tipo === 'esq' ? ' (parte esquerda)' : pg.tipo === 'dir' ? ' (parte direita)' : ''}`;
     const max = 8, mot = pg.problemas.slice(0, max).map(m => `<li>${esc(m)}</li>`).join('');
-    return `<div class="rec"><b>Foto ${pg.pagina}</b> · ${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza:<ul>${mot}</ul>`
+    return `<div class="rec"><b>${nomeFoto}</b> · ${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza:<ul>${mot}</ul>`
       + (pg.problemas.length > max ? `<p class="hint">… e mais ${pg.problemas.length - max}.</p>` : '')
-      + `<button class="mini" data-forcar="${ri}">revisar mesmo assim</button></div>`;
+      + (podeForcar ? `<button class="mini" data-forcar="${ri}">revisar mesmo assim</button>` : '') + '</div>';
   }).join('') + '<p class="hint">Dicas: folha bem esticada e de frente, boa luz, sem sombra nem reflexo, foto nítida (sem tremer). Depois é só tirar outra foto da mesma folha.</p>';
 }
 $('#recusa').addEventListener('click', e => {
@@ -246,7 +273,7 @@ function renderRevisao() {
   $('#revisao').hidden = false;
   box.innerHTML = lote.map((pg, pi) => {
     const sel = t => (pg.tipo === t ? ' selected' : '');
-    const cab = `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de garantia (seguro)</option></select> · ${pg.itens.length} linhas</div>`
+    const cab = pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de garantia (seguro)</option></select> · ${pg.itens.length} linhas</div>`
       + (pg.tipo === 'seguro' ? '<p class="hint">Garantia: só atualiza os valores de 1 ano e 2 anos dos produtos. Campos em laranja: confira.</p>' : '');
     const linhas = pg.itens.map((it, ii) => `<div class="ln${pg.tipo === 'seguro' ? ' seg' : ''}" data-p="${pi}" data-i="${ii}">` +
       CAMPOS[pg.tipo].map(([f, modo, ph]) => {
@@ -294,7 +321,7 @@ $('#salvar').onclick = async () => {
   limparLote(); buscar();
 };
 $('#descartar').onclick = limparLote;
-function limparLote() { lote = []; recusadas = []; renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
+function limparLote() { lote = []; recusadas = []; pendentes = { esq: [], dir: [] }; renderPartes(); renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
 
 /* ---------- Tabela / backup ---------- */
 async function renderTabela() {

@@ -25,18 +25,19 @@
 
   <!-- ESCANEAR -->
   <section id="tab-scan" class="tab">
-    <p class="hint">Fotografe cada folha A4 inteira, bem reta e com boa luz. Pode enviar várias fotos de uma vez.</p>
+    <p class="hint">Fotografe a folha A4 bem reta e com boa luz. Pode enviar várias fotos de uma vez da galeria.<br><b>Tabela larga?</b> Tire em 2 fotos: uma do <b>NCE até a Descrição</b> e outra da <b>Descrição até o Preço</b> (a Descrição precisa aparecer nas duas). O app junta sozinho.</p>
     <div class="row">
       <label class="btn primary">📷 Tirar foto
         <input id="cam" type="file" accept="image/*" capture="environment" hidden>
       </label>
-      <label class="btn">🖼️ Da galeria
+      <label class="btn">🖼️ Da galeria (várias)
         <input id="gal" type="file" accept="image/*" multiple hidden>
       </label>
     </div>
     <div id="fila"></div>
     <div id="progresso" class="progress" hidden><div id="barra"></div><span id="ptxt"></span></div>
     <button id="cancelar" class="mini" hidden>cancelar leitura</button>
+    <div id="partes" class="partes" hidden></div>
     <div id="recusa" class="recusa" hidden></div>
     <div id="revisao" hidden>
       <h2>Revisar dados lidos</h2>
