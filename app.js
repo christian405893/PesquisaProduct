@@ -70,7 +70,8 @@ function cardHTML(i) {
       <div>Quebrados<b class="${i.defeito ? 'bad' : ''}">${i.defeito || 0}</b></div>
       <div>Disponível<b class="${disp === 0 ? 'bad' : 'ok'}">${disp ?? '—'}</b></div>
       <div>Preço<b>${i.preco ? 'R$ ' + esc(i.preco) : '—'}</b></div></div>
-    <div class="src">Folha ${esc(i.folha)} · toque para ver e simular ›</div></div>`;
+    ${i.g1 || i.g2 ? `<div class="gar">Garantia: 1 ano <b>${i.g1 ? 'R$ ' + esc(i.g1) : '—'}</b> · 2 anos <b>${i.g2 ? 'R$ ' + esc(i.g2) : '—'}</b></div>` : ''}
+    <div class="src">${i.folha ? 'Folha ' + esc(i.folha) : 'Só garantia'} · toque para ver e simular ›</div></div>`;
 }
 $('#resultados').addEventListener('click', e => {
   const c = e.target.closest('.card[data-id]');
@@ -94,8 +95,13 @@ async function buscar() {
     res = itens.filter(i => { const n = norm(i.nome); return words.every(w => n.includes(w)); });
   }
   box.innerHTML = res.length ? res.slice(0, 60).map(cardHTML).join('') : '<div class="empty">Nada encontrado.</div>';
+  return { res, digits };
 }
-$('#q').addEventListener('input', buscar);
+// digitou os 6 números de um NCE e só existe esse produto: abre direto a tela dele
+$('#q').addEventListener('input', async () => {
+  const r = await buscar();
+  if (r && r.digits.length === 6 && r.res.length === 1 && r.res[0].nce === r.digits) abrirProduto(r.res[0].id);
+});
 
 /* ---------- Escanear (OCR offline - PaddleOCR) ---------- */
 let lote = []; // lote: [{pagina, itens:[...]}]
@@ -383,10 +389,12 @@ async function abrirProduto(id) {
   $('#entrada').value = '';
   $('#simBox').hidden = true; $('#simBtn').hidden = false;
   renderEstoque();
+  $('#estCard').hidden = !atual.qtd && !atual.defeito; // produto só da folha de garantia não tem estoque
   $('#sheet').hidden = false; $('#sheet').scrollTop = 0;
   document.body.style.overflow = 'hidden';
   history.pushState({ sheet: 1 }, ''); // o botão "voltar" do celular fecha a tela do produto
   if (document.activeElement) document.activeElement.blur();
+  if (!atual.preco) setTimeout(() => $('#fPreco').focus(), 200); // sem preço na tabela: já cai no campo para digitar
 }
 async function fecharSheet() {
   if ($('#sheet').hidden) return;
