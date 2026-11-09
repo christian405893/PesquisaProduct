@@ -547,4 +547,13 @@ function renderSim() {
 
 /* ---------- Início ---------- */
 openDB().then(buscar);
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
+if ('serviceWorker' in navigator) {
+  const tinha = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });
+  // versão nova instalada: recarrega sozinho (se você não estiver no meio de uma leitura ou revisão)
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!tinha) return;
+    if (!ocupado && !lote.length && !recusadas.length && !pendentes.esq.length && !pendentes.dir.length) location.reload();
+    else toast('Versão nova instalada: depois de salvar, feche e abra o app');
+  });
+}
