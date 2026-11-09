@@ -20,6 +20,7 @@
   <!-- BUSCA -->
   <section id="tab-busca" class="tab active">
     <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Código NCE (6 dígitos) ou nome">
+    <button id="novoBtn" class="btn novo">➕ Adicionar produto manualmente</button>
     <div id="resultados"></div>
   </section>
 
@@ -100,6 +101,25 @@
       <label class="fld">Entrada (R$)<input id="entrada" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00"></label>
       <div id="simRes"></div>
     </div>
+  </div>
+</div>
+
+<div id="novo" hidden>
+  <div class="sh">
+    <button id="novoFechar" aria-label="Voltar">←</button>
+    <div><div class="shnce">Adicionar produto</div><div id="novoAviso"></div></div>
+  </div>
+  <div class="shbody">
+    <div class="card">
+      <label class="fld">NCE (6 números)<input id="nNce" type="text" inputmode="numeric" maxlength="6" autocomplete="off"></label>
+      <label class="fld">Cor<input id="nCor" type="text" autocomplete="off"></label>
+      <label class="fld">Descrição<input id="nNome" type="text" autocomplete="off"></label>
+      <label class="fld">Preço à vista (R$)<input id="nPreco" type="text" inputmode="decimal" autocomplete="off"></label>
+      <label class="fld">Seguro 1 ano (R$)<input id="nG1" type="text" inputmode="decimal" autocomplete="off"></label>
+      <label class="fld">Seguro 2 anos (R$)<input id="nG2" type="text" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <p id="nMsg" class="hint"></p>
+    <button id="nSalvar" class="btn primary big">Salvar produto</button>
   </div>
 </div>
 

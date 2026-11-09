@@ -42,7 +42,7 @@ nav button span{display:block;font-size:12px}nav button.on{color:var(--pri)}
 #toast.show{opacity:1}
 .card.click{cursor:pointer}
 .card .meta b.bad,#eDisp.bad{color:var(--bad)}.card .meta b.ok,#eDisp.ok{color:var(--ok)}
-#sheet{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
+#sheet,#novo{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
 .sh{position:sticky;top:0;z-index:2;display:flex;gap:12px;align-items:center;padding:10px 14px;background:var(--pri);color:#fff}
 .sh button{border:0;background:none;color:#fff;font-size:28px;padding:4px 10px 6px 0;line-height:1}
 .shnce{font-weight:700;font-size:18px;letter-spacing:1px}
@@ -69,3 +69,6 @@ nav button span{display:block;font-size:12px}nav button.on{color:var(--pri)}
 .recusa ul{margin:4px 0 6px 18px;padding:0;font-size:14px}
 .partes{border:2px solid var(--pri);border-radius:12px;padding:10px 12px;margin:12px 0;background:rgba(11,95,255,.07);font-size:15px}
 .gar{margin-top:6px;font-size:14px;color:var(--mut)}.gar b{color:var(--tx)}
+.btn.novo{width:100%;margin:8px 0 4px}
+#novoAviso{font-size:13px;opacity:.9}
+#nMsg.erro{color:var(--bad);font-weight:600}

@@ -71,7 +71,7 @@ function cardHTML(i) {
       <div>Disponível<b class="${disp === 0 ? 'bad' : 'ok'}">${disp ?? '—'}</b></div>
       <div>Preço<b>${i.preco ? 'R$ ' + esc(i.preco) : '—'}</b></div></div>
     ${i.g1 || i.g2 ? `<div class="gar">Seguro: 1 ano <b>${i.g1 ? 'R$ ' + esc(i.g1) : '—'}</b> · 2 anos <b>${i.g2 ? 'R$ ' + esc(i.g2) : '—'}</b></div>` : ''}
-    <div class="src">${i.folha ? 'Folha ' + esc(i.folha) : 'Só seguro'} · toque para ver e simular ›</div></div>`;
+    <div class="src">${i.folha ? 'Folha ' + esc(i.folha) : i.manual ? 'Cadastro manual' : 'Só seguro'} · toque para ver e simular ›</div></div>`;
 }
 $('#resultados').addEventListener('click', e => {
   const c = e.target.closest('.card[data-id]');
@@ -336,7 +336,7 @@ async function renderTabela() {
   const por = {};
   itens.forEach(i => (por[i.folha] ||= []).push(i));
   const ks = Object.keys(por).sort((a, b) => b - a);
-  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Só seguro (sem folha de produtos)' : 'Folha ' + k} · ${por[k].length} itens</summary>
+  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Sem folha de produtos (só seguro ou cadastro manual)' : 'Folha ' + k} · ${por[k].length} itens</summary>
     <button data-delf="${k}" style="border:0;background:none;color:var(--bad)">Apagar esta folha</button>
     <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th><th>G1</th><th>G2</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td><td>${esc(i.g1)}</td><td>${esc(i.g2)}</td></tr>`).join('')}</table></details>`).join('')
     : '<div class="empty">Tabela vazia.</div>';
@@ -404,7 +404,65 @@ async function fecharSheet() {
   buscar();
 }
 $('#sheetFechar').onclick = () => history.back();
-addEventListener('popstate', () => fecharSheet());
+addEventListener('popstate', () => {
+  if (!$('#novo').hidden) { $('#novo').hidden = true; document.body.style.overflow = ''; }
+  if (abrirDepois !== null) { const id = abrirDepois; abrirDepois = null; abrirProduto(id); return; }
+  fecharSheet();
+});
+
+/* ---------- Adicionar produto manualmente ---------- */
+let abrirDepois = null, avisouRazao = false, todosNovo = [];
+const fmtDin = c => { const s = String(Math.round(c)).padStart(3, '0'); return s.slice(0, -2).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + s.slice(-2); };
+const dinStr = v => { const c = Sim.cents(v); return c > 0 ? fmtDin(c) : ''; };
+function novoMsg(t, erro) { const m = $('#nMsg'); m.textContent = t || ''; m.className = 'hint' + (erro ? ' erro' : ''); }
+async function abrirNovo() {
+  todosNovo = await todos(); avisouRazao = false;
+  const q = $('#q').value.replace(/\D/g, '');
+  ['#nNce', '#nCor', '#nNome', '#nPreco', '#nG1', '#nG2'].forEach(s => { $(s).value = ''; });
+  if (q.length === 6) $('#nNce').value = q;
+  novoMsg(''); $('#novoAviso').textContent = '';
+  novoNceMudou();
+  $('#novo').hidden = false; $('#novo').scrollTop = 0; document.body.style.overflow = 'hidden';
+  history.pushState({ novo: 1 }, '');
+  setTimeout(() => $(($('#nNce').value.length === 6 ? '#nNome' : '#nNce')).focus(), 200);
+}
+function novoNceMudou() {
+  const nce = $('#nNce').value.replace(/\D/g, '');
+  if ($('#nNce').value !== nce) $('#nNce').value = nce;
+  const ex = nce.length === 6 && todosNovo.find(i => i.nce === nce);
+  $('#novoAviso').textContent = ex ? 'Já existe: salvar atualiza este produto' : '';
+  if (ex) { // traz o que já está guardado, sem apagar o que você já digitou
+    if (!$('#nCor').value) $('#nCor').value = ex.cor || '';
+    if (!$('#nNome').value) $('#nNome').value = ex.nome || '';
+    if (!$('#nPreco').value) $('#nPreco').value = ex.preco || '';
+    if (!$('#nG1').value) $('#nG1').value = ex.g1 || '';
+    if (!$('#nG2').value) $('#nG2').value = ex.g2 || '';
+  }
+}
+async function salvarNovo() {
+  const nce = $('#nNce').value.replace(/\D/g, ''), nome = $('#nNome').value.trim().replace(/\s+/g, ' '), cor = $('#nCor').value.trim();
+  if (!/^\d{6}$/.test(nce)) return novoMsg('O NCE precisa ter 6 números.', true);
+  if (!nome) return novoMsg('Digite a descrição do produto.', true);
+  const val = {};
+  for (const [k, s, rot] of [['preco', '#nPreco', 'preço'], ['g1', '#nG1', 'seguro de 1 ano'], ['g2', '#nG2', 'seguro de 2 anos']]) {
+    const bruto = $(s).value.trim();
+    val[k] = dinStr(bruto);
+    if (bruto && !val[k]) return novoMsg('Valor do ' + rot + ' inválido.', true);
+  }
+  if (val.g1 && val.g2 && !avisouRazao) {
+    const r = Sim.cents(val.g2) / Sim.cents(val.g1);
+    if (!(r > 1.55 && r < 1.66)) { avisouRazao = true; return novoMsg('Confira: o seguro de 2 anos costuma ser ~1,6× o de 1 ano. Se estiver certo, toque em Salvar de novo.', true); }
+  }
+  const all = await todos(); let r = all.find(i => i.nce === nce), id;
+  if (r) { Object.assign(r, { nome, cor, preco: val.preco, g1: val.g1, g2: val.g2 }); await req(tx('readwrite').put(r)); id = r.id; }
+  else { id = await req(tx('readwrite').add({ nce, nome, cor, qtd: '', preco: val.preco, g1: val.g1, g2: val.g2, defeito: 0, folha: 0, manual: true })); }
+  toast('Produto ' + nce + ' salvo');
+  abrirDepois = id; history.back(); // fecha o formulário e abre a tela do produto
+}
+$('#novoBtn').onclick = abrirNovo;
+$('#novoFechar').onclick = () => history.back();
+$('#nNce').addEventListener('input', novoNceMudou);
+$('#nSalvar').onclick = salvarNovo;
 
 function renderEstoque() {
   const d = disponivel(atual);
