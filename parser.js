@@ -4,7 +4,9 @@
 //  - "seguro":   Alm | Grupo | N.C.E. | Descrição | SubGru | Cod.AON | SEGURO 1ANO | SEGURO 2ANOS
 //      -> { nce, nome, g1 (= seguro 1 ano), g2 (= seguro 2 anos) }
 (function (root) {
-  const RAZAO = [1.55, 1.66]; // seguro 2 anos / seguro 1 ano é sempre ~1,60 nas folhas da loja
+  // seguro de 2 anos = 1,6 × seguro de 1 ano (arredondado em centavos): nas folhas da loja a diferença fica sempre abaixo de 15 centavos.
+  // Um dígito errado em qualquer um dos dois valores quebra essa conta, então ela confere a leitura sem precisar de confiança do OCR.
+  const razaoOk = (g1, g2) => { const a = valor(g1), b = valor(g2); return isFinite(a) && isFinite(b) && a > 0 && Math.abs(b - 1.6 * a) <= 0.15; };
   const CUB = /(?<![\d.,])0[.,]\d{4,6}(?!\d)/;                        // cubagem (0.09208)
   const DIN = /(\d{1,3}(?:\.\d{3})+,\d{2}|\d+[.,]\d{2})\d{0,2}(?!\d)/g; // 173.00 | 1.279,00 (tolera lixo no fim)
   const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim();
@@ -190,7 +192,7 @@
     else if (m.length === 1) { g1 = m[0].t; s1 = spanM(c.fim, m[0]); duvida = true; }
     else duvida = true;
     // o seguro de 2 anos custa ~1,6x o de 1 ano; se fugir muito disso, o OCR provavelmente errou um dígito
-    if (g1 && g2) { const r = valor(g2) / valor(g1); if (!(r > RAZAO[0] && r < RAZAO[1])) duvida = true; }
+    if (g1 && g2 && !razaoOk(g1, g2)) duvida = true;
     // nome (a folha de produtos tem o nome completo; aqui ele vem cortado)
     let nomeTxt = m.length >= 2 ? resto.slice(0, m[m.length - 2].i) : resto;
     nomeTxt = nomeTxt.replace(/(\s+\d{1,4}){1,3}\s*$/, '');
@@ -267,6 +269,62 @@
     return out;
   }
 
+  // ---------- texto copiado (Google Lens etc.) e colado no app ----------
+  // O Lens costuma separar as colunas da folha de seguro em blocos: primeiro as linhas "grupo NCE descrição" e depois,
+  // uma por linha, SubGru / Cod.AON / seguro 1 ano / seguro 2 anos de cada produto, na mesma ordem. Aqui os blocos são
+  // ligados na ordem, mas só quando a contagem fecha exatamente; qualquer dúvida deixa o produto sem valor (e a página é recusada).
+  const MONEY = /^(?:\d{1,3}(?:\.\d{3})+[.,]\d{2}|\d+[.,]\d{2})$/, INT = /^\d{1,4}$/;
+  const PROD = /^\s*(?:\d{1,3}\s+)?(\d{6})\s+(\S.*?)\s*$/;
+  function quadras(toks) {
+    const out = []; let pend = [], quebrou = null, depois = false;
+    for (let i = 0; i < toks.length; i++) {
+      const t = toks[i];
+      if (t.k === 'i') pend.push(t.v);
+      else if (t.k === '$') {
+        const n = toks[i + 1];
+        if (n && n.k === '$' && pend.length >= 2) { out.push({ g1: t.v, g2: n.v }); if (quebrou) depois = true; pend = []; i++; }
+        else { quebrou = quebrou || 'valor sem par (' + t.v + ')'; pend = []; }
+      } else { quebrou = quebrou || 'valor ilegível (' + t.t + ')'; pend = []; }
+    }
+    return { out, quebrou, meio: depois };
+  }
+  function parseTextoColado(texto) {
+    const linhas = String(texto || '').split(/\r?\n/).map(norm).filter(Boolean), avisos = [];
+    const cheias = linhas.filter(l => /(?<![\d.,])\d{6}(?![\d.,])/.test(l) && /\d+[.,]\d{2}\s+\d+[.,]\d{2}\s*$/.test(l)).length;
+    if (cheias >= 3 || linhas.filter(l => CUB.test(l)).length >= 3) { // cada linha da folha veio inteira
+      const tipo = detectarTipo(linhas);
+      return { tipo, itens: parsePagina(linhas, tipo), linhas, avisos, modo: 'linhas' };
+    }
+    const ev = [];
+    for (const l of linhas) {
+      const m = PROD.exec(l);
+      if (m) ev.push({ k: 'P', nce: m[1], nome: limpaNome(m[2]), raw: l });
+      else if (MONEY.test(l)) ev.push({ k: '$', v: dinheiro(l) });
+      else if (INT.test(l)) ev.push({ k: 'i', v: l });
+      else if (/^[\d.,\-\s]+$/.test(l) && /\d/.test(l)) ev.push({ k: 'x', t: l });
+    }
+    const grupos = []; let ult = null, ints = [];
+    for (const e of ev) {
+      if (e.k === 'P') { if (ult !== 'P') grupos.push({ k: 'P', itens: [] }); grupos[grupos.length - 1].itens.push(e); ult = 'P'; ints = []; }
+      else if (e.k === 'i') { if (ult === 'V') grupos[grupos.length - 1].toks.push(e); else ints.push(e); }
+      else { if (ult !== 'V') { grupos.push({ k: 'V', toks: ints.slice() }); ult = 'V'; } grupos[grupos.length - 1].toks.push(e); }
+    }
+    const itens = [], mk = (p, v) => ({ tipo: 'seguro', nce: p.nce, nome: p.nome, g1: v ? v.g1 : '', g2: v ? v.g2 : '', conf: { nce: 1, g1: v ? 1 : 0, g2: v ? 1 : 0 }, duvida: !v, raw: p.raw });
+    for (let i = 0; i < grupos.length;) {
+      const g = grupos[i], h = grupos[i + 1];
+      if (g.k === 'P' && h && h.k === 'V') {
+        const q = quadras(h.toks), n = g.itens.length, k = q.out.length;
+        const fecha = !q.meio && (k === n || (q.quebrou && k + 1 === n));
+        if (!fecha) avisos.push(`${n} produtos (a partir do NCE ${g.itens[0].nce}) e ${k} pares de seguro lidos${q.quebrou ? ' — ' + q.quebrou : ''}: a contagem não fecha, copie de novo.`);
+        else if (q.quebrou) avisos.push(`Cópia cortada no fim: ${q.quebrou}.`);
+        g.itens.forEach((p, j) => itens.push(mk(p, fecha && j < k ? q.out[j] : null)));
+        i += 2;
+      } else if (g.k === 'P') { g.itens.forEach(p => itens.push(mk(p, null))); avisos.push(`${g.itens.length} produtos (NCE ${g.itens[0].nce}…) sem os valores de seguro na cópia.`); i++; }
+      else { avisos.push('Valores de seguro sem os produtos correspondentes na cópia.'); i++; }
+    }
+    return { tipo: 'seguro', itens, linhas, avisos, modo: 'blocos' };
+  }
+
   // ---------- a foto está boa o bastante para guardar sem erro? ----------
   // Devolve a lista de motivos para RECUSAR a foto (vazia = pode aceitar).
   const LIM = 0.8;        // confiança mínima de cada caractere nos campos que valem dinheiro (NCE, qtd, preço, seguros)
@@ -290,8 +348,7 @@
       }
       if ((tipo === 'produtos' || tipo === 'dir') && it.qtdBruto && !/,00$/.test(it.qtdBruto)) P.push(id + ': quantidade ' + it.qtdBruto + ' não é número inteiro.');
       if (tipo === 'seguro' && it.g1 && it.g2) {
-        const r = valor(it.g2) / valor(it.g1);
-        if (!(r > RAZAO[0] && r < RAZAO[1])) P.push(id + ': seguro 2 anos (' + it.g2 + ') não bate com o de 1 ano (' + it.g1 + ').');
+        if (!razaoOk(it.g1, it.g2)) P.push(id + ': seguro 2 anos (' + it.g2 + ') não bate com o de 1 ano (' + it.g1 + ').');
       }
       if (it.nce) { if (vistos.has(it.nce)) P.push(id + ': aparece duas vezes na mesma foto.'); else vistos.set(it.nce, 1); }
       if (P.length > antes) ruins.add(it);
@@ -312,6 +369,6 @@
     return P;
   }
 
-  const api = { parseProduto, parseSeguro, parseEsq, parseDir, juntarPartes, similaridade, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
+  const api = { razaoOk, parseTextoColado, parseProduto, parseSeguro, parseEsq, parseDir, juntarPartes, similaridade, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
   if (typeof module !== 'undefined') module.exports = api; else root.Parser = api;
 })(typeof self !== 'undefined' ? self : this);

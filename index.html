@@ -35,6 +35,12 @@
         <input id="gal" type="file" accept="image/*" multiple hidden>
       </label>
     </div>
+    <details class="colar" id="colar">
+      <summary>📋 Colar texto (Google Lens)</summary>
+      <p class="hint">Abra a foto da folha no <b>Google Lens</b> (ou Google Fotos → Lens), toque em <b>Copiar texto</b>, cole aqui e toque em <b>Ler texto colado</b>. Copie a folha inteira de uma vez.</p>
+      <textarea id="colado" rows="7" placeholder="Cole aqui o texto copiado…" spellcheck="false"></textarea>
+      <button id="lerColado" class="btn primary">Ler texto colado</button>
+    </details>
     <div id="fila"></div>
     <div id="progresso" class="progress" hidden><div id="barra"></div><span id="ptxt"></span></div>
     <button id="cancelar" class="mini" hidden>cancelar leitura</button>

@@ -34,7 +34,8 @@ async function salvarItens(itens) {
   itens.forEach(it => {
     const r = porNce[it.nce] || { nce: it.nce, nome: '', qtd: '', preco: '', g1: '', g2: '', defeito: 0, folha: 0 };
     if (it.tipo === 'seguro') {
-      r.g1 = it.g1; r.g2 = it.g2;
+      if (it.g1) r.g1 = it.g1; // não apaga um seguro que já existia se este veio em branco
+      if (it.g2) r.g2 = it.g2;
       if (!r.nome) r.nome = it.nome;
     } else {
       r.nome = it.nome || r.nome; r.qtd = it.qtd; r.preco = it.preco; r.cor = it.cor || r.cor || '';
@@ -205,19 +206,8 @@ async function processar(files) {
       const tipo = Parser.detectarTipo(linhas), itens = Parser.parsePagina(linhas, tipo, meta);
       const problemas = Parser.problemasDaPagina(itens, tipo, meta);
       const pg = { pagina: lote.length + recusadas.length + 1, tipo, linhas, meta, itens, problemas };
-      if (problemas.length) {
-        // qualquer caractere duvidoso: a foto é recusada e o vendedor tira outra
-        recusadas.push(pg);
-        const fila = $('#fila'); if (fila.lastElementChild) fila.lastElementChild.remove();
-        toast(`Foto ${n + 1} recusada: tire outra`);
-      } else if (tipo === 'esq' || tipo === 'dir') {
-        pendentes[tipo].push(pg);
-        toast(`Foto ${n + 1}: parte ${tipo === 'esq' ? 'esquerda' : 'direita'} lida (${itens.length} linhas)`);
-        tentarJuntar();
-      } else {
-        lote.push(pg);
-        toast(`Foto ${n + 1}: folha de ${tipo === 'seguro' ? 'seguro' : 'produtos'}, ${itens.length} linhas`);
-      }
+      const r = registrarPagina(pg, `Foto ${n + 1}`);
+      if (r === 'recusada') { const fila = $('#fila'); if (fila.lastElementChild) fila.lastElementChild.remove(); }
     }
     fimProg();
     renderPartes(); renderRecusa(); renderRevisao();
@@ -226,6 +216,30 @@ async function processar(files) {
     fimProg();
   } finally { ocupado = false; }
 }
+// Qualquer dúvida: a página é recusada e o vendedor tira outra foto (ou copia o texto de novo)
+function registrarPagina(pg, nome) {
+  const { tipo, itens, problemas } = pg;
+  if (problemas.length) { recusadas.push(pg); toast(`${nome} recusado: veja o aviso`); return 'recusada'; }
+  if (tipo === 'esq' || tipo === 'dir') {
+    pendentes[tipo].push(pg);
+    toast(`${nome}: parte ${tipo === 'esq' ? 'esquerda' : 'direita'} lida (${itens.length} linhas)`);
+    tentarJuntar(); return 'parte';
+  }
+  lote.push(pg);
+  toast(`${nome}: folha de ${tipo === 'seguro' ? 'seguro' : 'produtos'}, ${itens.length} linhas`);
+  return 'ok';
+}
+// Texto copiado (Google Lens, outro app de OCR, IA) e colado no app
+$('#lerColado').onclick = () => {
+  const texto = $('#colado').value;
+  if (!texto.trim()) return toast('Cole o texto primeiro');
+  const r = Parser.parseTextoColado(texto);
+  const problemas = Parser.problemasDaPagina(r.itens, r.tipo, null).concat(r.avisos);
+  const pg = { pagina: lote.length + recusadas.length + 1, tipo: r.tipo, linhas: r.linhas, meta: null, itens: r.itens, problemas, colado: true };
+  const res = registrarPagina(pg, 'Texto colado');
+  if (res !== 'recusada') $('#colado').value = '';
+  renderPartes(); renderRecusa(); renderRevisao();
+};
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };
 $('#gal').onchange = e => { processar(e.target.files); e.target.value = ''; };
 
@@ -255,7 +269,7 @@ function renderRecusa() {
   box.hidden = false;
   box.innerHTML = '<h2>⚠️ Foto recusada — tire outra</h2>' + recusadas.map((pg, ri) => {
     const podeForcar = pg.tipo === 'produtos' || pg.tipo === 'seguro';
-    const nomeFoto = pg.partes ? 'Fotos da esquerda + direita' : `Foto ${pg.pagina}${pg.tipo === 'esq' ? ' (parte esquerda)' : pg.tipo === 'dir' ? ' (parte direita)' : ''}`;
+    const nomeFoto = pg.colado ? 'Texto colado' : pg.partes ? 'Fotos da esquerda + direita' : `Foto ${pg.pagina}${pg.tipo === 'esq' ? ' (parte esquerda)' : pg.tipo === 'dir' ? ' (parte direita)' : ''}`;
     const max = 5, mot = pg.problemas.slice(0, max).map(m => `<li>${esc(m)}</li>`).join('');
     const resumo = pg.problemas.total ? `${pg.problemas.total} linhas lidas, ${pg.problemas.ruins} com dúvida.` : `${pg.problemas.length} ${pg.problemas.length === 1 ? 'ponto' : 'pontos'} sem certeza.`;
     return `<div class="rec"><b>${nomeFoto}</b> · ${resumo}<ul>${mot}</ul>`
@@ -280,7 +294,7 @@ function renderRevisao() {
   $('#revisao').hidden = false;
   box.innerHTML = lote.map((pg, pi) => {
     const sel = t => (pg.tipo === t ? ' selected' : '');
-    const cab = pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
+    const cab = pg.colado ? `<div class="pg">Texto colado · ${pg.itens.length} linhas</div>` : pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
       + (pg.tipo === 'seguro' ? '<p class="hint">Seguro: só atualiza os valores de seguro de 1 ano e 2 anos dos produtos. Campos em vermelho ou laranja: confira.</p>' : '');
     const linhas = pg.itens.map((it, ii) => `<div class="ln${pg.tipo === 'seguro' ? ' seg' : ''}" data-p="${pi}" data-i="${ii}">` +
       CAMPOS[pg.tipo].map(([f, modo, ph]) => {
