@@ -37,6 +37,7 @@
   };
 
   /* ---------- sincronização ---------- */
+  let problemaNuvem = false;
   let sincronizando = false, pedir = false, tSync = null;
   async function sync(manual) {
     const t = tabAtual(); if (!t) return;
@@ -114,6 +115,9 @@
     const c = fbCfg();
     $('#fbMsg').textContent = c ? 'Conectado ao projeto: ' + c.projectId : 'Ainda não configurado.';
     $('#fbMsg').className = 'hint' + (c ? '' : ' erro');
+    // com a conexão já embutida no app (nuvem-config.js) o vendedor nem vê esse quadro; ele só reaparece se der erro
+    const embutida = !!(window.NUVEM_CONFIG && window.NUVEM_CONFIG.apiKey && !cfg.fb);
+    $('#nuvemCfg').hidden = embutida && !problemaNuvem;
     if (!c) $('#nuvemCfg').open = true;
   }
   function abrir(el) {
@@ -170,7 +174,10 @@
       gravar(); $('#lSenha').value = ''; $('#lNome').value = ''; lojasMsg('');
       await trocar(tid); history.back();
       toast(criar ? 'Tabela criada' : 'Entrou na tabela');
-    } catch (e) { lojasMsg(e.offline ? 'Sem internet.' : e.existe ? e.message : 'Erro: ' + (e.message || e), true); }
+    } catch (e) {
+      if (!e.offline && !e.existe) { problemaNuvem = true; renderLojas(); }
+      lojasMsg(e.offline ? 'Sem internet.' : e.existe ? e.message : 'Erro: ' + (e.message || e), true);
+    }
   }
   $('#lEntrar').onclick = () => entrar(false);
   $('#lCriar').onclick = () => entrar(true);
