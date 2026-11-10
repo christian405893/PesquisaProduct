@@ -7,7 +7,7 @@ O que faz
   preço, estoque, seguro de 1 ano e seguro de 2 anos (e produtos novos).
 - Cada atualização leva um nome (ex.: "Tabela de quarta 11/11/2026 às 08:00") e
   fica no histórico: quem mexeu, quando, e de quanto para quanto.
-- "Quebrados" continua só no aparelho de cada um.
+- "Quebrados" também é compartilhado: quem marcar um quebrado, todos da loja veem.
 
 PASSO A PASSO (uma vez só, uns 10 minutos, grátis)
 1. Entre em https://console.firebase.google.com com sua conta Google.

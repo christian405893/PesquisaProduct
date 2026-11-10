@@ -8,7 +8,7 @@
 //    o que os outros mudaram. Se duas pessoas mudam o mesmo campo, vale a última que enviou.
 //  - Cada envio gera uma linha de histórico: quem, quando, nome da atualização e o que mudou (de → para).
 (function (root) {
-  const CAMPOS = ['nome', 'cor', 'qtd', 'preco', 'g1', 'g2']; // 'quebrados' fica só no aparelho
+  const CAMPOS = ['nome', 'cor', 'qtd', 'preco', 'g1', 'g2', 'defeito'];
   const ROTULO = { nome: 'descrição', cor: 'cor', qtd: 'estoque', preco: 'preço', g1: 'seguro 1 ano', g2: 'seguro 2 anos', defeito: 'quebrados' };
   const str = v => (v === undefined || v === null ? '' : String(v));
   const val = (it, f) => (f === 'defeito' ? String(parseInt(it && it[f], 10) || 0) : str(it && it[f]).trim());

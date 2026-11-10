@@ -77,7 +77,7 @@
         [['#fPreco', 'preco'], ['#fG1', 'g1'], ['#fG2', 'g2']].forEach(([s, k]) => {
           if (document.activeElement !== $(s)) { atual[k] = f[k]; $(s).value = f[k] || ''; }
         });
-        atual.qtd = f.qtd; atual.nome = f.nome; $('#shNome').textContent = f.nome || '(sem descrição)';
+        atual.qtd = f.qtd; atual.defeito = f.defeito || 0; atual.nome = f.nome; $('#shNome').textContent = f.nome || '(sem descrição)';
         renderEstoque(); $('#estCard').hidden = !atual.qtd && !atual.defeito;
         if (!$('#simBox').hidden) { renderGarantias(); renderSim(); }
       }
