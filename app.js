@@ -437,7 +437,7 @@ function novoMsg(t, erro) { const m = $('#nMsg'); m.textContent = t || ''; m.cla
 async function abrirNovo() {
   todosNovo = await todos(); avisouRazao = false;
   const q = $('#q').value.replace(/\D/g, '');
-  ['#nNce', '#nCor', '#nNome', '#nPreco', '#nG1', '#nG2'].forEach(s => { $(s).value = ''; });
+  ['#nNce', '#nCor', '#nNome', '#nQtd', '#nPreco', '#nG1', '#nG2'].forEach(s => { $(s).value = ''; });
   if (q.length === 6) $('#nNce').value = q;
   novoMsg(''); $('#novoAviso').textContent = '';
   novoNceMudou();
@@ -453,6 +453,7 @@ function novoNceMudou() {
   if (ex) { // traz o que já está guardado, sem apagar o que você já digitou
     if (!$('#nCor').value) $('#nCor').value = ex.cor || '';
     if (!$('#nNome').value) $('#nNome').value = ex.nome || '';
+    if (!$('#nQtd').value) $('#nQtd').value = ex.qtd || '';
     if (!$('#nPreco').value) $('#nPreco').value = ex.preco || '';
     if (!$('#nG1').value) $('#nG1').value = ex.g1 || '';
     if (!$('#nG2').value) $('#nG2').value = ex.g2 || '';
@@ -462,6 +463,7 @@ async function salvarNovo() {
   const nce = $('#nNce').value.replace(/\D/g, ''), nome = $('#nNome').value.trim().replace(/\s+/g, ' '), cor = $('#nCor').value.trim();
   if (!/^\d{6}$/.test(nce)) return novoMsg('O NCE precisa ter 6 números.', true);
   if (!nome) return novoMsg('Digite a descrição do produto.', true);
+  const qtd = $('#nQtd').value.replace(/\D/g, '');
   const val = {};
   for (const [k, s, rot] of [['preco', '#nPreco', 'preço'], ['g1', '#nG1', 'seguro de 1 ano'], ['g2', '#nG2', 'seguro de 2 anos']]) {
     const bruto = $(s).value.trim();
@@ -473,8 +475,8 @@ async function salvarNovo() {
     if (!(r > 1.55 && r < 1.66)) { avisouRazao = true; return novoMsg('Confira: o seguro de 2 anos costuma ser ~1,6× o de 1 ano. Se estiver certo, toque em Salvar de novo.', true); }
   }
   const all = await todos(); let r = all.find(i => i.nce === nce), id;
-  if (r) { Object.assign(r, { nome, cor, preco: val.preco, g1: val.g1, g2: val.g2 }); await req(tx('readwrite').put(r)); id = r.id; }
-  else { id = await req(tx('readwrite').add({ nce, nome, cor, qtd: '', preco: val.preco, g1: val.g1, g2: val.g2, defeito: 0, folha: 0, manual: true, tid: tidAtual })); }
+  if (r) { Object.assign(r, { nome, cor, preco: val.preco, g1: val.g1, g2: val.g2 }); if (qtd !== '') r.qtd = qtd; await req(tx('readwrite').put(r)); id = r.id; }
+  else { id = await req(tx('readwrite').add({ nce, nome, cor, qtd, preco: val.preco, g1: val.g1, g2: val.g2, defeito: 0, folha: 0, manual: true, tid: tidAtual })); }
   toast('Produto ' + nce + ' salvo'); aposMudar();
   abrirDepois = id; history.back(); // fecha o formulário e abre a tela do produto
 }

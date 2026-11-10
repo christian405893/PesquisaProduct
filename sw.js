@@ -1,4 +1,4 @@
-const CACHE = "nce-v16";
+const CACHE = "nce-v17";
 const FILES = [
   "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "nuvem.js", "nuvem-config.js", "lojas.js", "parser.js", "paddle.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
