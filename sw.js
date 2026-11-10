@@ -1,6 +1,6 @@
-const CACHE = "nce-v15";
+const CACHE = "nce-v16";
 const FILES = [
-  "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "parser.js", "paddle.js", "style.css", "manifest.webmanifest",
+  "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "nuvem.js", "nuvem-config.js", "lojas.js", "parser.js", "paddle.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
   "ocr/ort/ort.wasm.min.js", "ocr/ort/ort-wasm-simd-threaded.mjs", "ocr/ort/ort-wasm-simd-threaded.wasm",
   "ocr/paddle/det.onnx", "ocr/paddle/rec.onnx", "ocr/paddle/dict.txt"
@@ -12,6 +12,6 @@ self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {
-  if (e.request.method !== 'GET') return;
+  if (e.request.method !== 'GET' || new URL(e.request.url).origin !== location.origin) return; // nuvem (Firebase) vai direto à rede
   e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(r => r || fetch(e.request)));
 });

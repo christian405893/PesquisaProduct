@@ -18,7 +18,10 @@ function openDB() {
 }
 const tx = (mode = 'readonly') => db.transaction('itens', mode).objectStore('itens');
 const req = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
-const todos = () => req(tx().getAll());
+let tidAtual = 'local'; // tabela em uso: 'local' (só neste aparelho) ou o código de uma tabela compartilhada
+const todosDe = async tid => (await req(tx().getAll())).filter(i => (i.tid || 'local') === tid);
+const todos = () => todosDe(tidAtual);
+let aposMudar = () => { }; // lojas.js troca: dispara a sincronização com a nuvem
 
 // Mescla pelo NCE: a folha de produtos traz nome/estoque/preço; a folha de garantia (seguro) traz g1/g2.
 // Cada uma só mexe nos seus campos; o que o vendedor anotou (quebrados) é mantido.
@@ -32,7 +35,7 @@ async function salvarItens(itens) {
   all.filter(i => !mantidos.has(i)).forEach(i => s.delete(i.id)); // repetidos antigos do mesmo NCE
   const tocados = new Set();
   itens.forEach(it => {
-    const r = porNce[it.nce] || { nce: it.nce, nome: '', qtd: '', preco: '', g1: '', g2: '', defeito: 0, folha: 0 };
+    const r = porNce[it.nce] || { nce: it.nce, nome: '', qtd: '', preco: '', g1: '', g2: '', defeito: 0, folha: 0, tid: tidAtual };
     if (it.tipo === 'seguro') {
       if (it.g1) r.g1 = it.g1; // não apaga um seguro que já existia se este veio em branco
       if (it.g2) r.g2 = it.g2;
@@ -292,6 +295,7 @@ function renderRevisao() {
   const box = $('#linhas');
   if (!lote.length) { $('#revisao').hidden = true; return; }
   $('#revisao').hidden = false;
+  if (window.prepararRotulo) prepararRotulo();
   box.innerHTML = lote.map((pg, pi) => {
     const sel = t => (pg.tipo === t ? ' selected' : '');
     const cab = pg.colado ? `<div class="pg">Texto colado · ${pg.itens.length} linhas</div>` : pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
@@ -337,6 +341,7 @@ $('#salvar').onclick = async () => {
   });
   if (!itens.length) return toast('Nada para salvar');
   await salvarItens(itens);
+  aposMudar('scan');
   const ns = itens.filter(i => i.tipo === 'seguro').length, np = itens.length - ns;
   toast([np && `${np} produtos`, ns && `${ns} seguros`].filter(Boolean).join(' e ') + ' salvos');
   limparLote(); buscar();
@@ -376,7 +381,7 @@ $('#restore').onchange = async e => {
   try {
     const arr = JSON.parse(await e.target.files[0].text());
     const t = db.transaction('itens', 'readwrite'), s = t.objectStore('itens');
-    arr.forEach(({ id, ...r }) => s.add(r));
+    arr.forEach(({ id, _base, ...r }) => s.add({ ...r, tid: tidAtual }));
     t.oncomplete = () => { toast('Backup restaurado'); renderTabela(); buscar(); };
   } catch { toast('Arquivo inválido'); }
   e.target.value = '';
@@ -389,7 +394,7 @@ let atual = null, sim = { tipo: 'crediario', gar: '' }, tSalvar;
 function salvarAtual() { clearTimeout(tSalvar); tSalvar = setTimeout(salvarAgora, 400); }
 async function salvarAgora() {
   clearTimeout(tSalvar);
-  if (atual) await req(tx('readwrite').put(atual));
+  if (atual) { await req(tx('readwrite').put(atual)); aposMudar(); }
 }
 
 async function abrirProduto(id) {
@@ -469,8 +474,8 @@ async function salvarNovo() {
   }
   const all = await todos(); let r = all.find(i => i.nce === nce), id;
   if (r) { Object.assign(r, { nome, cor, preco: val.preco, g1: val.g1, g2: val.g2 }); await req(tx('readwrite').put(r)); id = r.id; }
-  else { id = await req(tx('readwrite').add({ nce, nome, cor, qtd: '', preco: val.preco, g1: val.g1, g2: val.g2, defeito: 0, folha: 0, manual: true })); }
-  toast('Produto ' + nce + ' salvo');
+  else { id = await req(tx('readwrite').add({ nce, nome, cor, qtd: '', preco: val.preco, g1: val.g1, g2: val.g2, defeito: 0, folha: 0, manual: true, tid: tidAtual })); }
+  toast('Produto ' + nce + ' salvo'); aposMudar();
   abrirDepois = id; history.back(); // fecha o formulário e abre a tela do produto
 }
 $('#novoBtn').onclick = abrirNovo;
@@ -546,7 +551,7 @@ function renderSim() {
 }
 
 /* ---------- Início ---------- */
-openDB().then(buscar);
+openDB().then(() => (window.iniciarLojas ? iniciarLojas() : 0)).then(buscar);
 if ('serviceWorker' in navigator) {
   const tinha = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });

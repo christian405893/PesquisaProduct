@@ -1,0 +1,53 @@
+TABELAS COMPARTILHADAS POR LOJA (nome + senha)
+===============================================
+
+O que faz
+- Cada loja (Amarante, São Francisco...) tem uma tabela com NOME e SENHA.
+- Quem digita o nome e a senha certos vê a tabela e vê TUDO que os colegas mudaram:
+  preço, estoque, seguro de 1 ano e seguro de 2 anos (e produtos novos).
+- Cada atualização leva um nome (ex.: "Tabela de quarta 11/11/2026 às 08:00") e
+  fica no histórico: quem mexeu, quando, e de quanto para quanto.
+- "Quebrados" continua só no aparelho de cada um.
+
+PASSO A PASSO (uma vez só, uns 10 minutos, grátis)
+1. Entre em https://console.firebase.google.com com sua conta Google.
+2. "Criar projeto" -> dê um nome (ex.: pesquisa-nce) -> pode desligar o Google Analytics -> Criar.
+3. Menu "Criação" (Build) -> "Firestore Database" -> "Criar banco de dados".
+   Escolha o local "southamerica-east1 (São Paulo)" -> modo PRODUÇÃO -> Ativar.
+4. Na aba "Regras" do Firestore, apague tudo e cole o texto abaixo. Toque em "Publicar".
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /tabelas/{tid} {
+      allow get, create, update: if true;
+      match /itens/{nce}       { allow get, list, create, update: if true; }
+      match /historico/{h}     { allow get, list, create: if true; }
+    }
+  }
+}
+
+5. Engrenagem (Configurações do projeto) -> "Seus apps" -> ícone </> (Web) -> dê um apelido -> "Registrar app".
+   Vai aparecer um bloco assim:  const firebaseConfig = { apiKey: "...", projectId: "...", ... };
+6. No app: toque no botão do topo (📍 Só neste aparelho) -> "⚙️ Conexão com a nuvem" ->
+   cole o bloco inteiro -> Salvar -> "Testar conexão". Todos os itens devem ficar com ✅.
+   (Esse passo é feito em cada celular. Dá para me mandar o apiKey e o projectId que eu deixo
+   preenchido no arquivo nuvem-config.js, aí os celulares já abrem conectados.)
+
+USO NO DIA A DIA
+- Primeira vez de uma loja: botão do topo -> seu nome -> nome da tabela + senha -> "Criar tabela nova"
+  (marque "copiar produtos que já tenho" se já escaneou tabelas antes).
+- Os colegas da loja: seu nome + mesmo nome da tabela + mesma senha -> "Entrar".
+- Chegou caminhão (quarta e sábado): em Escanear, leia a tabela nova. Antes de "Salvar na tabela",
+  confira o campo "Nome desta atualização" (já vem com dia e hora) e salve.
+  Todos da loja recebem os preços e estoques novos em até 30 segundos.
+- Mudou preço/seguro de um produto na tela dele: também vai para todos e entra no histórico.
+- Histórico: botão do topo -> "ver histórico" na tabela.
+- Sem internet: continua funcionando; as mudanças seguem quando a conexão voltar.
+
+LIMITES E CUIDADOS
+- A SENHA é a única proteção: quem souber nome + senha entra. Use senha difícil (não "1234" nem o nome da loja).
+  O app não guarda a senha, só um código gerado dela.
+- Duas pessoas mudando o MESMO campo do mesmo produto: vale a última que enviou.
+- Produto que sumiu da tabela nova NÃO é apagado dos aparelhos (só é atualizado o que aparece).
+- Plano grátis do Firebase: 50 mil leituras e 20 mil gravações por dia. Uma loja com poucas pessoas fica muito abaixo.

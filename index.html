@@ -13,7 +13,8 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v15</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v16</small>
+  <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
 <main>
@@ -21,6 +22,7 @@
   <section id="tab-busca" class="tab active">
     <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Código NCE (6 dígitos) ou nome">
     <button id="novoBtn" class="btn novo">➕ Adicionar produto manualmente</button>
+    <div id="lojaInfo" class="lojainfo" hidden></div>
     <div id="resultados"></div>
   </section>
 
@@ -54,6 +56,7 @@
         <label class="btn" for="cam">📷 Tirar mais fotos</label>
         <label class="btn" for="gal">🖼️ Escolher mais fotos</label>
       </div>
+      <label class="fld" id="rotuloBox" hidden>Nome desta atualização (todos da tabela vão ver)<input id="rotulo" type="text" autocomplete="off"></label>
       <div class="row">
         <button id="salvar" class="btn primary">Salvar na tabela</button>
         <button id="descartar" class="btn">Descartar</button>
@@ -129,9 +132,43 @@
   </div>
 </div>
 
+<div id="lojas" hidden>
+  <div class="sh"><button id="lojasFechar" aria-label="Voltar">←</button><div><div class="shnce">Tabelas das lojas</div><div>compartilhadas por nome + senha</div></div></div>
+  <div class="shbody">
+    <div class="card"><label class="fld">Seu nome (aparece no histórico)<input id="lUsuario" type="text" autocomplete="off" placeholder="ex.: João"></label></div>
+    <h2>Minhas tabelas</h2>
+    <div id="lojasLista"></div>
+    <h2>Entrar ou criar uma tabela</h2>
+    <div class="card">
+      <label class="fld">Nome da tabela<input id="lNome" type="text" autocomplete="off" placeholder="ex.: Loja de Amarante"></label>
+      <label class="fld">Senha<input id="lSenha" type="password" autocomplete="off" placeholder="mínimo 6 caracteres"></label>
+      <label class="hint"><input id="lCopiar" type="checkbox"> ao criar, copiar para ela os produtos que já tenho neste aparelho</label>
+      <p id="lMsg" class="hint"></p>
+      <div class="row"><button id="lEntrar" class="btn primary">Entrar</button><button id="lCriar" class="btn">Criar tabela nova</button></div>
+      <p class="hint">Quem souber o nome e a senha vê e altera a tabela. Passe a senha só para quem é da loja, e use uma senha difícil.</p>
+    </div>
+    <details class="card" id="nuvemCfg">
+      <summary>⚙️ Conexão com a nuvem (Firebase)</summary>
+      <p class="hint">Cole aqui o bloco <b>firebaseConfig</b> do seu projeto (veja o arquivo NUVEM-LEIA-ME.txt).</p>
+      <textarea id="fbTexto" rows="5" spellcheck="false" placeholder='const firebaseConfig = { apiKey: "...", projectId: "..." }'></textarea>
+      <p id="fbMsg" class="hint"></p>
+      <div class="row"><button id="fbSalvar" class="btn">Salvar</button><button id="fbTestar" class="btn">Testar conexão</button></div>
+      <div id="fbPassos"></div>
+    </details>
+  </div>
+</div>
+
+<div id="hist" hidden>
+  <div class="sh"><button id="histFechar" aria-label="Voltar">←</button><div><div class="shnce">Histórico de atualizações</div><div id="histNome"></div></div></div>
+  <div class="shbody" id="histLista"></div>
+</div>
+
 <div id="toast"></div>
 <script src="simulador.js"></script>
 <script src="parser.js"></script>
+<script src="nuvem-config.js"></script>
+<script src="nuvem.js"></script>
 <script src="app.js"></script>
+<script src="lojas.js"></script>
 </body>
 </html>
