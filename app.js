@@ -529,8 +529,23 @@ function renderGarantias() {
     (sim.tipo === 'crediario' ? `<button class="mini${sim.gar === 'nenhuma' ? ' on' : ''}" data-gar="nenhuma">cliente não vai comprar</button>` : '');
 }
 
+// Entrada mínima do crediário, sobre o valor do produto (sem o seguro)
+function renderEntradaSugerida() {
+  const box = $('#simEnt'), preco = Sim.cents(atual && atual.preco);
+  if (sim.tipo !== 'crediario' || !preco) { box.innerHTML = ''; return; }
+  const e20 = Math.round(preco * 0.2), e40 = Math.round(preco * 0.4);
+  box.innerHTML = `<div class="ent"><p><b>Cliente da loja</b> que comprou no crediário nos últimos 5 meses: entrada de 20% do produto = <b>${Sim.brl(e20)}</b> <button class="mini" data-ent="${e20}">usar como entrada</button></p>
+    <p><b>Não é cliente</b>, ou comprou no crediário há mais de 6 meses: entrada de 40% do produto = <b>${Sim.brl(e40)}</b> <button class="mini" data-ent="${e40}">usar como entrada</button></p>
+    <p class="hint">Cálculo sobre o preço à vista do produto (${Sim.brl(preco)}), sem o seguro.</p></div>`;
+}
+$('#simEnt').addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('[data-ent]'); if (!b) return;
+  $('#entrada').value = fmtDin(Number(b.dataset.ent)); renderSim();
+});
+
 function renderSim() {
   if ($('#simBox').hidden) return;
+  renderEntradaSugerida();
   const box = $('#simRes'), msg = t => { box.innerHTML = `<div class="empty">${t}</div>`; };
   const cred = sim.tipo === 'crediario';
   const preco = Sim.cents(atual.preco);

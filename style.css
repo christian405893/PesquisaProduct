@@ -86,3 +86,5 @@ header{gap:8px;flex-wrap:wrap}
 .mud small{color:var(--mut)}
 .passo.ok{color:var(--ok)}.passo.ruim{color:var(--bad)}
 #rotuloBox input{font-size:16px}
+
+.ent{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:6px 12px;margin:8px 0;font-size:14px}.ent p{margin:8px 0}.ent .mini{display:inline;margin-left:4px}
