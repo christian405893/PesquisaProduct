@@ -41,7 +41,9 @@ async function salvarItens(itens) {
       if (it.g2) r.g2 = it.g2;
       if (!r.nome) r.nome = it.nome;
     } else {
-      r.nome = it.nome || r.nome; r.qtd = it.qtd; r.preco = it.preco; r.cor = it.cor || r.cor || '';
+      r.nome = it.nome || r.nome; r.cor = it.cor || r.cor || '';
+      if (it.qtd !== '' && it.qtd !== undefined) r.qtd = it.qtd; // campo não lido não apaga o que já estava guardado
+      if (it.preco) r.preco = it.preco;
       r.folha = folha + it.pagina; r.raw = it.raw;
     }
     porNce[it.nce] = r; tocados.add(r);
@@ -243,6 +245,45 @@ $('#lerColado').onclick = () => {
   if (res !== 'recusada') $('#colado').value = '';
   renderPartes(); renderRecusa(); renderRevisao();
 };
+// PDF de scanner (Adobe Scan): lê todas as páginas e junta as fotos repetidas
+async function lerPDF(file) {
+  if (ocupado) return toast('Aguarde: ainda lendo as fotos anteriores');
+  ocupado = true;
+  try {
+    setProg(0.01, 'Abrindo o PDF…');
+    const imgs = PdfImport.extrairImagens(await file.arrayBuffer());
+    if (!imgs.length) throw new Error('não achei fotos de páginas nesse PDF');
+    const paginas = [], ignoradas = [];
+    for (let n = 0; n < imgs.length; n++) {
+      const rot = `Lendo página ${n + 1} de ${imgs.length}…`;
+      setProg(n / imgs.length, rot);
+      const blob = new Blob([imgs[n]], { type: 'image/jpeg' });
+      const onp = f => setProg((n + f) / imgs.length, rot);
+      let lido;
+      if (typeof OffscreenCanvas !== 'undefined') {
+        try { lido = await lerNoWorker({ file: blob }, onp); } catch (e) { if (!e.prep) throw e; }
+      }
+      if (!lido) { const { img } = await prepararImagem(blob); lido = await lerNoWorker(img, onp); }
+      const tipo = Parser.detectarTipo(lido.linhas), itens = Parser.parsePagina(lido.linhas, tipo, lido.meta);
+      if (tipo === 'esq') { paginas.push({ tipo: 'produtos', itens: itens.filter(i => /^\d{6}$/.test(i.nce)) }); continue; } // metade esquerda: ajuda com NCE e nome
+      if ((tipo !== 'produtos' && tipo !== 'seguro') || !itens.some(i => /^\d{6}$/.test(i.nce))) { ignoradas.push(n + 1); continue; }
+      paginas.push({ tipo, itens });
+    }
+    fimProg();
+    if (!paginas.length) return toast('Nenhuma página com tabela foi reconhecida');
+    const m = PdfImport.juntar(paginas, Parser), pg0 = lote.length + recusadas.length;
+    if (m.produtos.length) lote.push({ pagina: pg0 + 1, tipo: 'produtos', pdf: true, linhas: [], meta: null, itens: m.produtos, problemas: [] });
+    if (m.seguros.length) lote.push({ pagina: pg0 + 2, tipo: 'seguro', pdf: true, linhas: [], meta: null, itens: m.seguros, problemas: [] });
+    const duv = m.produtos.concat(m.seguros).filter(i => i.duvida).length;
+    $('#pdfResumo').hidden = false;
+    $('#pdfResumo').textContent = `PDF: ${paginas.length} páginas com tabela lidas` + (ignoradas.length ? ` (${ignoradas.length} sem tabela, ignoradas: ${ignoradas.join(', ')})` : '') +
+      `. ${m.produtos.length} produtos e ${m.seguros.length} seguros; ${m.info.repetidas} apareceram em mais de uma foto e foram juntados. ${duv} com dúvida: aparecem primeiro, em vermelho ou laranja.`;
+    renderRevisao();
+  } catch (e) {
+    console.error(e); fimProg(); toast(e.message === 'cancelado' ? 'Leitura cancelada' : 'Erro ao ler o PDF: ' + (e.message || e));
+  } finally { ocupado = false; }
+}
+$('#pdf').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (f) lerPDF(f); };
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };
 $('#gal').onchange = e => { processar(e.target.files); e.target.value = ''; };
 
@@ -298,7 +339,7 @@ function renderRevisao() {
   if (window.prepararRotulo) prepararRotulo();
   box.innerHTML = lote.map((pg, pi) => {
     const sel = t => (pg.tipo === t ? ' selected' : '');
-    const cab = pg.colado ? `<div class="pg">Texto colado · ${pg.itens.length} linhas</div>` : pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
+    const cab = pg.pdf ? `<div class="pg">PDF · ${pg.tipo === 'seguro' ? 'seguros' : 'produtos'} · ${pg.itens.length} linhas (${pg.itens.filter(i => i.duvida).length} com dúvida)</div>` + (pg.tipo === 'seguro' ? '<p class="hint">Seguro: só atualiza os valores de seguro de 1 ano e 2 anos dos produtos.</p>' : '') : pg.colado ? `<div class="pg">Texto colado · ${pg.itens.length} linhas</div>` : pg.partes ? `<div class="pg">Fotos esquerda + direita, juntas · ${pg.itens.length} linhas</div>` : `<div class="pg">Foto ${pg.pagina} · <select data-tipo data-p="${pi}"><option value="produtos"${sel('produtos')}>Folha de produtos</option><option value="seguro"${sel('seguro')}>Folha de seguro</option></select> · ${pg.itens.length} linhas</div>`
       + (pg.tipo === 'seguro' ? '<p class="hint">Seguro: só atualiza os valores de seguro de 1 ano e 2 anos dos produtos. Campos em vermelho ou laranja: confira.</p>' : '');
     const linhas = pg.itens.map((it, ii) => `<div class="ln${pg.tipo === 'seguro' ? ' seg' : ''}" data-p="${pi}" data-i="${ii}">` +
       CAMPOS[pg.tipo].map(([f, modo, ph]) => {
@@ -347,7 +388,7 @@ $('#salvar').onclick = async () => {
   limparLote(); buscar();
 };
 $('#descartar').onclick = limparLote;
-function limparLote() { lote = []; recusadas = []; pendentes = { esq: [], dir: [] }; renderPartes(); renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
+function limparLote() { $('#pdfResumo').hidden = true; lote = []; recusadas = []; pendentes = { esq: [], dir: [] }; renderPartes(); renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
 
 /* ---------- Tabela / backup ---------- */
 async function renderTabela() {

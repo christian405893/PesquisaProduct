@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v18</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v19</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -37,6 +37,11 @@
         <input id="gal" type="file" accept="image/*" multiple hidden>
       </label>
     </div>
+    <div class="row">
+      <label class="btn">📄 Enviar PDF (Adobe Scan)
+        <input id="pdf" type="file" accept="application/pdf,.pdf" hidden>
+      </label>
+    </div>
     <details class="colar" id="colar">
       <summary>📋 Colar texto (Google Lens)</summary>
       <p class="hint">Abra a foto da folha no <b>Google Lens</b> (ou Google Fotos → Lens), toque em <b>Copiar texto</b>, cole aqui e toque em <b>Ler texto colado</b>. Copie a folha inteira de uma vez.</p>
@@ -50,6 +55,7 @@
     <div id="recusa" class="recusa" hidden></div>
     <div id="revisao" hidden>
       <h2>Revisar dados lidos</h2>
+      <p id="pdfResumo" class="hint" hidden></p>
       <p class="hint">Confira o código, produto, qtd e preço. Corrija o que estiver errado ou apague linhas inválidas.</p>
       <div id="linhas"></div>
       <div class="row">
@@ -170,6 +176,7 @@
 <script src="parser.js"></script>
 <script src="nuvem-config.js"></script>
 <script src="nuvem.js"></script>
+<script src="pdfimport.js"></script>
 <script src="app.js"></script>
 <script src="lojas.js"></script>
 </body>
