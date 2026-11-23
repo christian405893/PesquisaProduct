@@ -8,7 +8,7 @@
   // Um dígito errado em qualquer um dos dois valores quebra essa conta, então ela confere a leitura sem precisar de confiança do OCR.
   const razaoOk = (g1, g2) => { const a = valor(g1), b = valor(g2); return isFinite(a) && isFinite(b) && a > 0 && Math.abs(b - 1.6 * a) <= 0.15; };
   const CUB = /(?<![\d.,])0[.,]\d{4,6}(?!\d)/;                        // cubagem (0.09208)
-  const DIN = /(\d{1,3}(?:\.\d{3})+,\d{2}|\d+[.,]\d{2})\d{0,2}(?!\d)/g; // 173.00 | 1.279,00 (tolera lixo no fim)
+  const DIN = /(\d{1,3}(?:,\d{3})+\.\d{2}|\d{1,3}(?:\.\d{3})+,\d{2}|\d+[.,]\d{2})\d{0,2}(?!\d)/g; // 1,799.00 (milhar com vírgula, como a folha imprime) | 1.279,00 | 173.00 // 173.00 | 1.279,00 (tolera lixo no fim)
   const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim();
   const norm2 = s => String(s ?? '').replace(/[ \t]+/g, m => m.length > 1 ? '  ' : ' ').trim(); // mantém "2 espaços" = separador de colunas
 
@@ -55,6 +55,7 @@
   // "173.00" -> "173,00"; "1.279,00" fica igual
   function dinheiro(t) {
     t = String(t);
+    if (/^\d{1,3}(,\d{3})+\.\d{2}$/.test(t)) return t.replace(/,/g, '.').replace(/\.(\d{2})$/, ',$1'); // 1,799.00 -> 1.799,00
     return /,\d{2}$/.test(t) ? t : t.replace(/\.(\d{2})$/, ',$1');
   }
   const valor = t => parseFloat(dinheiro(t).replace(/\./g, '').replace(',', '.'));
@@ -266,7 +267,30 @@
       }
       if (out.length && (moedas(t).length || /(?<![\d.,])\d{6}(?![\d.,])/.test(t)) && !CABECALHO.test(t) && out.length === antesN) out.sobras.push({ li, texto: t });
     }
-    return out;
+    return (tipo === 'produtos' || tipo === 'seguro') ? repararColunas(out, tipo) : out;
+  }
+
+  // Foto torta ou com a folha curva: as colunas da esquerda (NCE, cor) e da direita (descrição, saldo, preço / seguros)
+  // ficam em alturas diferentes, e a leitura por linha casa o NCE de um produto com os valores do vizinho.
+  // As linhas da tabela são sempre na mesma ordem em todas as colunas: se há tantos NCEs quanto conjuntos de valores,
+  // o 1º NCE vai com o 1º conjunto de valores, e assim por diante.
+  function repararColunas(out, tipo) {
+    const temNce = it => /^\d{6}$/.test(it.nce || '');
+    const temDir = it => (tipo === 'produtos' ? (it.qtd || it.preco || (it.nome && it.nome.length > 12)) : (it.g1 || it.g2));
+    const E = out.filter(temNce), D = out.filter(it => temDir(it) && (tipo !== 'produtos' || it.qtd || it.preco));
+    if (out.length < 8 || E.length !== D.length || E.length < 8) return out;
+    const novo = E.map((e, k) => {
+      const d = D[k];
+      if (e === d) return e;
+      if (tipo === 'produtos') {
+        const conf = { nce: e.conf && e.conf.nce !== undefined ? e.conf.nce : 1, qtd: d.conf ? d.conf.qtd : 0, preco: d.conf ? d.conf.preco : 0 };
+        return { tipo, nce: e.nce, cor: e.cor || '', nome: d.nome, qtd: d.qtd, qtdBruto: d.qtdBruto, preco: d.preco, conf, duvida: !d.nome || !d.qtd || !d.preco || conf.nce < LIM, raw: e.raw, li: e.li, reparado: true };
+      }
+      const conf = { nce: e.conf && e.conf.nce !== undefined ? e.conf.nce : 1, g1: d.conf ? d.conf.g1 : 0, g2: d.conf ? d.conf.g2 : 0 };
+      return { tipo, nce: e.nce, nome: e.nome, g1: d.g1, g2: d.g2, conf, duvida: !e.nome || !d.g1 || !d.g2 || !razaoOk(d.g1, d.g2) || conf.nce < LIM, raw: e.raw, li: e.li, reparado: true };
+    });
+    novo.sobras = out.sobras;
+    return novo;
   }
 
   // ---------- texto copiado (Google Lens etc.) e colado no app ----------
