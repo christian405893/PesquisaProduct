@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v19</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v21</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -40,6 +40,9 @@
     <div class="row">
       <label class="btn">📄 Enviar PDF (Adobe Scan)
         <input id="pdf" type="file" accept="application/pdf,.pdf" hidden>
+      </label>
+      <label class="btn">📥 Importar arquivo pronto
+        <input id="pronto" type="file" accept="application/json,.json" hidden>
       </label>
     </div>
     <details class="colar" id="colar">
@@ -77,6 +80,12 @@
       <button id="backup" class="btn">Backup</button>
       <label class="btn">Restaurar<input id="restore" type="file" accept="application/json" hidden></label>
     </div>
+    <div class="card">
+      <b>📥 Ler arquivo .json</b>
+      <p class="hint">Escolha o arquivo da tabela (ex.: tabela-lida.json). Ele abre para você conferir antes de salvar.</p>
+      <label class="btn primary">Escolher arquivo .json<input id="pronto2" type="file" accept="application/json,.json" hidden></label>
+    </div>
+    <div class="card" id="faltas"></div>
     <div id="folhas"></div>
   </section>
 </main>

@@ -88,3 +88,12 @@ header{gap:8px;flex-wrap:wrap}
 #rotuloBox input{font-size:16px}
 
 .ent{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:6px 12px;margin:8px 0;font-size:14px}.ent p{margin:8px 0}.ent .mini{display:inline;margin-left:4px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{border:1px solid var(--bd);background:var(--card);color:inherit;border-radius:999px;padding:6px 10px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+table.falta{width:100%;font-size:14px;border-collapse:collapse}
+table.falta td,table.falta th{padding:6px 4px;border-top:1px solid var(--bd);text-align:left;vertical-align:top}
+table.falta tr[data-abrir]{cursor:pointer}
+.tag{display:inline-block;background:#ffe3e0;color:#b3261e;border-radius:6px;padding:1px 6px;font-size:12px;margin:1px}
+@media (prefers-color-scheme:dark){.tag{background:#4a1f1b;color:#ffb4a9}}

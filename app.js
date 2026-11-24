@@ -284,6 +284,26 @@ async function lerPDF(file) {
   } finally { ocupado = false; }
 }
 $('#pdf').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (f) lerPDF(f); };
+// Arquivo pronto (JSON) com produtos e seguros já lidos
+async function importarPronto(file) {
+  try {
+    const d = JSON.parse(await file.text());
+    const ok = x => /^\d{6}$/.test(x.nce || '');
+    const mk = (x, campos, tipo) => { const conf = { nce: 1 }; campos.forEach(c => { conf[c] = x.duvida && !x[c] ? 0 : (x.duvida ? 0.5 : 1); }); return { tipo, ...x, conf, leituras: 1, alternativas: {} }; };
+    const P = (d.produtos || []).filter(ok).map(x => mk(x, ['qtd', 'preco'], 'produtos'));
+    const S = (d.seguros || []).filter(ok).map(x => mk(x, ['g1', 'g2'], 'seguro'));
+    if (!P.length && !S.length) return toast('Arquivo sem produtos nem seguros');
+    P.sort((x, y) => (y.duvida ? 1 : 0) - (x.duvida ? 1 : 0)); S.sort((x, y) => (y.duvida ? 1 : 0) - (x.duvida ? 1 : 0));
+    const pg0 = lote.length + recusadas.length;
+    if (P.length) lote.push({ pagina: pg0 + 1, tipo: 'produtos', pdf: true, linhas: [], meta: null, itens: P, problemas: [] });
+    if (S.length) lote.push({ pagina: pg0 + 2, tipo: 'seguro', pdf: true, linhas: [], meta: null, itens: S, problemas: [] });
+    $('#pdfResumo').hidden = false;
+    $('#pdfResumo').textContent = `Arquivo: ${P.length} produtos e ${S.length} seguros. ${P.concat(S).filter(i => i.duvida).length} com dúvida aparecem primeiro, em vermelho ou laranja.`;
+    renderRevisao();
+  } catch (e) { toast('Arquivo inválido: ' + (e.message || e)); }
+}
+$('#pronto').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (f) importarPronto(f); };
+$('#pronto2').onchange = async e => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; await importarPronto(f); if (lote.length) document.querySelector('nav button[data-tab="scan"], [data-tab="scan"]').click(); };
 $('#cam').onchange = e => { processar(e.target.files); e.target.value = ''; };
 $('#gal').onchange = e => { processar(e.target.files); e.target.value = ''; };
 
@@ -391,8 +411,27 @@ $('#descartar').onclick = limparLote;
 function limparLote() { $('#pdfResumo').hidden = true; lote = []; recusadas = []; pendentes = { esq: [], dir: [] }; renderPartes(); renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
 
 /* ---------- Tabela / backup ---------- */
+// Quadro de pendências: produtos com dados faltando
+const CAMPOS_FALTA = [['preco', 'Sem preço'], ['qtd', 'Sem estoque'], ['g1', 'Sem seguro 1 ano'], ['g2', 'Sem seguro 2 anos'], ['nome', 'Sem descrição']];
+let filtroFalta = '';
+function renderFaltas(itens) {
+  const falta = i => CAMPOS_FALTA.filter(([c]) => !String(i[c] ?? '').trim()).map(([c]) => c);
+  const inc = itens.map(i => ({ i, f: falta(i) })).filter(x => x.f.length);
+  const cont = c => inc.filter(x => x.f.includes(c)).length;
+  const lista = (filtroFalta ? inc.filter(x => x.f.includes(filtroFalta)) : inc).sort((a, b) => b.f.length - a.f.length || a.i.nce.localeCompare(b.i.nce));
+  const nome = Object.fromEntries(CAMPOS_FALTA.map(([c, t]) => [c, t.replace('Sem ', '')]));
+  $('#faltas').innerHTML = !itens.length ? '<b>⚠️ Dados faltando</b><p class="hint">Tabela vazia.</p>'
+    : `<b>⚠️ Dados faltando</b> <span class="muted">${inc.length} de ${itens.length} produtos incompletos</span>
+    <div class="chips"><button data-falta="" class="chip ${filtroFalta ? '' : 'on'}">Todos (${inc.length})</button>${CAMPOS_FALTA.map(([c, t]) => `<button data-falta="${c}" class="chip ${filtroFalta === c ? 'on' : ''}">${t} (${cont(c)})</button>`).join('')}</div>`
+    + (inc.length ? `<table class="falta"><tr><th>NCE</th><th>Produto</th><th>Falta</th></tr>${lista.slice(0, 300).map(x => `<tr data-abrir="${x.i.id}"><td>${esc(x.i.nce)}</td><td>${esc(x.i.nome)}</td><td>${x.f.map(c => `<span class="tag">${nome[c]}</span>`).join(' ')}</td></tr>`).join('')}</table>${lista.length > 300 ? `<p class="hint">Mostrando 300 de ${lista.length}. Use os filtros.</p>` : ''}` : '<p class="hint">✅ Nenhum produto com dados faltando.</p>');
+}
+$('#faltas').addEventListener('click', e => {
+  const b = e.target.closest('[data-falta]'); if (b) { filtroFalta = b.dataset.falta; todos().then(renderFaltas); return; }
+  const r = e.target.closest('[data-abrir]'); if (r) abrirProduto(+r.dataset.abrir);
+});
 async function renderTabela() {
   const itens = await todos();
+  renderFaltas(itens);
   const por = {};
   itens.forEach(i => (por[i.folha] ||= []).push(i));
   const ks = Object.keys(por).sort((a, b) => b - a);

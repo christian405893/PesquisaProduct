@@ -274,11 +274,15 @@
   // ficam em alturas diferentes, e a leitura por linha casa o NCE de um produto com os valores do vizinho.
   // As linhas da tabela são sempre na mesma ordem em todas as colunas: se há tantos NCEs quanto conjuntos de valores,
   // o 1º NCE vai com o 1º conjunto de valores, e assim por diante.
+  const opcoes = { semReparo: false };
   function repararColunas(out, tipo) {
     const temNce = it => /^\d{6}$/.test(it.nce || '');
     const temDir = it => (tipo === 'produtos' ? (it.qtd || it.preco || (it.nome && it.nome.length > 12)) : (it.g1 || it.g2));
-    const E = out.filter(temNce), D = out.filter(it => temDir(it) && (tipo !== 'produtos' || it.qtd || it.preco));
-    if (out.length < 8 || E.length !== D.length || E.length < 8) return out;
+    const E = out.filter(temNce);
+    let D = out.filter(it => temDir(it) && (tipo !== 'produtos' || (it.qtd && it.preco))); // conjuntos de valores completos
+    if (E.length !== D.length && tipo === 'produtos') D = out.filter(it => (it.preco && parseFloat(it.preco.replace(/\./g, '').replace(',', '.')) >= 20) || (it.qtd && (it.nome || '').length > 14));
+    if (E.length !== D.length) D = out.filter(it => temDir(it) && (tipo !== 'produtos' || it.qtd || it.preco));
+    if (opcoes.semReparo || out.length < 8 || E.length !== D.length || E.length < 8) return out;
     const novo = E.map((e, k) => {
       const d = D[k];
       if (e === d) return e;
@@ -393,6 +397,6 @@
     return P;
   }
 
-  const api = { razaoOk, parseTextoColado, parseProduto, parseSeguro, parseEsq, parseDir, juntarPartes, similaridade, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
+  const api = { opcoes,  razaoOk, parseTextoColado, parseProduto, parseSeguro, parseEsq, parseDir, juntarPartes, similaridade, parsePagina, problemasDaPagina, detectarTipo, LIM, parseLines: ls => parsePagina(ls) };
   if (typeof module !== 'undefined') module.exports = api; else root.Parser = api;
 })(typeof self !== 'undefined' ? self : this);

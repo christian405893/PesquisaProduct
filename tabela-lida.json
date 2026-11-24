@@ -1,0 +1,5900 @@
+{
+ "versao": 1,
+ "origem": "tabelapriceandsecurity.pdf",
+ "aviso": "duvida:true = conferir no app",
+ "produtos": [
+  {
+   "nce": "112211",
+   "nome": "Descricao das Mercadorias",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "117313",
+   "nome": "ENCOSTO SUAVE ESPUMA P71V 0S6XU4SXUSS",
+   "cor": "SURTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "128368",
+   "nome": "CAD. TRAMONTINA ILHABELA 92209/009 C/BCO PTO",
+   "cor": "VERMELHO",
+   "qtd": "",
+   "preco": "189,00",
+   "duvida": true
+  },
+  {
+   "nce": "166261",
+   "nome": "ENCOSTO SUAVE ESPUMA P7TV U4SXUSUXUS3 7:00 0:59044 rocas por srapo 11",
+   "cor": "SURTIBN",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "166306",
+   "nome": "con. MOLA ONTX SINTRA 16UXZU0 2:00 2.04800",
+   "cor": "SURTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "168326",
+   "nome": "COL. MOLA ONIX GRAN CANARIA 16UX200 C-1",
+   "cor": "SURTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "175869",
+   "nome": "BEBED. 1 ESMALTEC GEL. EGM30MN MESA 220V BRANCO",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "175870",
+   "nome": "BEBED. ESMALTEC GEL. EGM3OMN MESA 220V PRETO",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "177501",
+   "nome": "COL. ESP ONIX NEW BOVER 12X070X130",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "179355",
+   "nome": "RECEPTOR VIVENSIS VX10 FULL HD SMART KU PTO",
+   "cor": "PRETO",
+   "qtd": "10",
+   "preco": "319,00",
+   "duvida": true
+  },
+  {
+   "nce": "184235",
+   "nome": "AP. E PO BITAA BAS1295 VER 132",
+   "cor": "PRETO AZUL",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "184384",
+   "nome": "LAV. SUGGaAR LX1022PT LAVAMax 10KG PT 220V",
+   "cor": "PRATA",
+   "qtd": "2",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "184561",
+   "nome": "PRANCHA GAMA APP2205 ELEGANZA PLUS 210G BIVOL",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "184581",
+   "nome": "TORRE ACUSTICA MONDIAL TM-2200 BT 2200WRMS",
+   "cor": "PRETO",
+   "qtd": "10",
+   "preco": "22,00",
+   "duvida": true
+  },
+  {
+   "nce": "185185",
+   "nome": "GRILL E S SAND. BRITANIA CROME INOX 220V 5 .00 ).04586",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "186096",
+   "nome": "BOTIJAO ULTRAGAZ P-13 NOVO P/GAS 13KG AZUL",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "186358",
+   "nome": "FORNO ELECTROLUX MTO30 MICROONDAS 20LTS 220V 00 .04973",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "1.825,00",
+   "duvida": true
+  },
+  {
+   "nce": "187585",
+   "nome": "MODELADOR TAIFF CURVES 210C 1\" CABO 3M BIVOLT",
+   "cor": "PRETO/COBRE",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "187903",
+   "nome": "VAPORIZADOR B&D B BDV2000V-B2 1200W 220V Total por Crupo 101",
+   "cor": "VEPMELHO/BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "187992",
+   "nome": "LIQUID. PHILCO PH900 PR 12V C/FIL 1200W 220V 3.0 0.05663 179.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "188325",
+   "nome": "BOX ( (SOMMIER) ONIX GRAN CANARIA 080X200 FX C1",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "188475",
+   "nome": "LIQUID. PHILIPS/WALITA RI2110/90 2V 550W 220V",
+   "cor": "PRETO/BEGE",
+   "qtd": "17",
+   "preco": "119,00",
+   "duvida": true
+  },
+  {
+   "nce": "188666",
+   "nome": "LIQUID. PHILIPS/WALITA RI2110/00 2V 550W 220V 4.0 0.0463 119.0",
+   "cor": "BRANCO/BEGE",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "188667",
+   "nome": "LIQUID. PHILIPS/WALITA RI2110/40 0 2v 550w 220 11.0 0.1333: 119.0",
+   "cor": "VERMELHO/BEGE",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "188811",
+   "nome": "MAQ. SINGER M2405 8 PONTOs VEL.750 C/LED 220V",
+   "cor": "CINZA",
+   "qtd": "1",
+   "preco": "319,00",
+   "duvida": true
+  },
+  {
+   "nce": "189388",
+   "nome": "LIQUID. ARNO LQ11 POWER MIX 2V+P 2L 550W 220V 4.0 0.05033 129.0",
+   "cor": "VERMELHO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "189655",
+   "nome": "LAV. COLORMAQ LCS 10.0 SEMI-AUT 10KG PTA 220V",
+   "cor": "PRATA",
+   "qtd": "",
+   "preco": "4,00",
+   "duvida": true
+  },
+  {
+   "nce": "189698",
+   "nome": "LIQUID. MONDIAL L99WG 3V+P 500/550W 2,2L 220V 3.0 0.0465:",
+   "cor": "BRANCO/CINZA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "190725",
+   "nome": "BATED. B BRITANIA PeRoLA 550 4V+TURB 500 220V",
+   "cor": "BRANCO",
+   "qtd": "4",
+   "preco": "143,20",
+   "duvida": true
+  },
+  {
+   "nce": "190727",
+   "nome": "LIQUID. MONDIAL L-550-B 2V+P 1,5L 550W 220V 0.08775 79.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "190816",
+   "nome": "I PRETO SECADOR TAIFF EASY 2VEL 1700W 220V",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "191231",
+   "nome": "LIQUID. MONDIAL L-550-W 2V+P 1,5L 550W 220V 6.0 129.0",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "191303",
+   "nome": "LIQUID. PHILIPS/WALITA RI2244/90 12V 1400W 22 2.0 0.0465 399.0",
+   "cor": "INOX",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "191396",
+   "nome": "COL-BOX MOLA C ON1X GUANABARA 55X088X188",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "191497",
+   "nome": "PNEU DUNLOP TOURING 175/70R13 82T",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "429,00",
+   "duvida": true
+  },
+  {
+   "nce": "191502",
+   "nome": "PNeEU MGNM 175/65R14 CAMPIONE M3 82T",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "399,00",
+   "duvida": true
+  },
+  {
+   "nce": "191664",
+   "nome": "ENCUSTO UNTX ESPUMA U4SXUSUXUSS PERF ILADO 3:00 0.59630 139:00",
+   "cor": "SURTIBA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "191874",
+   "nome": "COND. GREE GWC09ATA-D6DNA1AB/O I 9K 220",
+   "cor": "CINZA",
+   "qtd": "",
+   "preco": "1,00",
+   "duvida": true
+  },
+  {
+   "nce": "192239",
+   "nome": "MESA NOTAVEL OFFICE 2G BCO",
+   "cor": "BRANCO/NEW",
+   "qtd": "1",
+   "preco": "379,00",
+   "duvida": true
+  },
+  {
+   "nce": "192272",
+   "nome": "SECAOR G IF1 TAVEL 2V 1600W 220V 4.0 0.01681 159.00",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "159,00",
+   "duvida": true
+  },
+  {
+   "nce": "192700",
+   "nome": "GRILL E : SAND. M MULTILASER CE044 750W PTO 220V",
+   "cor": "PRETO",
+   "qtd": "8",
+   "preco": "62,00",
+   "duvida": true
+  },
+  {
+   "nce": "192713",
+   "nome": "BATED. MONDIAL B44W PRaTICA 3V+P 400W 220V",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "33,39",
+   "duvida": true
+  },
+  {
+   "nce": "192804",
+   "nome": "LAV. COLORMAQ LCS 20 SEMI-AUT 20KG PTA 220V",
+   "cor": "PRATA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "192865",
+   "nome": "BOX (SOMMIER) ONIX SINTRA 080X200 FIXO C-2",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "192955",
+   "nome": "PRETO CAIXA AVOX AMPLIF ACA880 VECAS 880WSMS TO",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2,11",
+   "duvida": true
+  },
+  {
+   "nce": "193266",
+   "nome": "FRITADEIRA MONDIAL AFON-12L-BI 12L 2000W 220V",
+   "cor": "VERMELHO/INOX",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "193285",
+   "nome": "LIQUID. PHILIPS/WALITA RI2110/30 2V 550W 220V",
+   "cor": "PRETO",
+   "qtd": "11",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "193414",
+   "nome": "TRICICLO BAND. 357 VELOBABY PASSEIO&PEDAL ROS",
+   "cor": "AZUL",
+   "qtd": "3",
+   "preco": "399,00",
+   "duvida": true
+  },
+  {
+   "nce": "193415",
+   "nome": "TRICICLO CALESITA VELOCITA 958 PASSEIO V VERMEL",
+   "cor": "ROSA",
+   "qtd": "3",
+   "preco": "439,00",
+   "duvida": true
+  },
+  {
+   "nce": "193451",
+   "nome": "ARM. VILA RICA MULTI-USO LINE 2P CH/PES NT/FD",
+   "cor": "O FRE TREND/OFW T",
+   "qtd": "2",
+   "preco": "689,00",
+   "duvida": true
+  },
+  {
+   "nce": "193582",
+   "nome": "o AZUL FURAD. BOSCH GSB183-LI PARAF. BATERIA C/BOLSA",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "193583",
+   "nome": "GRILL E S s ) . 0357 9",
+   "cor": "INOY",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "193790",
+   "nome": "TEL. CEL. I INFINIX HOT 50I 4/256GB 6.7\" PRATA",
+   "cor": "VERMELHO",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "193793",
+   "nome": "QUADRICICLO CALESITA CROSS LEGACY 1017 PINK",
+   "cor": "PINK",
+   "qtd": "3",
+   "preco": "399,00",
+   "duvida": true
+  },
+  {
+   "nce": "193839",
+   "nome": "I PRETO JOGO DE FACAS TRAMONTINA 23498/064 PLENUS 4 PC 3 00 0 .0 3 1 8 0",
+   "cor": "",
+   "qtd": "",
+   "preco": "35,00",
+   "duvida": true
+  },
+  {
+   "nce": "194073",
+   "nome": "MAQ. SINGER M2405 8 PONTOS VEL.750 C/LED 220V",
+   "cor": "BRANCO",
+   "qtd": "5",
+   "preco": "129,00",
+   "duvida": true
+  },
+  {
+   "nce": "194461",
+   "nome": "SERRA PHILCO PTTO1 TICO-TICO CABO 1,88M 450W",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196182",
+   "nome": "CAD. TRAMONTINA GRACE 92068/940 C/BRACO VRM",
+   "cor": "VERMELHO",
+   "qtd": "3",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196185",
+   "nome": "R PRETO",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1,00",
+   "duvida": true
+  },
+  {
+   "nce": "196312",
+   "nome": "MULTIPROCESSADOR PHILIPS/WALITA RI7300/92 220",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196351",
+   "nome": "RECEPTOR VIVENSIS VX10 FULL HD SMART KU PTC",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "129,00",
+   "duvida": true
+  },
+  {
+   "nce": "196437",
+   "nome": "0.17431 1.229",
+   "cor": "FREIJO/OFF/LINHO",
+   "qtd": "1",
+   "preco": "1,22",
+   "duvida": true
+  },
+  {
+   "nce": "196511",
+   "nome": "PRANCHA GAMA BECHS2598 ERGOSTYLER BABOSA BIV",
+   "cor": "PRETO/VERDE",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196516",
+   "nome": "SECADOR GAMA BECHD2794 ELEGANZ PLUS 2100W 220",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196547",
+   "nome": "ATEA AVIVeNSIS MONOPONTO PARAB. BANDA KU 60C",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196647",
+   "nome": "PRANCHA LIZZ J1000 NEO TITANIUM 230C BIV CIN 2.0 0.00424 239.0",
+   "cor": "CINZA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196648",
+   "nome": "PRANCHA LIZZ CF5000 EMPIRE 230C BIV AZUL",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "115,00",
+   "duvida": true
+  },
+  {
+   "nce": "196651",
+   "nome": "SECADOR MOND IAL SC1-JU-O3 2V DOBRAV. BIV 120W 2.0 0.03032 139.0 0 L9952 0 8 635 AZUL/ROSA SECADR MANFBLACR-ION 200WEEM. 200W 220V 1.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "139,00",
+   "duvida": true
+  },
+  {
+   "nce": "196671",
+   "nome": "UMIDIFICADOR BRITANIA BUDO4B 4, 8L BIV BRANCO",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "196693",
+   "nome": "PANELA DE PRESSAO BRINOX 7239/193 7,5L VAPT",
+   "cor": "VANILLA",
+   "qtd": "12",
+   "preco": "249,00",
+   "duvida": true
+  },
+  {
+   "nce": "197008",
+   "nome": "PRETO CAIXA AMVCX AMPLIF ACA550 STRONDO II 55 WRMS",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1,27",
+   "duvida": true
+  },
+  {
+   "nce": "197199",
+   "nome": "VENT. BRITANIA BVT301 MESA 30CM 220V",
+   "cor": "PRETO",
+   "qtd": "6",
+   "preco": "165,00",
+   "duvida": true
+  },
+  {
+   "nce": "197205",
+   "nome": "LIQUID. MONDIAL L-1100BI 12V+P 1100W 3L 220V 5.0 0.1083 199.0",
+   "cor": "PRETO/INOX",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "197206",
+   "nome": "LIQUID. : MONDIAL L-1100RI 12V+P 1100W 3L 220V",
+   "cor": "VERMELHO/INOX",
+   "qtd": "18",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "197223",
+   "nome": "REFRIG. LG GN-B392PLM2 FF 2PT 395L 220V INOX 1.0€ 0.8546 2,999.0g",
+   "cor": "INOX LOOK",
+   "qtd": "1",
+   "preco": "45,00",
+   "duvida": true
+  },
+  {
+   "nce": "197680",
+   "nome": "Total 1por Grupo",
+   "cor": "",
+   "qtd": "2",
+   "preco": "259,00",
+   "duvida": true
+  },
+  {
+   "nce": "197765",
+   "nome": "UNID. EVAP. GREE GWC18ATD-D6DNA2A/1 I 18K 220 2.0€ 0.15450 1,369.0",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "840,00",
+   "duvida": true
+  },
+  {
+   "nce": "197774",
+   "nome": "UNID. COND. GREE GWC18ATD-D6DNA2A/O I 18K 220",
+   "cor": "CINZA",
+   "qtd": "3",
+   "preco": "2.530,00",
+   "duvida": true
+  },
+  {
+   "nce": "197816",
+   "nome": "SOFA SOC. RAVENA 3/2 LUG CANTO COR-159",
+   "cor": "SOCIMOL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "197823",
+   "cor": "CARVALHO ACETINADO",
+   "nome": "G-ROUPA TOZETTO PRATICO 3PTS 2GAV PES/ESP C A",
+   "qtd": "2",
+   "preco": "1.799,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198040",
+   "cor": "CINAMOMO/OFW",
+   "nome": "EST. HOME HB BOLDE 2PTS C/ROD CINAMOMO/OFW",
+   "qtd": "2",
+   "preco": "1.269,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198132",
+   "nome": "PIPOQUEIRA BRITANIA BPIO1VI POPLITE INOX 220V 3.0 0.02981 189.00",
+   "cor": "VERMELHO",
+   "qtd": "",
+   "preco": "189,00",
+   "duvida": true
+  },
+  {
+   "nce": "198158",
+   "nome": "CLIMATIZADOR CLImAT CLM-70LT TP 70L 280W 220V",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "1.169,00",
+   "duvida": true
+  },
+  {
+   "nce": "198194",
+   "nome": "PARAFUSADEIRA FURAD. BOSCH 06019F40E3 GSR1000 2.0 0.01218 399.0",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198264",
+   "nome": "BARB. .HiLTAS S1881/00 sERIE 1000 ELET. B 22",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198270",
+   "nome": "FOGAO S SUGGAR FGVMG51OPT MAX GLASS 5BC PTO .00 .95542 ,",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198289",
+   "nome": "TEL. CEL. POSITIVO P38 3G DUAL CHIP PRETO",
+   "cor": "PEETO",
+   "qtd": "2",
+   "preco": "239,00",
+   "duvida": true
+  },
+  {
+   "nce": "198316",
+   "cor": "CINAMOMO/OFW",
+   "nome": "COMODA ALBATROZ DOBLE 8GAV C/PES CINAM/OFW 1916 ACA MAD/REFL BRI",
+   "qtd": "1",
+   "preco": "1.269,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198355",
+   "nome": "i PRETO FORNO MONDIAL MO-01-21-B MICRO0 1200W 21L 220 .00 .05290",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "529,00",
+   "duvida": true
+  },
+  {
+   "nce": "198359",
+   "nome": "0.02015 LIQUID. ARNO LN63 63 POweR Max 15v+P 140oW 220V 1.00 259.00",
+   "cor": "VERMELHO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198370",
+   "nome": "TV. LG LED 60UA8550PSA UHD 4K SMT IA 3HDM 60\"",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "3.439,00",
+   "duvida": true
+  },
+  {
+   "nce": "198376",
+   "nome": "FRITADEIRA MONDIAL AFN-50-BI AF 5L 1900W 220V",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198385",
+   "nome": "FORNO FISCHER 34313-94809 ELET POP GRILL 44L .00 .25803",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "2,00",
+   "duvida": true
+  },
+  {
+   "nce": "198397",
+   "nome": "FOGAO ATLAS MILAO 25 4BCS PTO",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "579,00",
+   "duvida": true
+  },
+  {
+   "nce": "198514",
+   "nome": "SAND. MONDIAL S-07 GRILL PREMIUM IN 800W 220V 1.0 0.00457 119.0",
+   "cor": "PRETO/INOX",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198516",
+   "nome": "SAND. MONDIAL S-19 GRILL 800W VM/IN 220V 2.0 0.01758 140.0",
+   "cor": "VERMELHO/INOX",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198606",
+   "nome": "CAIXA MONDIAL CM-550-L AMPLIF. BT/USB 550WMRS",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.399,00",
+   "duvida": true
+  },
+  {
+   "nce": "198609",
+   "nome": "TV. AOC DLED 50U7066/78G UHD SMT 4K 4HDMI 50\"",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.999,00",
+   "duvida": true
+  },
+  {
+   "nce": "198615",
+   "nome": "UNID. EVAP. GREE GWC09ATB-D6DNAlA/I 9K IN 220",
+   "cor": "BRANCO",
+   "qtd": "4",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "198616",
+   "nome": "UNID.",
+   "cor": "CINZA",
+   "qtd": "3",
+   "preco": "1.499,00",
+   "duvida": true
+  },
+  {
+   "nce": "198681",
+   "nome": "BALCAO TELASUL RUBI ROSE ACO 3PTS 1GAV BRANCO",
+   "cor": "FREIJO/OFF WHITE",
+   "qtd": "1",
+   "preco": "589,00",
+   "duvida": true
+  },
+  {
+   "nce": "198753",
+   "nome": "TEL. CEL. XIAOMI CX401VRD REDMI 14C 256GB VRD",
+   "cor": "VERDE",
+   "qtd": "1",
+   "preco": "1,49",
+   "duvida": true
+  },
+  {
+   "nce": "198935",
+   "nome": "e CINZA TEL. CEL. MOTOROLA XT2523-2 G05 4/128GB CINZA",
+   "cor": "CINZA",
+   "qtd": "1",
+   "preco": "899,00",
+   "duvida": true
+  },
+  {
+   "nce": "198994",
+   "nome": "COLCHONETE ESP NEW ONIX U4XUTUXT80 12:00 0:60480 139:00",
+   "cor": "SURTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "199203",
+   "nome": "FOGAO DAKO SUPREME GLASS 25 5BC M.VD PTO BIV .00 .52206 ,",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "199226",
+   "nome": "FERRO AMVOX AF2110 A VAPOR 2000W 220V .00 .01464",
+   "cor": "CINZA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "199227",
+   "nome": "FERRO PHILCO PFE01P RETRO SECO 1000W 220V",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "199230",
+   "nome": "GR ILL E SAND. BRITANIA BGR25B 750W 220V PTO 3 .0 0 0.0 2 241",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "149,00",
+   "duvida": true
+  },
+  {
+   "nce": "199494",
+   "cor": "CINAMOMO/OFW",
+   "nome": "G-ROUPA DEMOBILE RIVA 2P 4G C/ESP/PES CIN/OFW",
+   "qtd": "1",
+   "preco": "2.299,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199495",
+   "nome": "SECADOR TAIFF BLACK ION 2000W 220V",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "199516",
+   "nome": "PANELA DE PRESSAO TRAMONTINA 6L 20592/424 PTO",
+   "cor": "VANILLA",
+   "qtd": "4",
+   "preco": "449,00",
+   "duvida": true
+  },
+  {
+   "nce": "199522",
+   "nome": "BATED. MONDIAL Bp-03-B PLANET. 12VEL 700W 220",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "339,00",
+   "duvida": true
+  },
+  {
+   "nce": "199577",
+   "nome": "CAIXA PHILIPS TROLLEY TAX20oT/78 BT 650WRMS",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.399,00",
+   "duvida": true
+  },
+  {
+   "nce": "199703",
+   "nome": "20123 8 586 AZUL CLARO TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB AZ CL",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "239,00",
+   "duvida": true
+  },
+  {
+   "nce": "200433",
+   "nome": "TV. . PHILIPS DLED 65PUG8100/78 UHD SMTV 4K 65\"",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2.349,00",
+   "duvida": true
+  },
+  {
+   "nce": "200465",
+   "nome": "AZUL KIT BoSCH GsB 550+GWS 850 FuRad/EsMerIL 220V 1.0 259.00",
+   "cor": "",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200482",
+   "nome": "CAD. TRAMONTINA VANDA 92053/909 S/BRACO PRETO",
+   "cor": "VERMELHO",
+   "qtd": "1",
+   "preco": "95,00",
+   "duvida": true
+  },
+  {
+   "nce": "200491",
+   "nome": "COL-BOX ESP ONIX NEW PANAMA 138X188 C-109",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200501",
+   "cor": "CINAMOMO/OFW",
+   "nome": "CJ. SAO CARLOS AYLA 4C ELANE RED. CANA/OFW",
+   "qtd": "2",
+   "preco": "979,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200530",
+   "nome": "TEL. CEL. MOTOROLA XT2523-2 G05 4/128GB CINZA",
+   "cor": "PRATA",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "200603",
+   "nome": "REFRIG. CONTINENTAL TC45 F.FREE 2P 400L 220V 1.0€ 0.8742: 3,779.0",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "2,00",
+   "duvida": true
+  },
+  {
+   "nce": "200610",
+   "nome": "d PEETO TEL. CEL. SAMSUNG A075M A07 128GB 6.7\" PRETO",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "799,00",
+   "duvida": true
+  },
+  {
+   "nce": "200620",
+   "nome": "CAIXA PULSE SP517 TORRE DOUBLE 10* 2500WRMS",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "899,00",
+   "duvida": true
+  },
+  {
+   "nce": "200642",
+   "nome": "A2UL TEL. CEL. SAMSUNG A175F A17 128GB 6.7\" AZUL 3 .00 0. 00191",
+   "cor": "",
+   "qtd": "3",
+   "preco": "249,00",
+   "duvida": true
+  },
+  {
+   "nce": "200643",
+   "nome": "CINZÀ TEL . CEL. SAMSUNG A175F A17 128GB 6.7° CINZA 4 .00 0.00254 1,199.00",
+   "cor": "CINZA",
+   "qtd": "10",
+   "preco": "1.199,00",
+   "duvida": true
+  },
+  {
+   "nce": "200679",
+   "nome": "CAIXA PHILIPS PARTY TAX4000/78 BT 1500WRMS",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "599,00",
+   "duvida": true
+  },
+  {
+   "nce": "200685",
+   "nome": "TEL. CEL. MOTOROLA XT2535-1 G06 4/128GB AZ MA",
+   "cor": "AZUL MARINHO",
+   "qtd": "5",
+   "preco": "899,00",
+   "duvida": true
+  },
+  {
+   "nce": "200686",
+   "nome": "2 0 0 6 88 13 BEGE TEL. CEL. MOTOROLA XT2535-1 G06 4/256GB BEGE",
+   "cor": "LARANJA",
+   "qtd": "1",
+   "preco": "1.199,00",
+   "duvida": true
+  },
+  {
+   "nce": "200698",
+   "nome": "REFRIG. ELECTROLUX RE21 DEFROST 1P 213L 220V 2.0",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "1,89",
+   "duvida": true
+  },
+  {
+   "nce": "200708",
+   "nome": "TV. LG LED 50UA8550PSA UHD 4K SMT IA 3HDM 50\"",
+   "cor": "CHARCOAL BLACK",
+   "qtd": "2",
+   "preco": "3.299,00",
+   "duvida": true
+  },
+  {
+   "nce": "200729",
+   "nome": "CAISA AJL ALE ACA80 VECAS 8 U",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200755",
+   "nome": "FRITADEIRA BRITANIA A.F BFR36A 4,2L 1500W 220",
+   "cor": "PRETO",
+   "qtd": "8",
+   "preco": "249,00",
+   "duvida": true
+  },
+  {
+   "nce": "200757",
+   "nome": "FRITADeIRA PHILCO A.F PAF40A 3 L 1500W 220V .73440",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "239,00",
+   "duvida": true
+  },
+  {
+   "nce": "200795",
+   "nome": "CINZA",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200797",
+   "nome": "QUADRICICLO BAND. 1221 SMART C/PEDAL AZUL",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "699,00",
+   "duvida": true
+  },
+  {
+   "nce": "200811",
+   "nome": "PURIFICADOR IBBL FR600 SPECIALE PRaTA 220V",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "200831",
+   "nome": "LAV. I PAN. NA-F150B1WB AUT. 15KG 220V .00 .07851 ,",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200844",
+   "nome": "APARADR -0",
+   "cor": "PRETO AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200855",
+   "nome": "TV. AOC LED 32S5155/78G HD SMT 3HDMI 1USB 32\"",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "200856",
+   "nome": "PRETO/INOX",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200869",
+   "nome": "FRITADEIRA BRITANIA BFR50 A.F 5,5L 1500W 220V",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200870",
+   "nome": "A. DoR 311As Ln /1 Y",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "1,00",
+   "duvida": true
+  },
+  {
+   "nce": "200894",
+   "nome": "TV. SAMSUNg MINI LeD UN50M75HAGXZD 4K SMT 50-",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.899,00",
+   "duvida": true
+  },
+  {
+   "nce": "200904",
+   "nome": "CAIXA MULTILASER PULSE SP519 PULSBOX 1300WRMS",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "399,00",
+   "duvida": true
+  },
+  {
+   "nce": "200905",
+   "nome": "CAIXA MULTILASER PULSE SP402E BURS BT 250WRMS",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "219,00",
+   "duvida": true
+  },
+  {
+   "nce": "200912",
+   "nome": "3 PRETO",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200913",
+   "nome": "LIQUID. BRITANIA DIAMANTE 1100 3V+P 220V 8.0 0.1733 199.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200915",
+   "nome": "PARAFUSADEIRA PHILCO PPF12M BAT 800RPM AZ BIV 2.0 0.0126s 259.0",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200940",
+   "cor": "CINAMOMO/OFW",
+   "nome": "G-ROUPA ALBATROZ ATENA 2P 6G ESP/PES CIN/OFW",
+   "qtd": "1",
+   "preco": "1.899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200945",
+   "nome": "0.02015 LIQUID. ARNO LN63 POWER MAX 15V+P 2200W 220V 1.0 259.00",
+   "cor": "VERMELHO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "200974",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "CS. INDEKES MARROCOS AC BELA 90 TVD FRJ/OF",
+   "qtd": "1",
+   "preco": "1.799,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201025",
+   "nome": "REFRIG. ESMALTEC RCD38 PRO DF INV 338L PT 220 1.0€ 0.8016 2,599.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "2,59",
+   "duvida": true
+  },
+  {
+   "nce": "201073",
+   "nome": "LIQUID. PHILCO PLQ15A 12V+P 1500W 220V 3.0 0.0557s 249.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201078",
+   "nome": "UNID. EVAP. GREE GWC09ATA-D6DNA1AB/I I 9K 220",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "770,00",
+   "duvida": true
+  },
+  {
+   "nce": "201105",
+   "nome": "FREEZER ELECTROLUX HB150 HOR INV 141L 1TP BIV .00 35102 .",
+   "cor": "ERANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201106",
+   "nome": "REFRIG. CONTINENTAL TC42 F.FREE 2P 380L 220V 3.00",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "3.299,00",
+   "duvida": true
+  },
+  {
+   "nce": "201111",
+   "nome": "TV. AOC LED 32S5155/78G HD SMT 3HDMI 1USB 32-",
+   "cor": "PRETO",
+   "qtd": "8",
+   "preco": "1.449,00",
+   "duvida": true
+  },
+  {
+   "nce": "201152",
+   "nome": "LAV. COLORMAQ LCA 14 AUTOMAT. 14KG BCO 220V .00 .90272 ,",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "2.480,00",
+   "duvida": true
+  },
+  {
+   "nce": "201167",
+   "nome": "CAIXA MULTM. AIWA AWS-SP-04-LB SPEAKER 40WRMS",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "399,00",
+   "duvida": true
+  },
+  {
+   "nce": "201183",
+   "nome": "TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB ROXO",
+   "cor": "",
+   "qtd": "1",
+   "preco": "1.399,00",
+   "duvida": true
+  },
+  {
+   "nce": "201193",
+   "nome": "CAIXA MULTM. AIWA AWS-BBS-01-LBL BOOM 200WRMS",
+   "cor": "AZUL MEIA NOITE",
+   "qtd": "1",
+   "preco": "499,00",
+   "duvida": true
+  },
+  {
+   "nce": "201237",
+   "nome": "R070 TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB ROXO",
+   "cor": "ROXO",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "201296",
+   "nome": "CAIXA MULTM. PHILCO PBS220BT SPEAKER 220WRMS",
+   "cor": "PRETO",
+   "qtd": "8",
+   "preco": "599,00",
+   "duvida": true
+  },
+  {
+   "nce": "201320",
+   "nome": "FORNO MONDIAL FRN-52-BI-2 ELET. 52L 1800W 220 .00 .10947",
+   "cor": "PRETO/INOX",
+   "qtd": "1",
+   "preco": "499,00",
+   "duvida": true
+  },
+  {
+   "nce": "201322",
+   "nome": "FORNO MONDIAL FRN-60-WI-2 ELET. 60L 2000W 220 .00 .25434",
+   "cor": "ERANCO/ INOX",
+   "qtd": "2",
+   "preco": "599,00",
+   "duvida": true
+  },
+  {
+   "nce": "201385",
+   "nome": "TV. LG LED 50UA8550PSA UHD 4K SMT IA 3HDM 50\"",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2.699,00",
+   "duvida": true
+  },
+  {
+   "nce": "201416",
+   "nome": "PRETO",
+   "cor": "",
+   "qtd": "",
+   "preco": "269,00",
+   "duvida": true
+  },
+  {
+   "nce": "201424",
+   "nome": "SAND. CADENCE SAN400 ANTIAD. 800W PTO 220V 2.0 0.0028 159.00",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "159,00",
+   "duvida": true
+  },
+  {
+   "nce": "201489",
+   "nome": "REFRIG. MIDEA MDRT533EVD012 FF 2P 394L 220V 45.0",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201502",
+   "nome": "PRETO",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201624",
+   "nome": "upo N.C.E. cor Nome da cor Descricao das Mercadorias 2 s e a 22 3 2 0 1 4 1 6 3 PRETO",
+   "cor": "",
+   "qtd": "4",
+   "preco": "749,00",
+   "duvida": true
+  },
+  {
+   "nce": "201627",
+   "nome": "LIQUID. . ARNO LQ10 POWER MIX 3V+P 2L 700W 220V 4.0 0.05429 129.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201628",
+   "nome": "LIQUID. ARNO LQ12 POWER MIX 3V+P 2L 700W 220V 6.0 0.0996€",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201643",
+   "nome": "FOGAO ATLAS MILAO GLASS 25 4 4B A.AUT MV 4 TO : BV .00 .50219",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "799,00",
+   "duvida": true
+  },
+  {
+   "nce": "201644",
+   "nome": "FOGAO ATLAS MILAO GLASS 25 5B A.AUT MV PTO BV .00 .76746",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "999,00",
+   "duvida": true
+  },
+  {
+   "nce": "201703",
+   "nome": "A0",
+   "cor": "AZUL",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201772",
+   "nome": "PRETO",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201790",
+   "nome": "TV. AOC DLED 50U7066/78G UHD SMT 4K 4HDMI 50-",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.999,00",
+   "duvida": true
+  },
+  {
+   "nce": "201791",
+   "nome": "TV. LG QNED 55QNED70BSA UHD 4K SMT IA BT 55\" TV.",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2.699,00",
+   "duvida": true
+  },
+  {
+   "nce": "201820",
+   "nome": "SAVANA/PINK SECADOR GAMA BECHD2498 NEW LUMINA 2200W 220V 3.0 0.0234 129.0€ 19651 6 3 PRETO SECADOR GAMA IECHY 794 IELEGANE PLUS 2100W 220",
+   "cor": "BEGE",
+   "qtd": "2",
+   "preco": "279,00",
+   "duvida": true
+  },
+  {
+   "nce": "201822",
+   "nome": "UNID. COND. GREE GWC12ATB-D6DNA2AB/O 12K 220V",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "1,55",
+   "duvida": true
+  },
+  {
+   "nce": "201861",
+   "nome": "COL-BOX MOLA ONIX TOKYO 056X088X188",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201862",
+   "nome": "COL-BOX MOLA ON1X TOkYO 056X138X188",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201864",
+   "nome": "SORTIDA",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201866",
+   "nome": "COL-BOX MOLA ONIX GUANABARA 55X138X188 C-111",
+   "cor": "SORTIDA",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "201897",
+   "nome": "FOGAO ESMALTEC IDEAL ECO F4MFB 4129 BC B BCO .00 .13289",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "279,00",
+   "duvida": true
+  },
+  {
+   "nce": "202022",
+   "nome": "LIQUID. ARNO LN88 POWER MAX XXL 2200W 220V 5.0 0.06291 129.00",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "129,00",
+   "duvida": true
+  },
+  {
+   "nce": "202030",
+   "nome": "TV. TCL QLED 55T6C UHD 4K SMT IA BT 3 3HDMI 55 \"",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2.349,00",
+   "duvida": true
+  },
+  {
+   "nce": "202032",
+   "nome": "TV. TCL QLED 50P7L UHD 4K SMT IA BT 3HDMI 50\" TCL QLED D 55T6C UHD 4K SMT IA BT : ARM. DEMOBILE MuTI-USO NEo 2pT 1G CINA/OFW",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.899,00",
+   "duvida": true
+  },
+  {
+   "nce": "202051",
+   "nome": "UNID. INTERNA ELECTROLUX NI09F 9K INV. 220 3.0 0 0.22113 770.0€",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "202052",
+   "nome": "UNID. . EVAP. GReE GWC18ATd-D6DnA2A/I I 28K 220",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.369,00",
+   "duvida": true
+  },
+  {
+   "nce": "202054",
+   "nome": "UNID. EXTERNA ELECTROLUX NDD 9K IN. 2 02 UNID. 1,599.00",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "1.429,00",
+   "duvida": true
+  },
+  {
+   "nce": "202077",
+   "nome": "PANELA BRITANIA BPAO6A ELET. 6XIC 220V PTC 2.0 0.02972 189.0",
+   "cor": "PRETO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "202083",
+   "nome": "I PRETO GRILL E S SAND. BRITANIA BGR25B 750W 220V PTO",
+   "cor": "",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "202089",
+   "nome": "CLIMATIZADOR VENTISOL CLIN60 PRO 60L 150W B/C",
+   "cor": "BRANCO",
+   "qtd": "",
+   "preco": "",
+   "duvida": true
+  },
+  {
+   "nce": "202129",
+   "nome": "CAIXA PHILIPS TROLLEY TAX200T/78 BT 650WRMS",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "499,00",
+   "duvida": true
+  },
+  {
+   "nce": "202143",
+   "nome": "TV. SAMSUNG LED UN32H5000FGXZD HD SMTV 32\"",
+   "cor": "CHARCOAL BLACK",
+   "qtd": "1",
+   "preco": "1.099,00",
+   "duvida": true
+  },
+  {
+   "nce": "202147",
+   "nome": "BATED. MONDIAL Bp-03-W PLANET. 12VEL 700W 220",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "399,09",
+   "duvida": true
+  },
+  {
+   "nce": "110389",
+   "nome": "FERRO B&D VFA-1110X SECO 220V",
+   "cor": "PRETO",
+   "qtd": "12",
+   "preco": "149,00",
+   "duvida": false
+  },
+  {
+   "nce": "171854",
+   "nome": "CUSCUZEIRA BRINOX INDIVIDUAL SUPREMA 2092/110",
+   "cor": "INOX",
+   "qtd": "3",
+   "preco": "119,00",
+   "duvida": false
+  },
+  {
+   "nce": "174461",
+   "nome": "CHa. MoNDIaL C-30-18X ELeTR. 18XIC 550W 220V",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "149,00",
+   "duvida": false
+  },
+  {
+   "nce": "181199",
+   "nome": "TABUA DE PASSAR NOTAVEL CRIATIVA 2PT BRANCO",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "389,00",
+   "duvida": false
+  },
+  {
+   "nce": "187063",
+   "nome": "FAQUEIRO BRINOX 5119/102 MODENA 24PCS",
+   "cor": "INOX",
+   "qtd": "1",
+   "preco": "119,00",
+   "duvida": false
+  },
+  {
+   "nce": "187305",
+   "nome": "CAD. 4 TRAMONTINA ATLANTIDA 92013/010 S/BCO",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "829,00",
+   "duvida": false
+  },
+  {
+   "nce": "188513",
+   "cor": "BRANCO",
+   "nome": "FRUTEIRA NOTAVEL DIVA NEW 2PT 1GAV BRANCO",
+   "qtd": "1",
+   "preco": "499,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "188557",
+   "cor": "BRANCO/BRILHO",
+   "nome": "G-ROUPA CAROLINA BABY ARIEL 3PT 2G 4PES BR/BL",
+   "qtd": "1",
+   "preco": "1.099,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "188558",
+   "cor": "BRANCO/BRILHO",
+   "nome": "COMODA CAROLINA BABY ARIEL 01PT 4GAV BRANC/BL",
+   "qtd": "1",
+   "preco": "729,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "188804",
+   "nome": "PANELA BRINOX 71027150 CoZI VAP 1 6X12.5x1. 45 2 .00 0 . 01296",
+   "cor": "CEREJA",
+   "qtd": "2",
+   "preco": "119,00",
+   "duvida": false
+  },
+  {
+   "nce": "189166",
+   "nome": "PENTEADEIRA DEMOBILE CARISMA 2P 3G ESP/LED BR",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "899,00",
+   "duvida": false
+  },
+  {
+   "nce": "189181",
+   "nome": "FAQUEIRO BRINOX 5119/118 MODENA 42PCS INOX",
+   "cor": "INOX",
+   "qtd": "4",
+   "preco": "169,00",
+   "duvida": false
+  },
+  {
+   "nce": "189355",
+   "nome": "LAV. COLORMAQ LCS 10.0 SEMI-AUT 10KG BCO 220V",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.799,00",
+   "duvida": false
+  },
+  {
+   "nce": "189986",
+   "nome": "CJ. INDEKES EVORA 4CAD LISBOA 110X076 FREJ/OF",
+   "cor": "FR/O",
+   "qtd": "2",
+   "preco": "95,00",
+   "duvida": false
+  },
+  {
+   "nce": "190740",
+   "nome": "; PRETO FAQUEIRO . TRAMONTINA 23198/018 LEME 20PCS PTO",
+   "cor": "",
+   "qtd": "4",
+   "preco": "45,00",
+   "duvida": false
+  },
+  {
+   "nce": "190742",
+   "nome": "FAQUEIRO TRAMONTINA 23198/718 LEME 20PCS VERM",
+   "cor": "VERMELHO",
+   "qtd": "1",
+   "preco": "45,00",
+   "duvida": false
+  },
+  {
+   "nce": "191500",
+   "nome": "PNEU DUNLOP TOURING 175/65R14 R1 82T",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "429,00",
+   "duvida": false
+  },
+  {
+   "nce": "191745",
+   "nome": "KIT APAR. DE PELOS GAMA GCX623 9EM1 BIV",
+   "cor": "AMARELO/ PRETO",
+   "qtd": "5",
+   "preco": "115,00",
+   "duvida": false
+  },
+  {
+   "nce": "192060",
+   "nome": "KIT COZ. DEMOBILE HARMoNIA 132 6PT 2G AMEN BC",
+   "cor": "AMEDOLA/BRANCO",
+   "qtd": "1",
+   "preco": "799,00",
+   "duvida": false
+  },
+  {
+   "nce": "192649",
+   "nome": "PHILCO PBP90A TURBO PLANET. 900W 220V",
+   "cor": "GRANITE GREY",
+   "qtd": "2",
+   "preco": "399,00",
+   "duvida": false
+  },
+  {
+   "nce": "192682",
+   "nome": "VENT. MONDIAL VSP30W MESA 30CM 6P BCO/Az 220V",
+   "cor": "BRANCO/AZUL",
+   "qtd": "1",
+   "preco": "139,00",
+   "duvida": false
+  },
+  {
+   "nce": "192696",
+   "nome": "BRANCO/AZUL VENT. MONDIAL VSP40W MESA 40CM 6P BCO/Az 220V",
+   "cor": "BRANCO/AZUL",
+   "qtd": "13",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "192697",
+   "nome": "VENT. MONDIAL VSP40B MESA 6P PT/PTA 40CM 220V 6.0 0.3786 179.0 VENT. MONDIAL VSP4OCNB COL.40CM 6P PT/PTA 220",
+   "cor": "PRETO/PRATA",
+   "qtd": "6",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "192705",
+   "nome": "FERRO MONDIAL FSN-55-B A SECO 1000W/1200W 220",
+   "cor": "PRETO",
+   "qtd": "5",
+   "preco": "85,00",
+   "duvida": false
+  },
+  {
+   "nce": "192706",
+   "nome": "FERRO MONDIAL FSN-55-W A SECO 1000W/1200W 220",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "85,00",
+   "duvida": false
+  },
+  {
+   "nce": "193333",
+   "cor": "BRANCO",
+   "nome": "COZ. TELASUL RUBI ROSE ACO O7 PTS C/NICHO BCO",
+   "qtd": "2",
+   "preco": "1.439,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "193334",
+   "nome": "CAD. TRAMONTINA CUPE 92022/040 S/BCO VERMELHA",
+   "cor": "BRANCO",
+   "qtd": "3",
+   "preco": "899,00",
+   "duvida": false
+  },
+  {
+   "nce": "193490",
+   "cor": "PINHO/PRETO",
+   "nome": "ESCRIV. ARTELY STUDY C/ESTANTE PINHO/PRETO",
+   "qtd": "3",
+   "preco": "449,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "193542",
+   "nome": "CJ. PANELAS BRINOX SAFIRA 7224/101 6P FENDI",
+   "cor": "FENDI",
+   "qtd": "2",
+   "preco": "279,00",
+   "duvida": false
+  },
+  {
+   "nce": "193690",
+   "nome": "KIT COZ. TELASUL RUBI ROSE ACO 5P 2PVD 1G BRA",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.199,00",
+   "duvida": false
+  },
+  {
+   "nce": "193810",
+   "nome": "CLIMATIZADOR SYMPHONY WINTER 80L BRANCO 220V",
+   "cor": "BRANCO/CINZA",
+   "qtd": "3",
+   "preco": "899,00",
+   "duvida": false
+  },
+  {
+   "nce": "193846",
+   "nome": "BULE TERMICO TRAMONTINA 61636/103 EXATA 1L PT",
+   "cor": "PRETO",
+   "qtd": "6",
+   "preco": "49,00",
+   "duvida": false
+  },
+  {
+   "nce": "193847",
+   "nome": "BULE TERMICO TRAMONTINA 61636/106 EXATA 1L VR",
+   "cor": "VERMELHO",
+   "qtd": "1",
+   "preco": "49,00",
+   "duvida": false
+  },
+  {
+   "nce": "193848",
+   "nome": "BULE 7 TERMICO TRAMONTINA 61636/107 EXATA 1L VD",
+   "cor": "VERDE",
+   "qtd": "1",
+   "preco": "39,00",
+   "duvida": false
+  },
+  {
+   "nce": "193849",
+   "nome": "BULE TERMIC0 TRAMONTINA 61636/108 EXATA 1L BE",
+   "cor": "BEGE",
+   "qtd": "5",
+   "preco": "49,00",
+   "duvida": false
+  },
+  {
+   "nce": "193857",
+   "nome": "VENT. MONDIAL VTX-40P-8P S.TUR PARED 40CM 220",
+   "cor": "PRETO/PRATA",
+   "qtd": "3",
+   "preco": "239,00",
+   "duvida": false
+  },
+  {
+   "nce": "194033",
+   "nome": "CINZA CAIXA ACUSTICA LG XBoM RNC5 MULTI BT 220V PT",
+   "cor": "",
+   "qtd": "1",
+   "preco": "1,27",
+   "duvida": false
+  },
+  {
+   "nce": "194126",
+   "nome": "o AZUL FURAD. BOSCH 06012B80E1 GSB13 750W C/MAL 220V",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "499,00",
+   "duvida": false
+  },
+  {
+   "nce": "194459",
+   "nome": "A 2UL GRILL ES SAND. s BRITANIA BGR02PI 750W 220V PTO",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "329,00",
+   "duvida": false
+  },
+  {
+   "nce": "194466",
+   "nome": "ESMERILHADEIRA PHILCO PEMO2 DISCO DESBA. 950W",
+   "cor": "AZUL",
+   "qtd": "2",
+   "preco": "259,00",
+   "duvida": false
+  },
+  {
+   "nce": "194830",
+   "nome": "VENT. DOMINA OSCILANTE 43CM COL. TITAN. 220V",
+   "cor": "PRETO/DOURADO",
+   "qtd": "4",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "194831",
+   "nome": "VENT. MALLORY CHRONOS 40CM COL. PT/GRA 220V",
+   "cor": "PRETO/GRAFITE",
+   "qtd": "5",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "194933",
+   "cor": "CINAMOMO/OFW",
+   "nome": "EST. HOME HB ARTHEO 160 1PT BASC CINAM/OFW",
+   "qtd": "2",
+   "preco": "899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "195074",
+   "nome": "ESCOVA MONDIAL ES11BI SECADORA 1200W/1300W BV",
+   "cor": "GRAF/GOLDEN ROSE",
+   "qtd": "1",
+   "preco": "139,00",
+   "duvida": false
+  },
+  {
+   "nce": "195119",
+   "nome": "RACK BANCADA NOTAVEL NT1290 ROD FRE TRE/OFW",
+   "cor": "FREIJO TREND/OFW",
+   "qtd": "1",
+   "preco": "849,00",
+   "duvida": false
+  },
+  {
+   "nce": "196133",
+   "cor": "FREIJO/OFF/FREIJO",
+   "nome": "COZ. INDEKES TURIM 6PT C/NICHO FREIJO/OFW",
+   "qtd": "1",
+   "preco": "689,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196175",
+   "nome": "CJ . INDEKES EVORA 6CAD LISBOA 150X076 FRE/OF",
+   "cor": "FREIJO/OFF/LINHO",
+   "qtd": "1",
+   "preco": "139,00",
+   "duvida": false
+  },
+  {
+   "nce": "196259",
+   "nome": "ESCOVA BRITANIA BEC07R SOFT SECAD 1300W BI RS",
+   "cor": "ROSE",
+   "qtd": "2",
+   "preco": "149,00",
+   "duvida": false
+  },
+  {
+   "nce": "196262",
+   "nome": "CORTADOR BRITANIA BCR03 P/CABELO 18W 220V PTO CORTADOR GAMA ITALY T923 P/CABELO USB M-STYLE",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "59,00",
+   "duvida": false
+  },
+  {
+   "nce": "196348",
+   "nome": "QUADRICICLO CaLESITA cROSS LeGACY 1017 PINK TRICICLO BAND. 356 VELOBABY PASSEIO&PEDAL AZU",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "699,00",
+   "duvida": false
+  },
+  {
+   "nce": "196376",
+   "nome": "FRITADEIRA BRITANIA BFR50 A.F 5,5L 1500W 220V",
+   "cor": "PRETO",
+   "qtd": "5",
+   "preco": "379,00",
+   "duvida": false
+  },
+  {
+   "nce": "196470",
+   "nome": "CORTADOR MONDIAL CR-02 CABELO H.STYLO 220V PT 0.00580 9.00",
+   "cor": "PRETO/PRATA",
+   "qtd": "4",
+   "preco": "115,00",
+   "duvida": false
+  },
+  {
+   "nce": "196486",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "EST. HOME AVELAN SAUIPE 1PT FREIJO/OFW",
+   "qtd": "1",
+   "preco": "899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196487",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "EST. AVELAN TULUM 1PT FREIJO/OFF WHITE",
+   "qtd": "2",
+   "preco": "779,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196490",
+   "cor": "BRANCO",
+   "nome": "G-ROUPA AVELAN NICE 2P 3G C/PES ESP BRANCO",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196491",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "G-ROUPA AVELAN NICE 2P 3G C/PES ESP FRJ/OFW",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196493",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "KIT COZ. AVELAN VEGAS 120 6P 2G FREIJ/OFW",
+   "qtd": "2",
+   "preco": "899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196560",
+   "nome": "PAINEL HB SUSP LETS 160 2PT BASC CINAM/OFW",
+   "cor": "CINAMOMO/OFW",
+   "qtd": "1",
+   "preco": "799,00",
+   "duvida": false
+  },
+  {
+   "nce": "196575",
+   "nome": "VENT. MALLORY TURBO FRESH 40CM MESA PT 220V 12.0 0.8310€ 169.0",
+   "cor": "PRETO",
+   "qtd": "12",
+   "preco": "169,00",
+   "duvida": false
+  },
+  {
+   "nce": "196587",
+   "nome": "ESCOVA BRITANIA BEC02PR SEC. 2V 3T 1300W BIV 3..00 ).01129",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "79,00",
+   "duvida": false
+  },
+  {
+   "nce": "196621",
+   "nome": "; PRETO KIT COZA SINGLE 99394/4008 3PCS LIX+DISPENSER",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "89,00",
+   "duvida": false
+  },
+  {
+   "nce": "196650",
+   "nome": "ESCOVA LIZZ FT5000 EASY ROTATIVA ION 900W BIV",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "249,00",
+   "duvida": false
+  },
+  {
+   "nce": "196690",
+   "cor": "AMENDOLA TOUCH/OFW",
+   "nome": "COMODA DEMOBILE AUREA 2PT 4GAV AMEND T/OFW",
+   "qtd": "1",
+   "preco": "859,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "196697",
+   "nome": "FAQUEIRO TRAMONTINA 23399/091 IPANEMA 24PC PT",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "65,00",
+   "duvida": false
+  },
+  {
+   "nce": "196700",
+   "nome": "VENT. BRITANIA BVT301 MESA 30CM 220V 23.0 € 1.36838 249.0",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "196701",
+   "nome": "VENT. BRITANIA BVT450 MAXX FORCE COL 40CM 220",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "196854",
+   "nome": "I NATURE/OFF WHITE RACK L.BRASIL ESMERALDA 2PT C/PES NAT/OFW",
+   "cor": "NATURE/OFF WHITE",
+   "qtd": "1",
+   "preco": "599,00",
+   "duvida": false
+  },
+  {
+   "nce": "196946",
+   "nome": "VENT. MONDIAL VSP40CNB COL.40CM 6P PT/PTA 220",
+   "cor": "PRETO/PRATA",
+   "qtd": "10",
+   "preco": "239,00",
+   "duvida": false
+  },
+  {
+   "nce": "196961",
+   "nome": "CHOCOLATE 21 SOFA ORTONORTE KALIPSO CANTO C/PUFF CHOCOLATE",
+   "cor": "",
+   "qtd": "1",
+   "preco": "3.539,00",
+   "duvida": false
+  },
+  {
+   "nce": "197051",
+   "nome": "FOGAO ITATIAIA STAR CLEAN NEW 4BCS BRANCO BIV .00 .22385",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "549,00",
+   "duvida": false
+  },
+  {
+   "nce": "197052",
+   "nome": "FOGAO ITATIAIA STAR CLEAN NEW 4BCS PRETO .00 .22385",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "549,00",
+   "duvida": false
+  },
+  {
+   "nce": "197053",
+   "nome": "FOGÃO ITATIAIA s STAR NEW 4BCS A.AUT. BRANCO BI .00 .22385",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "799,00",
+   "duvida": false
+  },
+  {
+   "nce": "197054",
+   "nome": "FOGAO ITATIAIA STAR NEW 4 4BCS A.AUT. PRETO BIV .00 .67156",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "799,00",
+   "duvida": false
+  },
+  {
+   "nce": "197055",
+   "nome": "FOGÃO ITATIAIA s STAR NEW 5BCS A.AUT. BRANCO BI .00 .70198 ,",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "197056",
+   "nome": "FOGÃO ITATIAIA STAR NEW 5BCS A.AUT. PRETO BIV .00 .67245 ,",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "197111",
+   "nome": ": PRETO FORNO PHILCO PFE52P ELETRICO 50L 2000W PT 220 .00 .32977",
+   "cor": "",
+   "qtd": "3",
+   "preco": "579,00",
+   "duvida": false
+  },
+  {
+   "nce": "197232",
+   "cor": "NATURE/FENDI",
+   "nome": "G-ROUPA VILA RICA ESPANHA 4P 3G C/PES NAT/FEN",
+   "qtd": "1",
+   "preco": "1.599,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197237",
+   "cor": "CANEL RUS/NT OFW",
+   "nome": "G-ROUPA ATUALLE PARIS 6P 3G PES/ESP CAN 3D/OF",
+   "qtd": "2",
+   "preco": "1.969,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197301",
+   "cor": "NATURE/FENDI",
+   "nome": "G-ROUPA VILA RICA TAURUS 6P 3G C/PES NT/F",
+   "qtd": "1",
+   "preco": "1.499,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197368",
+   "nome": "FOGAO DAKO MAGISTER INOX 5B PTO BIV .00 .51097 ,",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "2.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "197370",
+   "cor": "NATURE/FENDI",
+   "nome": "COMODA SAPATEIRA VILA RICA LINE 1P 5G 4PE N/F",
+   "qtd": "2",
+   "preco": "619,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197371",
+   "cor": "BRANCO",
+   "nome": "G-ROUPA VILA RICA LINE 4P 2G 04PES BRANCO",
+   "qtd": "2",
+   "preco": "899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197372",
+   "cor": "NATURE/FENDI",
+   "nome": "COMODA SAPATEIRA VILA RICA SIRIUS 2P5G PE N/F",
+   "qtd": "2",
+   "preco": "739,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197373",
+   "cor": "NATURE/FENDI",
+   "nome": "G-ROUPA VILA RICA LINE 4P 2G 04PES NATU/FENDI",
+   "qtd": "3",
+   "preco": "899,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197384",
+   "nome": "CAIXA JBL PARTYBOX CLUB120 BT 160WRMS PTO",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1,59",
+   "duvida": false
+  },
+  {
+   "nce": "197678",
+   "nome": "PANELA DE 1 PRESSAO BRINOX 7239/170 4. 5L VAFT",
+   "cor": "VANILLA",
+   "qtd": "1",
+   "preco": "159,00",
+   "duvida": false
+  },
+  {
+   "nce": "197679",
+   "nome": "PANELA DE PRESSÃO BRINOX 72 39 / 192 3 L VAPT",
+   "cor": "VANILLA",
+   "qtd": "3",
+   "preco": "149,00",
+   "duvida": false
+  },
+  {
+   "nce": "197821",
+   "cor": "FRE/RIP/OFW ACET",
+   "nome": "COZ. POLIMAN MALTA 8PT FRE RIP/OFW",
+   "qtd": "1",
+   "preco": "1.029,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "197828",
+   "nome": "LAV. ELECTROLUX LED09 9KG 220V .00 .73975 ,",
+   "cor": "ERANCO",
+   "qtd": "11",
+   "preco": "769,00",
+   "duvida": false
+  },
+  {
+   "nce": "197924",
+   "nome": "FOGAO MUELLER MFV5BF 5B MV T.CHAMA PTO FOSCO .00 .45926 ,",
+   "cor": "PRETO FOSCO",
+   "qtd": "1",
+   "preco": "1.853,00",
+   "duvida": false
+  },
+  {
+   "nce": "197925",
+   "nome": "FOGÃO a MUELLER MFV5BB 5B MV AC.AUT PTO FOS BIV .00 .42250 ,",
+   "cor": "PRETO FOSCO",
+   "qtd": "1",
+   "preco": "1.399,00",
+   "duvida": false
+  },
+  {
+   "nce": "197936",
+   "nome": "KIT COZINHA ITATIAIA FLORENCA 8P 1VD 2G BCO",
+   "cor": "BRANCO NEVE",
+   "qtd": "1",
+   "preco": "1.889,00",
+   "duvida": false
+  },
+  {
+   "nce": "197937",
+   "nome": "KIT COZINHA ITATIAIA PRATIKA 6P 3VD 2G BCO",
+   "cor": "BRANCO NEVE",
+   "qtd": "2",
+   "preco": "1.299,00",
+   "duvida": false
+  },
+  {
+   "nce": "198308",
+   "nome": "FOGAO ATLAS COOKTOP UTOP 5Q TC 5BCS PRETO BIV .00 .12145",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "4.745,00",
+   "duvida": false
+  },
+  {
+   "nce": "198324",
+   "nome": "FOGÃO ITATIAIA ITAGLASS PLUS 5 5B AA MVD BIV PT .00 .41253 ,",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.579,00",
+   "duvida": false
+  },
+  {
+   "nce": "198329",
+   "cor": "BRANCO NEVE",
+   "nome": "COZ. ITATIAIA LUCE 8PTS 3VD BCO",
+   "qtd": "1",
+   "preco": "1.769,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198333",
+   "nome": "CUSCUZEIRA TRAMONTINA 20273/710 TURIM ALUM VM",
+   "cor": "VERMELHO",
+   "qtd": "2",
+   "preco": "75,00",
+   "duvida": false
+  },
+  {
+   "nce": "198438",
+   "nome": "TV. LG LED 32LR600BPSA HD SMT IA BT 2HDMI 32\"",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.149,00",
+   "duvida": false
+  },
+  {
+   "nce": "198449",
+   "nome": "ESCOVA GAMA ITALY ELEGANZA PLUS SECAD 1300W B",
+   "cor": "PRETO/VERMELHO",
+   "qtd": "3",
+   "preco": "139,00",
+   "duvida": false
+  },
+  {
+   "nce": "198460",
+   "nome": "KIT COz. DEMoBILe AMoRA 10pT 2G C/Pes AMeND/N",
+   "cor": "AMENDOLA T/ND PRIME",
+   "qtd": "1",
+   "preco": "1.779,00",
+   "duvida": false
+  },
+  {
+   "nce": "198482",
+   "nome": "BULE TERMICO TRAMONTINA 61636/223 EXATA 1L CR",
+   "cor": "CREME",
+   "qtd": "1",
+   "preco": "39,00",
+   "duvida": false
+  },
+  {
+   "nce": "198509",
+   "nome": "ESP. BRITANIA DE FRUTA TURBO PRO 260W 1,3L BI",
+   "cor": "INOX",
+   "qtd": "1",
+   "preco": "209,00",
+   "duvida": false
+  },
+  {
+   "nce": "198512",
+   "nome": "ESCOVA MONDIAL ES-JU-03 SECADORA 1300W BIV",
+   "cor": "AZUL/ROSA",
+   "qtd": "2",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "198538",
+   "nome": "CJ.: PANELAS BRINOX 7244/100 SUPREMA 5PCS VANI",
+   "cor": "VANILLA",
+   "qtd": "1",
+   "preco": "379,00",
+   "duvida": false
+  },
+  {
+   "nce": "198607",
+   "nome": "CAIXA MULTM. AIWA AWS-BBS-01-B BOOMBO 200WRMS",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.399,00",
+   "duvida": false
+  },
+  {
+   "nce": "198628",
+   "nome": "NATURE/FeNDI BaLCA LA UCE E-105 ACO 3P 26 C0",
+   "cor": "FRE TREND/OFW TX",
+   "qtd": "1",
+   "preco": "729,00",
+   "duvida": false
+  },
+  {
+   "nce": "198752",
+   "nome": "TEL. CEL. XIAOMI CX401 PRE REDMI 14C 256GB PTO 2 .00 0.00192 1 499.00",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.499,00",
+   "duvida": false
+  },
+  {
+   "nce": "198817",
+   "nome": "FOGAO ESMALTEC IDEAL POP F4ISP 4: 4120 4BC PRETO .00 .92323",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "579,00",
+   "duvida": false
+  },
+  {
+   "nce": "198911",
+   "cor": "CARVALHO/OFW",
+   "nome": "CJ. POLIMAN LIZ 16OXO90 TVD 6C LINEA CARV/OFW 0.45759 2,459.00",
+   "qtd": "1",
+   "preco": "2.459,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198963",
+   "cor": "BRANCO/FREIJO",
+   "nome": "ESCRIV. TELASUL VERSA 1PT BCO/FREIJO",
+   "qtd": "1",
+   "preco": "749,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198964",
+   "cor": "BRANCO",
+   "nome": "FRUTEIRA TELASUL ESMERALDA 1PT 1GAV C/TP BCO",
+   "qtd": "2",
+   "preco": "749,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "198971",
+   "nome": "FOGAO ESMALTEC IDEAL POP F4ISB 4120 4BC BCO .00 .46162",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "579,00",
+   "duvida": false
+  },
+  {
+   "nce": "198972",
+   "nome": "FOGAO E ESMALTEC IDEAL POP F5ISB 5120 ! 5BC BCO .00 .72708",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "869,00",
+   "duvida": false
+  },
+  {
+   "nce": "199011",
+   "cor": "AMENDOLA TOUCH",
+   "nome": "ESCRIV. DEMOBILE VITORIA 1PT 1GAV AMD TOUCH",
+   "qtd": "2",
+   "preco": "499,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199017",
+   "nome": "APAR. JANTAR TRAMONTINA 96589/068 CANYON 20PC",
+   "cor": "DECORADO",
+   "qtd": "2",
+   "preco": "249,00",
+   "duvida": false
+  },
+  {
+   "nce": "199097",
+   "cor": "ACA MAD/REFL BRI",
+   "nome": "G-ROUPA ATUALLE ATENA 6P 3G PES/ESP AC MD/REF",
+   "qtd": "1",
+   "preco": "2.269,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199210",
+   "cor": "AMENDOLA/ND PRIM",
+   "nome": "G-ROUPA DEMOBILE GIARDINO 6P 4G PES/ESP AM/ND",
+   "qtd": "1",
+   "preco": "2.599,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199212",
+   "cor": "NOGUEIRA/NUD PRM",
+   "nome": "COMODA DEMOBILE GIARDINO 6G C/PES NOG/NUD PRM",
+   "qtd": "1",
+   "preco": "1.279,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199222",
+   "cor": "OFW/AMENDOA",
+   "nome": "EST. HOME MOBLER SANTOS 2.00 2PT OFW/AMD",
+   "qtd": "1",
+   "preco": "999,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "199229",
+   "nome": "CHURRASQ. BRITANIA BCQ40 ELETRICA 1800W 220V",
+   "cor": "INOX",
+   "qtd": "1",
+   "preco": "339,00",
+   "duvida": false
+  },
+  {
+   "nce": "199518",
+   "nome": "CAF. ELECTROLUX ECM10 ELET. 1SXICARAS 220V",
+   "cor": "PRETO/INOX",
+   "qtd": "3",
+   "preco": "165,00",
+   "duvida": false
+  },
+  {
+   "nce": "200069",
+   "nome": "RACK BANCADA CAEMMUN MONDRIAN 2PT OFW MR/FRJ",
+   "cor": "OFW MR/FRJ",
+   "qtd": "1",
+   "preco": "639,00",
+   "duvida": false
+  },
+  {
+   "nce": "200193",
+   "cor": "FRE TREND/OFW TX",
+   "nome": "G-ROUPA NOTAVEL NT6035 6PT 3GAV FRJ TR/OFW",
+   "qtd": "1",
+   "preco": "2.499,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200467",
+   "nome": "o AZUL FURAD. BOSCH GSB183-LI PARAF. BATERIA C/BOLSA",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "779,00",
+   "duvida": false
+  },
+  {
+   "nce": "200523",
+   "cor": "CINAMOMO/OFW",
+   "nome": "ESCRIV. ARTELY NOMAD EXTENS. O1PT CIN/OFW",
+   "qtd": "2",
+   "preco": "559,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200535",
+   "nome": "PAINEL CAEMMUN JADE 1PT DESL. FRJ/OFW",
+   "cor": "FREIJO/OFF WHITE",
+   "qtd": "1",
+   "preco": "899,00",
+   "duvida": false
+  },
+  {
+   "nce": "200550",
+   "nome": "TV. SAMSUNG LED UN32H5000FGXZD HD SMTV 32\" TCL QLED 32S5K FHD SMTV IA BT 2HDMI 32\"",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "2.619,00",
+   "duvida": false
+  },
+  {
+   "nce": "200581",
+   "nome": "ESMERILHADEIRA BOSCH GWS 700 710W 220V",
+   "cor": "AZUL",
+   "qtd": "3",
+   "preco": "399,00",
+   "duvida": false
+  },
+  {
+   "nce": "200582",
+   "cor": "ACA MAD/REFL BRI",
+   "nome": "G-ROUPA ATUALLE LINCE 3P 2G PES ESP AC MD/REF",
+   "qtd": "1",
+   "preco": "1.769,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200583",
+   "cor": "ACA MAD/REFL BRI",
+   "nome": "G-ROUPA ATUALLE DURBAN 6P 3G PES ESP AC MD/RF",
+   "qtd": "2",
+   "preco": "1.679,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200595",
+   "nome": "FOGAO ESMALTEC IDEAL MAST T4ITP 4124 4B AA PT 00 .23345 ,",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.069,00",
+   "duvida": false
+  },
+  {
+   "nce": "200597",
+   "nome": "FOGÃO F ESMALTEC IDEAL TOP GLASS T4VAP 4126 4 4B .00 .46690 ,",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.068,00",
+   "duvida": false
+  },
+  {
+   "nce": "200598",
+   "nome": "FOGAO ESMALTEC IDEAL TOP GLASS T5VAP 5126 5B .00 .72816 ,",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.419,00",
+   "duvida": false
+  },
+  {
+   "nce": "200625",
+   "nome": "VENT. MALLORY SMART CONTROL 40CM PAR. 15P 220",
+   "cor": "PRETO/GRAFITE",
+   "qtd": "10",
+   "preco": "287,00",
+   "duvida": false
+  },
+  {
+   "nce": "200632",
+   "nome": "CIRC. BRITANIA C50 OSCILLATION 3VEL 200W 220V",
+   "cor": "BRANCO/CINZA",
+   "qtd": "1",
+   "preco": "1.299,00",
+   "duvida": false
+  },
+  {
+   "nce": "200644",
+   "nome": "TEL. CEL. SAMSUNG A175F A17 12 8GB 6.7 \" PRETO 3 . 00 0.00191 1, 199.00",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "199,00",
+   "duvida": false
+  },
+  {
+   "nce": "200645",
+   "nome": "TEL. CEL , SAMSUNG A175 F A 17 2 5 6GB 6 , 7 ° AZUL",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "499,00",
+   "duvida": false
+  },
+  {
+   "nce": "200647",
+   "nome": "TEL. CEL. SAMSUNG A 1 7 5 F A17 25 6GB 6. 7 ° PRETO",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.499,00",
+   "duvida": false
+  },
+  {
+   "nce": "200660",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "COMODA AVELAN BETIS 1PT 4GAV C/PES FRJ/OFW",
+   "qtd": "1",
+   "preco": "859,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200692",
+   "nome": "PAINEL NOTAVEL NT1155 1PT OFW/FREIJO",
+   "cor": "OFW TX/FRE TREND",
+   "qtd": "2",
+   "preco": "599,00",
+   "duvida": false
+  },
+  {
+   "nce": "200706",
+   "nome": "TV. LG QNED 55QNED70BSA UHD 4K SMT IA BT 55\"",
+   "cor": "CHARCOAL BLACK",
+   "qtd": "1",
+   "preco": "2.999,00",
+   "duvida": false
+  },
+  {
+   "nce": "200723",
+   "cor": "CARVALHO/AC",
+   "nome": "G-ROUPA TOZETTO IDEAL/CAP 2PGD+3PPQ 3G ESP CV",
+   "qtd": "1",
+   "preco": "1.999,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200759",
+   "nome": "FERRO BRITANIA BFV07 VAPCR 1600W AZ 220V",
+   "cor": "AZUL",
+   "qtd": "5",
+   "preco": "99,00",
+   "duvida": false
+  },
+  {
+   "nce": "200789",
+   "nome": "TEL. CEL. XIAOMI CX417AZU REDMI A5 12 8GB AZ UL",
+   "cor": "AZUL",
+   "qtd": "1",
+   "preco": "1.199,00",
+   "duvida": false
+  },
+  {
+   "nce": "200790",
+   "nome": "TEL. CEL, XIAOMI CX417DRD REDMI A 5 1 2 8GB DOUR",
+   "cor": "DOURADO",
+   "qtd": "2",
+   "preco": "1.199,00",
+   "duvida": false
+  },
+  {
+   "nce": "200824",
+   "cor": "CINAMOMO/OFW",
+   "nome": "G-ROUPA DEMOBILE DOMO 4PT 4GV PES/ESP CIN/OFW",
+   "qtd": "1",
+   "preco": "1.499,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200845",
+   "nome": "AZUL CORTADOR MONDIAL CR-10-BI P/CABELO 220V",
+   "cor": "AZUL",
+   "qtd": "2",
+   "preco": "69,00",
+   "duvida": false
+  },
+  {
+   "nce": "200851",
+   "nome": "CAISA ACUST A LG XOH RNCS MULTI BT 220V C 4.0 0.22512 139.C",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1,59",
+   "duvida": false
+  },
+  {
+   "nce": "200865",
+   "nome": "VENT. BRITANIA BVC31A COL. 30CM 220V",
+   "cor": "PRETO",
+   "qtd": "9",
+   "preco": "209,00",
+   "duvida": false
+  },
+  {
+   "nce": "200871",
+   "nome": "CORTADOR BRITANIA BCR03 P/CABELO 18W 220V PTO",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "199,00",
+   "duvida": false
+  },
+  {
+   "nce": "200900",
+   "nome": "CHAPA TAIFF ACTION CERAMICA 180GRaUS BIVOLT",
+   "cor": "ROSE",
+   "qtd": "4",
+   "preco": "129,00",
+   "duvida": false
+  },
+  {
+   "nce": "200901",
+   "nome": "ESCOVA TAIFF GLOSS ROSE SECAD. 1200W BIV ROSE",
+   "cor": "ROSE",
+   "qtd": "3",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "200942",
+   "cor": "CINAMOMO/OFW",
+   "nome": "COMODA SAPATEIRA ALBATROZ ATENA 2P 4G CIN/OFW",
+   "qtd": "2",
+   "preco": "839,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "200957",
+   "nome": "FRITADEIRA MONDIAL AFN-50-BI AF 5L 1900W 220V",
+   "cor": "PRETO/INOX",
+   "qtd": "11",
+   "preco": "349,00",
+   "duvida": false
+  },
+  {
+   "nce": "200978",
+   "nome": "TV. TCL QLED 50P7L UHD 4K SMT IA BT 3. 3HDMI 50\"",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "201027",
+   "nome": "REFRIG. ELECTROLUX TF41 F.FREE 380LTS 220V",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "3,79",
+   "duvida": false
+  },
+  {
+   "nce": "201029",
+   "nome": "REFRIG. ESMALTEC RCD38 PRO DF INV 338L BC 220 2.00",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "2,00",
+   "duvida": false
+  },
+  {
+   "nce": "201042",
+   "nome": "APAR. JANTAR TRAMONTINA 96010/289 LEONORA 20P",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "249,00",
+   "duvida": false
+  },
+  {
+   "nce": "201056",
+   "nome": "FRIGIDEIRA TRAMONTINA 28520/626 PARIS 26CM 1. 00 0 .01714",
+   "cor": "GRAF ITE",
+   "qtd": "1",
+   "preco": "119,00",
+   "duvida": false
+  },
+  {
+   "nce": "201058",
+   "nome": "JG . PANELAS TRAMONTINA 282997005 1 LIN2 SPCS PT",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "279,00",
+   "duvida": false
+  },
+  {
+   "nce": "201060",
+   "nome": "; PRETO JG. PANELAS TRAMONTINA 28299/006 LINZ 7PCS SPT",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "379,00",
+   "duvida": false
+  },
+  {
+   "nce": "201067",
+   "nome": "GARRAFA TERMICA TRAMONTINA 61637/503 EXATA 1L",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "49,00",
+   "duvida": false
+  },
+  {
+   "nce": "201079",
+   "nome": "BRANCO",
+   "cor": "BRANCO",
+   "qtd": "15",
+   "preco": "1.429,00",
+   "duvida": false
+  },
+  {
+   "nce": "201085",
+   "nome": "FOGAO S SUGGAR FGICS420PT S'TAR 4BCS PRETO .00 .92004",
+   "cor": "PRETO",
+   "qtd": "3",
+   "preco": "799,00",
+   "duvida": false
+  },
+  {
+   "nce": "201090",
+   "nome": "VENT. ARNO VE6C X-TREME 6P 40CM COL. 220V",
+   "cor": "PRETO",
+   "qtd": "9",
+   "preco": "329,00",
+   "duvida": false
+  },
+  {
+   "nce": "201115",
+   "nome": "RACK L.BRASIL PORTO 2PT JEQ/OFW FSC",
+   "cor": "JEQUITIBA/OFW F",
+   "qtd": "1",
+   "preco": "629,00",
+   "duvida": false
+  },
+  {
+   "nce": "201150",
+   "nome": "KIT NESHER NOBREZA 210 7PT 2GAV CARV/TITANIO",
+   "cor": "CARVALHO/TITANIO",
+   "qtd": "3",
+   "preco": "2.579,00",
+   "duvida": false
+  },
+  {
+   "nce": "201154",
+   "nome": "/CANELLA RACK BANCADA MOBLER DIADEMA 200 2P 1G OFW/CAN",
+   "cor": "OFW /CANELLA",
+   "qtd": "2",
+   "preco": "699,00",
+   "duvida": false
+  },
+  {
+   "nce": "201156",
+   "nome": "/CANELLA RACK BANCADA MOBLER DOURADOS 180 2P 1G OFW/CA",
+   "cor": "OFW /CANELLA",
+   "qtd": "1",
+   "preco": "869,00",
+   "duvida": false
+  },
+  {
+   "nce": "201166",
+   "nome": "ESCOVA MONDIAL ERB-11-KR ROTAT. 1000W BIVOLT .00 .02988",
+   "cor": "VERMELHO",
+   "qtd": "1",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "201170",
+   "nome": "LAV. M MIDEA MA512W130A/WK-05 13KG BCO 220V .00 .92449 .",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.799,00",
+   "duvida": false
+  },
+  {
+   "nce": "201171",
+   "nome": "LAV. MIDEA MA512W150A/WK-05 15KG BCO 220V .00 .53961 ,",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.799,00",
+   "duvida": false
+  },
+  {
+   "nce": "201194",
+   "cor": "CINAMOMO/OFW",
+   "nome": "G-ROUPA DEMOBILE ROMA 4P 6G C/ESP CIN/OFW",
+   "qtd": "1",
+   "preco": "1.599,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201235",
+   "cor": "FREIJO/CAFE",
+   "nome": "KIT COZ. AVELAN SOFIA 180 6P 3G FRJ/CAFE",
+   "qtd": "2",
+   "preco": "1.399,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201236",
+   "cor": "FREIJO/CAFE",
+   "nome": "G-ROUPA AVELAN CATANIA 7P 3G PES ESP FRJ/CAFE",
+   "qtd": "1",
+   "preco": "1.649,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201238",
+   "nome": "TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB B AZ CL",
+   "cor": "AZUL CLARO",
+   "qtd": "2",
+   "preco": "1.399,00",
+   "duvida": false
+  },
+  {
+   "nce": "201253",
+   "nome": "PNEU MAGNUM 175/65R14 CAMPIONE M3 82T C",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "399,00",
+   "duvida": false
+  },
+  {
+   "nce": "201275",
+   "nome": "POLT. MATRIX KWID RECLINAVEL TC425 CHUMBO",
+   "cor": "CHUMBO",
+   "qtd": "1",
+   "preco": "1.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "201286",
+   "nome": "KIT COZ. DEMOBILE SELECT 178 6PT 2G AMND/GRAF",
+   "cor": "AMENDOLA/GRAFITO",
+   "qtd": "2",
+   "preco": "999,00",
+   "duvida": false
+  },
+  {
+   "nce": "201321",
+   "nome": "FORNO MONDIAL FRN-52-WI-2 ELET. 52L 1800W 220 .00 .21894",
+   "cor": "ERANCO/INOX",
+   "qtd": "2",
+   "preco": "499,00",
+   "duvida": false
+  },
+  {
+   "nce": "201337",
+   "nome": "FOGAO ITATIAIA STAR NEW 6 6BCS A.AUT. PTO BIV .00 .70198 ,",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "1.215,00",
+   "duvida": false
+  },
+  {
+   "nce": "201377",
+   "cor": "FREIJO/OFF WHITE",
+   "nome": "G-ROUPA MOVAL TORONTO 2P 3G ESP/PES FRJ/OFW",
+   "qtd": "1",
+   "preco": "2.579,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201413",
+   "nome": "MESA DE CENTRO ARTELY MILA C/RODIZIO CIN/OFW",
+   "cor": "CINAMOMO/OFW",
+   "qtd": "1",
+   "preco": "369,00",
+   "duvida": false
+  },
+  {
+   "nce": "201415",
+   "nome": "KIT COz. INDEKES NEW BRAGA 160 7P 1G FRJ/OFW",
+   "cor": "FREIJO/OFF WHITE",
+   "qtd": "1",
+   "preco": "1.349,00",
+   "duvida": false
+  },
+  {
+   "nce": "201429",
+   "cor": "CINAMOMO/OFW",
+   "nome": "CJ. SAO CARLOS VERONA 4C LUNA 120X090 CIN/OFW",
+   "qtd": "1",
+   "preco": "1.299,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201572",
+   "cor": "NATURALLE/OFW",
+   "nome": "CJ. SA0 CArLOS LAIs 6C AVILA TVD 158,5X94 N/0",
+   "qtd": "1",
+   "preco": "2.599,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201575",
+   "nome": "BALCAO ITATIAIA LUCE IG3G2-105 ACO 3P 2G BCO",
+   "cor": "NATURE/FENDI",
+   "qtd": "1",
+   "preco": "539,00",
+   "duvida": false
+  },
+  {
+   "nce": "201602",
+   "nome": "VENT. BRITANIA BVC41A COL. 40CM 220V",
+   "cor": "PRETO",
+   "qtd": "23",
+   "preco": "249,00",
+   "duvida": false
+  },
+  {
+   "nce": "201635",
+   "nome": "2 01636 5 8 6 AZUL CLARO TEL. CEL. MOTOROLA XT2623-1 G17 4/128GB AZ CL",
+   "cor": "ROXO",
+   "qtd": "2",
+   "preco": "999,00",
+   "duvida": false
+  },
+  {
+   "nce": "201639",
+   "nome": "FOGAO ATLAS COOKTOP UTOP 5Q TC 5BCS PRETO BIV",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "649,00",
+   "duvida": false
+  },
+  {
+   "nce": "201641",
+   "nome": "FOGAO ATLAS MILAO PLUS 25 4B A.AUT PTO BIV .00 .25110",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "1.899,00",
+   "duvida": false
+  },
+  {
+   "nce": "201675",
+   "nome": "VENT. DOMINA OSCILANTE 43CM COL. ACAI 220V",
+   "cor": "ACAI",
+   "qtd": "1",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "201676",
+   "nome": "VENT. DOMINA OSCILANTE 43CM COL. BRONZE 220V",
+   "cor": "BRONZE",
+   "qtd": "4",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "201677",
+   "nome": "VENT. DOMINA OSCILANTE 43CM COL. TITAN. 220V",
+   "cor": "TITANIUM",
+   "qtd": "5",
+   "preco": "219,00",
+   "duvida": false
+  },
+  {
+   "nce": "201722",
+   "nome": "BRANCO REFRIG. LG GN-B372PQW2 N2 FF 2PT 375L INV. 220V 1.0€",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "2.999,00",
+   "duvida": false
+  },
+  {
+   "nce": "201730",
+   "nome": "CLIMATIZADOR VENTISOL CLIN60 PRO02 DP 60L 220",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "1.499,00",
+   "duvida": false
+  },
+  {
+   "nce": "201741",
+   "cor": "CARVALHO/FENDI",
+   "nome": "G-ROUPA MOVAL MIAMI 4P 4G C/PES/ESP CARV/FEND",
+   "qtd": "1",
+   "preco": "1.849,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201754",
+   "nome": "cJ. PANELAS BRINOX 4774/105 5PCS SMARTPLUS AR",
+   "cor": "AREIA",
+   "qtd": "4",
+   "preco": "459,00",
+   "duvida": false
+  },
+  {
+   "nce": "201771",
+   "nome": "LAV. SUGGaR LX1022BR LAvaMax 10kg BR 220v",
+   "cor": "BRANCO",
+   "qtd": "6",
+   "preco": "499,00",
+   "duvida": false
+  },
+  {
+   "nce": "201774",
+   "nome": "LAV. S SUGGAR LE2022BR LAVAMAX ECO 20KG BR 220V .00 .63591",
+   "cor": "BRANCO",
+   "qtd": "5",
+   "preco": "699,00",
+   "duvida": false
+  },
+  {
+   "nce": "201776",
+   "nome": ": PRETO LAV. S SUGGAR LE2022PT LAVAMAX EC0 20KG PT 220V .00 .32718",
+   "cor": "PRETO",
+   "qtd": "1",
+   "preco": "699,00",
+   "duvida": false
+  },
+  {
+   "nce": "201780",
+   "cor": "ACA MAD/REFL BRI",
+   "nome": "COMODA ATUALLE PARIS NEW 1PT C/PES ACA M/REF",
+   "qtd": "1",
+   "preco": "829,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201793",
+   "nome": "FORNO PHILCO PMO24E MICROONDAS 20L 1100W 220V .00 .09947",
+   "cor": "PRATA",
+   "qtd": "2",
+   "preco": "649,00",
+   "duvida": false
+  },
+  {
+   "nce": "201809",
+   "nome": "TEL. CEL. SAMSUNG ;A276B A27 25 6GB 5G 6 , 7 PTO",
+   "cor": "PRETO",
+   "qtd": "2",
+   "preco": "2.099,00",
+   "duvida": false
+  },
+  {
+   "nce": "201818",
+   "nome": "AR. NoTAVEL CA LUL-I-O SO LONO APT FRE TRE/OFW",
+   "cor": "FREIOTREND/OEW",
+   "qtd": "1",
+   "preco": "689,00",
+   "duvida": false
+  },
+  {
+   "nce": "201821",
+   "nome": "UNID. EVAP. GREE GWC12ATB-D6DNA2AB/I 12K 220V",
+   "cor": "BRANCO",
+   "qtd": "1",
+   "preco": "800,00",
+   "duvida": false
+  },
+  {
+   "nce": "201893",
+   "cor": "CINAMOMO/AREIA",
+   "nome": "G-ROUPA ANDIRA BURITI 4P 2G C/PES CINAM/AREIA",
+   "qtd": "2",
+   "preco": "1.689,00",
+   "duvida": false,
+   "conferido": true
+  },
+  {
+   "nce": "201942",
+   "nome": "JG. PANELAS TRAMONTINA 28699/416 V VERONESE 5 PC",
+   "cor": "ARGILA",
+   "qtd": "2",
+   "preco": "459,00",
+   "duvida": false
+  },
+  {
+   "nce": "201945",
+   "nome": "PANELA DE PRESSAO TRAMONTINA 4,5L 20591/420 V",
+   "cor": "PRETO",
+   "qtd": "12",
+   "preco": "199,00",
+   "duvida": false
+  },
+  {
+   "nce": "202040",
+   "nome": "TV. SAMSUNG LED UN50U8600FGXZD UHD SMT 4K 50*",
+   "cor": "PRETO",
+   "qtd": "10",
+   "preco": "2.999,00",
+   "duvida": false
+  },
+  {
+   "nce": "202053",
+   "nome": "UNID. INTERNA ELECTROLUX NI12F 12K INV. 220U",
+   "cor": "BRANCO",
+   "qtd": "2",
+   "preco": "800,00",
+   "duvida": false
+  },
+  {
+   "nce": "202069",
+   "nome": "ESCOVA PHILCO PERO2 ROTATIVA 1300W BIV CINZA",
+   "cor": "CINZA",
+   "qtd": "3",
+   "preco": "179,00",
+   "duvida": false
+  },
+  {
+   "nce": "202071",
+   "nome": "FRITADEIRA BRITANIA A.F BAF65A 6.5L 1700W 220",
+   "cor": "PRETO/INOX",
+   "qtd": "2",
+   "preco": "419,00",
+   "duvida": false
+  },
+  {
+   "nce": "202088",
+   "nome": "PNEU MAGNUM 175/65R14 CAMPIONE M3 E",
+   "cor": "PRETO",
+   "qtd": "4",
+   "preco": "416,00",
+   "duvida": false
+  }
+ ],
+ "seguros": [
+  {
+   "nce": "174461",
+   "nome": "",
+   "g1": "7,80",
+   "g2": "12,40",
+   "duvida": true
+  },
+  {
+   "nce": "177501",
+   "nome": "COL. ESP ONIX NEW DOVER 12X070X130 4 6 213 48.2",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "181199",
+   "nome": "TABUA DE PASSAR NOTAVEL CRIATIVA 2PT BRA 134 212 59.50",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "184235",
+   "nome": "",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": true
+  },
+  {
+   "nce": "186358",
+   "nome": "FORNO ELECTROLUX MTO30 MICROONDAS 3 20LTS 76 132 86.00 136.3",
+   "g1": "86,00",
+   "g2": "36,30",
+   "duvida": true
+  },
+  {
+   "nce": "187305",
+   "nome": "BALCAO ITATIAIA LUCE IG3G2-105 ACO 3P 2G 11 212 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "187585",
+   "nome": "DR TC PL15A 12v+P 150W 2200 9 5 155 29.7 0 47.60",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": true
+  },
+  {
+   "nce": "188306",
+   "nome": "COL. . MOLA ONIX SINTRA 160X200 4 6 213 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "188325",
+   "nome": "B0% (SOMMIER) ONIX GRAN CANARIA 080X200 25 213 81.80",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "188326",
+   "nome": "COL. MOLA ONIX GRAN CANARIA 160X200 ) C − 4 6 213 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "188513",
+   "nome": "FRUTEIRA NOTAVEL DIVA NEW 2PT 1GAV BRANC 79 212 74.40",
+   "g1": "74,40",
+   "g2": "119,04",
+   "duvida": true
+  },
+  {
+   "nce": "188557",
+   "nome": "G-ROUPA CAROLINA BABY ARIEL 3PT 2G 4PES 81 209 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "188558",
+   "nome": "COMODA CAROLINA BABY ARIEL O1PT 4GAV BRA 47 209 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "188811",
+   "nome": "MAQ. SINGER 4423 FACILITA 22 PONTOS 220V",
+   "g1": "165,40",
+   "g2": "264,60",
+   "duvida": true
+  },
+  {
+   "nce": "189166",
+   "nome": "PENTEADEIRA DEMOBILE CARISMA 2P 3G ESP/L 113 209 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "189388",
+   "nome": "LIQUID.",
+   "g1": "36,60",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "191396",
+   "nome": "COL-BOX MOLA ONIZ GUANABARA 55X088X188 5 2 9 213 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "191927",
+   "nome": "PUFF SOC. TUCSON 040X045 TEC SORTIDC 64 2 2 0 8 28.60",
+   "g1": "28,60",
+   "g2": "45,76",
+   "duvida": true
+  },
+  {
+   "nce": "192060",
+   "nome": "KIT COZ. DEMOBILE HARMONIA 132 6PT 2G AM 90 212 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "192239",
+   "nome": "MESA NOTAVEL OFFICE 2G BCO 97 210 59.50",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "192487",
+   "nome": "BIC. HOUSTON MB122R 1 MINI BOY A-12 MASC V",
+   "g1": "45,90",
+   "g2": "73,60",
+   "duvida": true
+  },
+  {
+   "nce": "192653",
+   "nome": "BIC. HOUSTON N TM122R TINA MINI A-12 FEM R",
+   "g1": "45,90",
+   "g2": "73,60",
+   "duvida": true
+  },
+  {
+   "nce": "192682",
+   "nome": "VENT. MONDIAL VSP30W MESA 30CM 6P BCO/AZ 1 4 4 148 47.60",
+   "g1": "47,60",
+   "g2": "76,16",
+   "duvida": true
+  },
+  {
+   "nce": "192696",
+   "nome": "VENT. MONDIAL VSP40W MESA 40CM 6P BCO/AZ 1 4",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": true
+  },
+  {
+   "nce": "192865",
+   "nome": "BOX ( SOMMIER) ONIX SINTRA 080X200 FIXO C 2 5 213 74 . 4 C",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "192955",
+   "nome": "CAIXA AMVOX AMPLIF ACA550 STRONDO II 550 3 0 191 125.70 201.2",
+   "g1": "125,70",
+   "g2": "201,12",
+   "duvida": true
+  },
+  {
+   "nce": "193333",
+   "nome": "COZ. TELASUL RUBI ROSE ACO 07 PTS C/NICH 51 212 223.10",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "193334",
+   "nome": "BALCAO TELASUL RUBI ROSE ACO 3PTS 1GAV B 1 1 21 2 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "193451",
+   "nome": "ARM. NOTAVEL MULTI-USO NT4020 2P C/CH TR 7 212 81.80",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "193490",
+   "nome": "ESCRIV. ARTELY STUDY C/ESTANTE PINHO/PRE 60 210 81.80",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "193690",
+   "nome": "KIT COZ. TELASUL RUBI ROSE ACO 5P 2PVD 1 90 212 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "194453",
+   "nome": "TABLET T MoLTLaser NB360 M7 32G 36 7\"F R 1088 222 59.50 95.2",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "194830",
+   "nome": "VENT. 1 4 4 14 8 37.70 73.3 MALLORY CHRONOS 4OCM COL. PT/GRA 2 45.80 47.6 1 2 2 00 625 VENT. 22.90",
+   "g1": "37,70",
+   "g2": "60,32",
+   "duvida": true
+  },
+  {
+   "nce": "194933",
+   "nome": "EST. HOME HB ARTHEO 160 1PT BASC CINAM/O 64 210 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "195119",
+   "nome": "RACK BANCADA NOTAVEL NT1290 ROD FRE E TRE/ 120 210 126.4",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "196133",
+   "nome": "coz. INDEKES TURIM 6PT C/NICHO FREIJO/OF 51 212 96.70",
+   "g1": "96,70",
+   "g2": "154,72",
+   "duvida": true
+  },
+  {
+   "nce": "196175",
+   "nome": "CJ. INDEKES S EVORA 6CAD LISBOA 150X076 FR 4.4 211 223.10",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "196437",
+   "nome": "CJ . INDEKES EVORA 4CAD LISBOA 110X076 FR 4.4 211 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "196486",
+   "nome": "EST. HOME AVELAN SAUIPE 1PT FREIJO/OFW 64 210 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "196487",
+   "nome": "EST. AVELAN TULUM 1PT FREIJO/OFF WHITE 64 210 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "196490",
+   "nome": "G-ROUPA AVELAN NICE 2P 3G C/PES ESP BRAN 81 209 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "196491",
+   "nome": "G-ROUPA AVELAN NICE 2 P 3G C/PES ESP FRJ/ 81 209 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "196493",
+   "nome": "KIT COZ. AVELAN VEGAS 120 6P 2G FREIJ/OF 90 212 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "196547",
+   "nome": "CAIXA ACUSTICA LG XBOOM RNC5 MULTI BT 22 3 0 191 295.80 473.4",
+   "g1": "295,80",
+   "g2": "473,28",
+   "duvida": true
+  },
+  {
+   "nce": "196560",
+   "nome": "PAINEL HB SUSP LeTS 160 2PT BASC CINaM/O 425 210 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "196575",
+   "nome": "VENT. MALLORY TURBO FRESH 4OCM MESA PT",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "196690",
+   "nome": "COMODA DEMOBILE AUREA 2PT 4GAV AMEND T/ O 47 209 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "196779",
+   "nome": "BIC. HOUSTON STD261S STINGER DISC MEC.A- 21 203 88.9 142.3",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "196780",
+   "nome": "BIC. HOUSTON SF26F1S SUPER FORTE FV A-26 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "196782",
+   "nome": "BIC. HOUSTON ON26F1S ONIX FV A-26 VERMEL 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "196783",
+   "nome": "BIC. HOUSTON ON26F2S ONIX FV A-26 VIOLET 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "196854",
+   "nome": "RACK L.BRASIL ESMERALDA 2PT C/PES NAT/OF 120 210 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "196946",
+   "nome": "VENT. MONDIAL VSP40CNB COL.40CM 6P PT/PT 14 4 14 8 45.80 73.3",
+   "g1": "45,80",
+   "g2": "73,28",
+   "duvida": true
+  },
+  {
+   "nce": "196961",
+   "nome": "SOFA ORTONORTE KALIPSO CANTO C/PUFF CHOC 131 208 554.80",
+   "g1": "554,80",
+   "g2": "887,68",
+   "duvida": true
+  },
+  {
+   "nce": "197008",
+   "nome": "CAIXA AMVOX AMPLIF ACA2201 PESADAOII IBT 1 3 0 191 276.30 442.1",
+   "g1": "276,30",
+   "g2": "442,08",
+   "duvida": true
+  },
+  {
+   "nce": "197051",
+   "nome": "FOGAO ITATIAIA STAR CLEAN NEW 4BCS BRANC 74 13 0 96.00 153.6",
+   "g1": "96,00",
+   "g2": "53,60",
+   "duvida": true
+  },
+  {
+   "nce": "197052",
+   "nome": "FOGAO ITATIAIA STAR CLEAN I NEW 4BCS PRETO 74 130 96.00 153.6",
+   "g1": "96,00",
+   "g2": "53,60",
+   "duvida": true
+  },
+  {
+   "nce": "197055",
+   "nome": "FOGAO ITATIAIA STAR NEW 5BCS 3 A.AUT. BRAN 74 13 0 157.90 252.5",
+   "g1": "157,90",
+   "g2": "252,50",
+   "duvida": true
+  },
+  {
+   "nce": "197056",
+   "nome": "FOGAO ITATIAIA STAR NEW c 5BCS A.AUT. PRET 74 130 157.90 252.5",
+   "g1": "157,90",
+   "g2": "252,50",
+   "duvida": true
+  },
+  {
+   "nce": "197205",
+   "nome": "LIQUID.",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "197232",
+   "nome": "",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "197237",
+   "nome": "G-ROUPA ATUALLE PARIS 6P 3G PES/ESP CAN 81 209 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "197301",
+   "nome": "209 167.60 G-T CAAA RICATAURUS 6P 3 CS/",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "197370",
+   "nome": "COMODA SAPATEIRA VILA RICA LINE 1P 5G 4P 47 209 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "197371",
+   "nome": "1 G-RUPA VILA RICA E AP 3G C/ A",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "197372",
+   "nome": "COMODA SAPATEIRA VILA RICA SIRIUS 2P5G P 47 209 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "197373",
+   "nome": "1 G-ROUPA VILA RICA LINE A 2e O ES B 81 209 223.10 1 G-ROUPA VILA RICA LINe AP 2G O4PES NANC 81 209 167.60",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "197384",
+   "nome": "CAIXA AMVOX AMPLIF ACA880 VEGAS 880WRMS 3 0 191 221.2 354.10",
+   "g1": "354,10",
+   "g2": "566,56",
+   "duvida": true
+  },
+  {
+   "nce": "197478",
+   "nome": "BIC. HOUSTON TNN162S TINA C/CESTA A-16 R",
+   "g1": "79,90",
+   "g2": "127,90",
+   "duvida": true
+  },
+  {
+   "nce": "197479",
+   "nome": "BIC. HOUSTON TNN161S TINA C/CESTA A-16 L 21 203 79.90 127.9",
+   "g1": "79,90",
+   "g2": "127,84",
+   "duvida": true
+  },
+  {
+   "nce": "197483",
+   "nome": "BIC. HOUSTON WNN241S WIN A-24 VERMELHO OF 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "197485",
+   "nome": "BIC. HOUSTON SKN261S : SKINNY A-26 AZUL ES 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "197636",
+   "nome": "BIC. HOUSTON VVD261S VIVID A-26 DISC.MEC",
+   "g1": "88,90",
+   "g2": "142,30",
+   "duvida": true
+  },
+  {
+   "nce": "197690",
+   "nome": "TABLET POSITIVO T3010D vIsION 128GB 10.1 c 1088 222 183.00 292.8",
+   "g1": "183,00",
+   "g2": "292,80",
+   "duvida": true
+  },
+  {
+   "nce": "197742",
+   "nome": "CABECEIRA SOC. VITORIA C/BOTAO 120X140 N 27 0 209 59.50",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "197744",
+   "nome": "CABECEIRA SOC. VITORIA C/BOTAO 120X160 ON 270 209 74.4",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "197816",
+   "nome": "SOFA SOC. RAVENA 3/2 LUG CANTO COR-159 131 208 223.1",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "197821",
+   "nome": "COz. POLIMAN MALTA 8PT FRE RIP/OFW 51 212 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "197823",
+   "nome": "G-ROUPA TOZETTO PRATICO 3PTS 2GAV PES/ES 8 1 209 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "197828",
+   "nome": "LAV. ELECTROLUX LEDO9 9KG 220V 92 141 292.3 467.90",
+   "g1": "292,30",
+   "g2": "467,90",
+   "duvida": true
+  },
+  {
+   "nce": "197924",
+   "nome": "FOGAO MUELLER MFVSBF 5B MV T.CHAMA PTO 74 130 188.80 302.2",
+   "g1": "188,80",
+   "g2": "302,20",
+   "duvida": true
+  },
+  {
+   "nce": "197936",
+   "nome": "KIT 90 212 167.60 COZINHA ITATIAIA FLoReNA 8 12D 21 90 212",
+   "g1": "314,60",
+   "g2": "503,36",
+   "duvida": true
+  },
+  {
+   "nce": "197937",
+   "nome": "KIT T NOZINHA ITATIAIA pRaTIkA 6P 3VD 22B 9 0 212 223.1",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "198040",
+   "nome": "EST. HOME HB BOLDE 2PTS C/ROD CINAMOMO/O 64 210 197.30",
+   "g1": "197,30",
+   "g2": "315,68",
+   "duvida": true
+  },
+  {
+   "nce": "198132",
+   "nome": "158 20 6 27.60 44.1 PIPOCH IRA BRITANIA BPIOIVI POPLITE INOA 614 157 29.70 47.6",
+   "g1": "38,60",
+   "g2": "61,70",
+   "duvida": true
+  },
+  {
+   "nce": "198136",
+   "nome": "CABECEIRA SOC. VALENCIA C/ALMOF 120X090 270 209 28.60",
+   "g1": "28,60",
+   "g2": "45,76",
+   "duvida": true
+  },
+  {
+   "nce": "198137",
+   "nome": "CABECEIRA soc. VITORIA 4 C/BOTAO 120X090 N 270 209 48.2",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "198182",
+   "nome": "BIC. HOUSTON DsN291s DISCOVERY 2.9 A-29",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "198183",
+   "nome": "BIC. HOUSTON DSN292S DISCOVERY 2.9 A-29 21 203 113.0 180.8",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "198264",
+   "nome": "",
+   "g1": "64,00",
+   "g2": "102,50",
+   "duvida": true
+  },
+  {
+   "nce": "198270",
+   "nome": "FOGAO SUGGAR FGVMG510PT MAX GLASS 5BC PT 7.4 130 188.80 302.2",
+   "g1": "188,80",
+   "g2": "302,20",
+   "duvida": true
+  },
+  {
+   "nce": "198316",
+   "nome": "COMODA ALBATROZ DOBLE 8GAV C/PES CINAM/O 47 209 197.30",
+   "g1": "197,30",
+   "g2": "315,68",
+   "duvida": true
+  },
+  {
+   "nce": "198321",
+   "nome": "BIC. HOUSTON FRN202S 2 FURION C/MARCHA A-2 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "198322",
+   "nome": "BIC. HOUSTON FRN203S S FURION C/MARCHA A-2 21 203 88.90 142.3",
+   "g1": "88,90",
+   "g2": "142,24",
+   "duvida": true
+  },
+  {
+   "nce": "198324",
+   "nome": "FOGAO ITATIAIA ITAGLASS PLUS 5 5B AA MVD B",
+   "g1": "173,30",
+   "g2": "277,40",
+   "duvida": true
+  },
+  {
+   "nce": "198329",
+   "nome": "Coz. ITATIAIA LUCE 8PTS 3VD BCO 51 212 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "198331",
+   "nome": "IMP. HP sMATT TaNK 584 WIFI/USB MuLTIF. 516 19 e 99.2 158.80",
+   "g1": "158,80",
+   "g2": "254,08",
+   "duvida": true
+  },
+  {
+   "nce": "198355",
+   "nome": "FORNO MONDIAL MO-01-21-B MICROO 1200W",
+   "g1": "47,60",
+   "g2": "76,10",
+   "duvida": true
+  },
+  {
+   "nce": "198370",
+   "nome": "TV. LG LED 32LR600BPSA HD SMT IA BT 2HDM",
+   "g1": "246,60",
+   "g2": "394,70",
+   "duvida": true
+  },
+  {
+   "nce": "198385",
+   "nome": "FORNO FISCHER 34313-94809 ELET POP GRILL 76 131 89.70 143.5",
+   "g1": "89,70",
+   "g2": "43,50",
+   "duvida": true
+  },
+  {
+   "nce": "198438",
+   "nome": "TV. AOC LED 43S5045/78G FHD SMT 3HDMI US",
+   "g1": "204,60",
+   "g2": "327,30",
+   "duvida": true
+  },
+  {
+   "nce": "198460",
+   "nome": "FIT cOZ. DEMOBILE AMoRA 1opT 2g E GC/PES AM 90 212 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "198463",
+   "nome": "BIC. HOUSTON NMN201S NINA CEST/MARCH A-2",
+   "g1": "79,90",
+   "g2": "127,90",
+   "duvida": true
+  },
+  {
+   "nce": "198464",
+   "nome": "BIC. HOUSTON NMN203S NINA CEST/MARCH A-2 21 203 79.90 127.9",
+   "g1": "79,90",
+   "g2": "127,84",
+   "duvida": true
+  },
+  {
+   "nce": "198465",
+   "nome": "BIC. HOUSTON TMN202S TRUP C/MARCHA A-20",
+   "g1": "79,90",
+   "g2": "127,90",
+   "duvida": true
+  },
+  {
+   "nce": "198466",
+   "nome": "BIC. HOUSTON TMN203S TRUP C/MARCHA A-20 21 203 79.90 127.9",
+   "g1": "79,90",
+   "g2": "127,84",
+   "duvida": true
+  },
+  {
+   "nce": "198607",
+   "nome": "CAIXA MULTM. AIWA AWS-BBS-01-B BOOMBO 20 519 191 276.30 442.1",
+   "g1": "276,30",
+   "g2": "442,08",
+   "duvida": true
+  },
+  {
+   "nce": "198609",
+   "nome": "TORRE ACUSTICA AIWA AWS-T2W-02 BT 2300WR",
+   "g1": "276,30",
+   "g2": "442,10",
+   "duvida": true
+  },
+  {
+   "nce": "198628",
+   "nome": "ARM. NOTAVEL MULTI-USO NT4040 ) 4PT FRE TR 7 212 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "198681",
+   "nome": "BALCAO INDEKES 1PT 1GAV P/COOKTOP 5B FRJ",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "198817",
+   "nome": "FOGAO ESMALTEC IDEAL POP F4ISP 4120 4 BC 74 130 96.00 153.6",
+   "g1": "96,00",
+   "g2": "53,60",
+   "duvida": true
+  },
+  {
+   "nce": "198819",
+   "nome": "BIC. HOUSTON MRN295S MERCURY HT 2.9 T:15",
+   "g1": "113,00",
+   "g2": "180,80",
+   "duvida": true
+  },
+  {
+   "nce": "198911",
+   "nome": "CJ. POLIMAN LIZ 160X090 TVD 6C LINEA CAR 44 211 406.10",
+   "g1": "406,10",
+   "g2": "649,76",
+   "duvida": true
+  },
+  {
+   "nce": "198963",
+   "nome": "ESCRIV. TELASUL VERSA 1PT BCO/FREIJO 60 210 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "198964",
+   "nome": "FRUTEIRA TELASUL ESMERALDA 1PT 1GAV C/TP 73 212 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "198971",
+   "nome": "FOGAO ESMALTEC IDEAL POP F4ISB 412 0 4 BC 74 1 3 0 96.00 153.6",
+   "g1": "96,00",
+   "g2": "53,60",
+   "duvida": true
+  },
+  {
+   "nce": "198972",
+   "nome": "FOGAO ESMALTEC IDEAL POP F5ISB e 5120 5 BC 74 130 138.1 221.00",
+   "g1": "138,10",
+   "g2": "221,00",
+   "duvida": true
+  },
+  {
+   "nce": "199011",
+   "nome": "ESCRIV. DEMOBILE VITORIA 1PT 1GAV AMD TO 60 210 74.40",
+   "g1": "74,40",
+   "g2": "119,04",
+   "duvida": true
+  },
+  {
+   "nce": "199097",
+   "nome": "G-ROUPA ATUALLE ATENA 6P 3G PES/ESP AC M 81 209 342.10",
+   "g1": "342,10",
+   "g2": "547,36",
+   "duvida": true
+  },
+  {
+   "nce": "199203",
+   "nome": "FOGAO DAKO SUPREME GLASS : 25 5BC M.VD PTO 74 130 233.20 373.2",
+   "g1": "233,20",
+   "g2": "373,70",
+   "duvida": true
+  },
+  {
+   "nce": "199210",
+   "nome": "G-ROUPA DEMOBILE GIARDINO 6P 4G PES/ESP 81 209 371.80",
+   "g1": "371,80",
+   "g2": "594,88",
+   "duvida": true
+  },
+  {
+   "nce": "199212",
+   "nome": "COMODA DEMOBILE GIARDINO 6G C/PES NOG/NU 47 209 197.30",
+   "g1": "197,30",
+   "g2": "315,68",
+   "duvida": true
+  },
+  {
+   "nce": "199222",
+   "nome": "EST. HOME MOBLER SANTOS 2.00 2PT OFW/AMD 6 4 21 141.2",
+   "g1": "2,00",
+   "g2": "141,20",
+   "duvida": true
+  },
+  {
+   "nce": "199230",
+   "nome": "GRILL E SAND. 1 BRITANIA BGR25B 750W 220V",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "199494",
+   "nome": "G-ROUPA DEMOBILE RIVA 2 P 4G C/ESP/PES CI 81 2 09 342.10",
+   "g1": "342,10",
+   "g2": "547,36",
+   "duvida": true
+  },
+  {
+   "nce": "199577",
+   "nome": "CAIXA PHILIPS PARTY TAX5509/78 BT 2400WR",
+   "g1": "276,30",
+   "g2": "442,10",
+   "duvida": true
+  },
+  {
+   "nce": "200069",
+   "nome": "RACK BANCADA CAEMMUN MONDRIAN 2PT OFW MR 120 210 96.70",
+   "g1": "96,70",
+   "g2": "154,72",
+   "duvida": true
+  },
+  {
+   "nce": "200193",
+   "nome": "G-ROUPA NOTAVEL NT6035 6PT 3GAV FRJ TR / O 81 209 371.80",
+   "g1": "371,80",
+   "g2": "594,88",
+   "duvida": true
+  },
+  {
+   "nce": "200433",
+   "nome": "TV. SAMSUNG LED UN32H5000FGXZD HD SMTV",
+   "g1": "180,80",
+   "g2": "289,40",
+   "duvida": true
+  },
+  {
+   "nce": "200491",
+   "nome": "COL-BOX ESP ONIX NEW PANAMA 138X188 C-10 529 213 167.6(",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "200501",
+   "nome": "CJ. SÃO CARLOS AYLA 4C ELANE RED. CINAM/ 4.4 211 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "200523",
+   "nome": "ESCRIV. ARTELY NOMAD EXTENS. O1PT CIN/OF 60 210 96.70",
+   "g1": "96,70",
+   "g2": "154,72",
+   "duvida": true
+  },
+  {
+   "nce": "200535",
+   "nome": "PAINEL CAEMMUN JADE 1PT DESL. FRJ/OFW 425 210 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "200550",
+   "nome": "TV . SAMSUNG LED UN50U8600FGXZD UHD SMT",
+   "g1": "386,10",
+   "g2": "617,80",
+   "duvida": true
+  },
+  {
+   "nce": "200563",
+   "nome": "G-ROUPA ATUALLE DURBAN 6P 3G PES ESP AC 81 20 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "200582",
+   "nome": "G-ROUPA ATUALLE LINCE 3P 2G PES ESP AC M 81 209 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "200583",
+   "nome": "G-ROUPA ATUALLE DURBAN 6P 3G PES ESP AC 81 20 9 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "200597",
+   "nome": "FOGAO ESMALTEC IDEAL TOP GLASS T4VAP 412 74 130 157.90 252.5",
+   "g1": "157,90",
+   "g2": "252,50",
+   "duvida": true
+  },
+  {
+   "nce": "200598",
+   "nome": "FOGAO ESMALTEC IDEAL TOP GLASS T5VAP 512 74 13 0 173.3 277.40",
+   "g1": "173,30",
+   "g2": "277,40",
+   "duvida": true
+  },
+  {
+   "nce": "200620",
+   "nome": "CAIXA PULSE SP517 TORRE DOUBLE 10\" 2500W",
+   "g1": "276,30",
+   "g2": "442,10",
+   "duvida": true
+  },
+  {
+   "nce": "200645",
+   "nome": "TEL. CEL. SAMSUNG A175F 7 A17 25 6GB 6.7\" A",
+   "g1": "207,20",
+   "g2": "331,80",
+   "duvida": true
+  },
+  {
+   "nce": "200647",
+   "nome": "TEL. CEL. SAMSUNG A175F A17 256GB 6.7 \" F 502 193 207.20 331.8",
+   "g1": "207,20",
+   "g2": "331,80",
+   "duvida": true
+  },
+  {
+   "nce": "200660",
+   "nome": "COMODA AVELAN BETIS 1PT 4GAV C/PES FRJ/O 47 209 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "200679",
+   "nome": "CAIXA PHILIPS PARTY TAX4000/78 BT 1500WR",
+   "g1": "125,70",
+   "g2": "201,20",
+   "duvida": true
+  },
+  {
+   "nce": "200688",
+   "nome": "TEL. CEL. MOTOROLA XT2535-1 G06 4/256GB 502 193 207.20 331.8",
+   "g1": "207,20",
+   "g2": "331,80",
+   "duvida": true
+  },
+  {
+   "nce": "200692",
+   "nome": "PAINEL NOTAVEL NT1155 1PT OFW/FREIJO 425 210 81.80",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "200705",
+   "nome": "TABLET r SaMsUNG x133N TAB A11 64cB WiFI",
+   "g1": "183,00",
+   "g2": "292,80",
+   "duvida": true
+  },
+  {
+   "nce": "200706",
+   "nome": "TV. LG LED 50UA8550PSA UHD 4K SMT IA 3HL 142 218 443.30 709.3",
+   "g1": "443,30",
+   "g2": "709,28",
+   "duvida": true
+  },
+  {
+   "nce": "200708",
+   "nome": "TV. LG LED 60UA8550PSA UHD 4K SMT IA 3HL 142 218 529.10 846.6",
+   "g1": "529,10",
+   "g2": "846,56",
+   "duvida": true
+  },
+  {
+   "nce": "200723",
+   "nome": "G-ROUPA TOZETTO IDEAL/CAP 2 PGD + 3 P PQ 3G E 81 209 283.",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "200729",
+   "nome": "CAIXA JBL PARTYBOX CLUB120 BT 160WRMS PT",
+   "g1": "316,30",
+   "g2": "506,00",
+   "duvida": true
+  },
+  {
+   "nce": "200791",
+   "nome": "22055505 5515 e = 1 TEL. CEL. XIAMI CXA17RE REDMI a5 128B F 2",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "200824",
+   "nome": "G–ROUPA DEMOBILE DOMO 4 PT 4GV PES/ESP CI 81 209 223.10",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "200841",
+   "nome": "CABECEIRA SOC. VITORIA i C/BOTAO 120X140 C 270 209 59.50",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "200851",
+   "nome": "CAIXA AMVOX AMPLIF ACA1101 BLAC DUP. 110",
+   "g1": "221,20",
+   "g2": "354,10",
+   "duvida": true
+  },
+  {
+   "nce": "200855",
+   "nome": "TORRE ACUSTICA MONDIAL TM-2200 BT 2200WR 668 191 276.3 442.1",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "200856",
+   "nome": "FRITADEIRA 1 MONDIAL AFON-12L-BI 12L 2000W",
+   "g1": "82,70",
+   "g2": "132,30",
+   "duvida": true
+  },
+  {
+   "nce": "200870",
+   "nome": "AR 03 10EM 1 IV",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": true
+  },
+  {
+   "nce": "200894",
+   "nome": "TV. SAMSUNG QLED QN43Q5FAAGXZD FHD SMT B",
+   "g1": "328,90",
+   "g2": "526,20",
+   "duvida": true
+  },
+  {
+   "nce": "200904",
+   "nome": "CAIXA MULTILASER PULSE SP519 PULSBOX 130 30 191 258.30 413.4",
+   "g1": "258,30",
+   "g2": "413,28",
+   "duvida": true
+  },
+  {
+   "nce": "200905",
+   "nome": "CAIXA MULTILASER PULSE SP408 BURST 2 2 600",
+   "g1": "141,80",
+   "g2": "226,80",
+   "duvida": true
+  },
+  {
+   "nce": "200915",
+   "nome": "PARAFUSADEIRA FURAD. BosCH 06019 0E3 G 111 152 29.7 0 47.6 PAPAUSADEIRA PHILCO PF12M BAT BOORA",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": true
+  },
+  {
+   "nce": "200940",
+   "nome": "G-ROUPA ALBATROZ ATENA 2P 6G ESP/PES CIN 81 209 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "200942",
+   "nome": "COMODA SAPATEIRA ALBATROZ ATENA 2P 4G CI 47 209 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "200974",
+   "nome": "CJ. INDEKES MARROCOS 4C BELLA 090 TVD ) FR 4.4 211 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "200978",
+   "nome": "3 TV. TCL QLED 32S5K FHD SMTV IA BT : 2HDM1 142 21 8 204.60 327.3",
+   "g1": "204,60",
+   "g2": "327,36",
+   "duvida": true
+  },
+  {
+   "nce": "201111",
+   "nome": "TV. AOC LED 32S5155/78G HD SMT 3HDMI 1US",
+   "g1": "148,10",
+   "g2": "236,90",
+   "duvida": true
+  },
+  {
+   "nce": "201115",
+   "nome": "RACK L.BRASIL PORTO 2PT JEQ/OFW FSC 120 210 111.50",
+   "g1": "111,50",
+   "g2": "178,40",
+   "duvida": true
+  },
+  {
+   "nce": "201150",
+   "nome": "KIT NESHER NOBREZA 210 7PT 2GAV CARV/TIT 90 212 371.80",
+   "g1": "371,80",
+   "g2": "594,88",
+   "duvida": true
+  },
+  {
+   "nce": "201152",
+   "nome": "LAV. COLORMAQ : LCA 14 AUTOMAT. 14KG BCO",
+   "g1": "292,30",
+   "g2": "467,90",
+   "duvida": true
+  },
+  {
+   "nce": "201154",
+   "nome": "RACK BANCADA MOBLER DIADEMA 200 2P 1G OF 120 210 96.70",
+   "g1": "96,70",
+   "g2": "154,72",
+   "duvida": true
+  },
+  {
+   "nce": "201156",
+   "nome": "RACK BANCADA MOBLER DOURADOS 180 2P 1G 0 120 210 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "201167",
+   "nome": "CAIXA MULTM. AIWA AWS-SP-04-LB SPEAKER",
+   "g1": "104,70",
+   "g2": "167,50",
+   "duvida": true
+  },
+  {
+   "nce": "201193",
+   "nome": "CAIXA MULTM. AIWA AWS-BBS-01-LBL BOOM",
+   "g1": "276,30",
+   "g2": "442,10",
+   "duvida": true
+  },
+  {
+   "nce": "201194",
+   "nome": "G-ROUPA DEMOBILE ROMA 4 P 6G C/ESP CIN/OF 81 2 09 223.10",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "201235",
+   "nome": "KIT coz. AVELAN SOFIA 180 6P 3 FRJ/CAFE 90 212 197.30",
+   "g1": "197,30",
+   "g2": "315,68",
+   "duvida": true
+  },
+  {
+   "nce": "201236",
+   "nome": "G-ROUPA AVELAN CATANIA 7P 3G PES ESP FRJ 81 209 252.80",
+   "g1": "252,80",
+   "g2": "404,48",
+   "duvida": true
+  },
+  {
+   "nce": "201275",
+   "nome": "POLT. MATRIX KWID RECLINAVEL TC425 CHUMB 114 208 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "201286",
+   "nome": "KIT COZ. DEMOBILE SELECT 178 6PT 2G AMND 90 212 141.20",
+   "g1": "141,20",
+   "g2": "225,92",
+   "duvida": true
+  },
+  {
+   "nce": "201296",
+   "nome": "CAIXA: MULTM. PHILCO PBS220BT SPEAKER",
+   "g1": "104,70",
+   "g2": "167,50",
+   "duvida": true
+  },
+  {
+   "nce": "201320",
+   "nome": "FORNO : MONDIAL FRN-52-BI-2 2 ELET. 52L 1800 76 131 47.60 76.1",
+   "g1": "47,60",
+   "g2": "76,10",
+   "duvida": true
+  },
+  {
+   "nce": "201337",
+   "nome": "FOGAO ITATIAIA STAR NEW 6BCS A.AUT. PTO 74 130 157.90 252.5",
+   "g1": "157,90",
+   "g2": "252,50",
+   "duvida": true
+  },
+  {
+   "nce": "201377",
+   "nome": "G-ROUPA MOVAL TORONTO 2P 3G ESP/PES FRJ / 81 209 371.80",
+   "g1": "371,80",
+   "g2": "594,88",
+   "duvida": true
+  },
+  {
+   "nce": "201385",
+   "nome": "TV. AOC LED 43S5155/78 FHD SMT 3HDMI USB 142 218 204.60 327.3",
+   "g1": "204,60",
+   "g2": "327,36",
+   "duvida": true
+  },
+  {
+   "nce": "201413",
+   "nome": "9 0 212 371.80 MESA DE CENTRO ARTELY MILA C/RODIZIO CIN 97 210 74.4",
+   "g1": "74,40",
+   "g2": "119,04",
+   "duvida": true
+  },
+  {
+   "nce": "201415",
+   "nome": "KIT coZ. INDEKES NEW BRAGa 160 7P 1G FRJ 90 212 197.30",
+   "g1": "197,30",
+   "g2": "315,68",
+   "duvida": true
+  },
+  {
+   "nce": "201416",
+   "nome": "CAIXA MONDIAL CM-300-N AMPLIF. BT 300WRM",
+   "g1": "71,00",
+   "g2": "113,50",
+   "duvida": true
+  },
+  {
+   "nce": "201429",
+   "nome": "CJ. SAO CARLOS VERONA 4C LUNA 120X090 CI 4.4 211 223.10",
+   "g1": "223,10",
+   "g2": "356,96",
+   "duvida": true
+  },
+  {
+   "nce": "201566",
+   "nome": "CABECEIRA SOC. GRANADA C/ALMOF 120X140 ) 270 209 59.50",
+   "g1": "59,50",
+   "g2": "95,20",
+   "duvida": true
+  },
+  {
+   "nce": "201572",
+   "nome": "CJ. SÃO CARLOS LAIS 6C AVILA TVD 158,5X9 4.4 211 371.80",
+   "g1": "371,80",
+   "g2": "594,88",
+   "duvida": true
+  },
+  {
+   "nce": "201575",
+   "nome": "ARM. VILA RICA MULTI-USO LINE 2P CH/PES 7 212 81.80",
+   "g1": "81,80",
+   "g2": "130,88",
+   "duvida": true
+  },
+  {
+   "nce": "201585",
+   "nome": "SOFA SOC. BURGOS 3/2 LUG. C-217 131 20 8 406.1",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201624",
+   "nome": "CAIXA MONDIAL CM-550-L AMPLIF. BT/USB 55",
+   "g1": "125,70",
+   "g2": "201,20",
+   "duvida": true
+  },
+  {
+   "nce": "201628",
+   "nome": "LIQUID. ARNO LQ12 POWER MIX 3V+P 2L 700W",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "201641",
+   "nome": "FOGAO ATLAS MILAO PLUS 25 4B A.AUT PTO B 74 130 118 70 190.00",
+   "g1": "118,70",
+   "g2": "190,09",
+   "duvida": true
+  },
+  {
+   "nce": "201677",
+   "nome": "VENT. MALLORY CHRONOS AOCM COL PT/DO 22 14 4",
+   "g1": "29,70",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "201741",
+   "nome": "G-ROUPA MOVAL MIAMI 4 P 4G C/PES/ESP CARV 8 1 209 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "201780",
+   "nome": "COMODA ATUALLE PARIS NEW 1PT C/PES ACA M 47 209 126.40",
+   "g1": "126,40",
+   "g2": "202,24",
+   "duvida": true
+  },
+  {
+   "nce": "201790",
+   "nome": "TV. AOC DLED 50U7066/78G UHD SMT 4K 4HDM 142 218 279.60 447.4",
+   "g1": "279,60",
+   "g2": "447,36",
+   "duvida": true
+  },
+  {
+   "nce": "201791",
+   "nome": "TV. PHILIPS DLED 65PUG8100/78 UHD SMTV 4 142 218 443.3C 709.3",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201793",
+   "nome": "FORNO PHILCO PMO24E MICROONDAS 20L 1100W",
+   "g1": "99,20",
+   "g2": "157,30",
+   "duvida": true
+  },
+  {
+   "nce": "201818",
+   "nome": "ARM. DEMOBILE MULTI-USO NEO 2PT 1G CINA/ 7 212 96.7",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201861",
+   "nome": "COL-BOX MOLA ONIX TOKYO 056X088X188 52 9 213 167.60",
+   "g1": "167,60",
+   "g2": "268,16",
+   "duvida": true
+  },
+  {
+   "nce": "201862",
+   "nome": "COL-BOX MOLA ONIX TOKYO 056X138X188 52 9 213 223.1",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201864",
+   "nome": "COL-BOX MOLA ONIX DALLAS 056x138x188 C-1 52 9 213 197.3",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201866",
+   "nome": "COL-BOX MOLA ONIX GUANABARA 55X138X188 C 52 9 213 283.7",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "201893",
+   "nome": "G-ROUPA ANDIRA BURITI 4P 2G C/PES CINAM/ 81 209 283.70",
+   "g1": "283,70",
+   "g2": "453,92",
+   "duvida": true
+  },
+  {
+   "nce": "201897",
+   "nome": "FOGAO ESMALTEC IDEALI ECO F4MFB 4129 4BC",
+   "g1": "43,90",
+   "g2": "70,40",
+   "duvida": true
+  },
+  {
+   "nce": "202040",
+   "nome": "TV . SAMSUNG MINI LED UN50M75HAGXZD 4K SM 142 218 414.70 663.5",
+   "g1": "414,70",
+   "g2": "663,52",
+   "duvida": true
+  },
+  {
+   "nce": "202063",
+   "nome": "LIMLTIZADOR VENTISOL CLIN60 PRO02 2 DP 60 558 1 4 8 24 6 . 0 0 393.6",
+   "g1": "",
+   "g2": "",
+   "duvida": true
+  },
+  {
+   "nce": "202143",
+   "nome": "TV. LG QNED 55QNED70BSA UHD 4K SMT IA BT",
+   "g1": "500,50",
+   "g2": "800,80",
+   "duvida": true
+  },
+  {
+   "nce": "202147",
+   "nome": "BATED. LPHILCO PBP90A TURBo PLANeET. 907W CAF. ELECTROLUX ECH10 ELeT. 15XICARAS 2",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": true
+  },
+  {
+   "nce": "261736",
+   "nome": "ONC ELECTROLUX HI44OT HORIZ IN 400L 1T",
+   "g1": "583,10",
+   "g2": "933,50",
+   "duvida": true
+  },
+  {
+   "nce": "175869",
+   "nome": "BEBED. ESMALTEC GEL. EGM3OMN MESA 220V B",
+   "g1": "111,00",
+   "g2": "177,50",
+   "duvida": false
+  },
+  {
+   "nce": "175870",
+   "nome": "BEBED. ESMALTEC GEL. EGM30MN MESA 220V P",
+   "g1": "111,00",
+   "g2": "177,50",
+   "duvida": false
+  },
+  {
+   "nce": "179355",
+   "nome": "RADIO MOTOBRAS RMPFT 73AC AM/FM 7FX 1W R",
+   "g1": "104,70",
+   "g2": "167,50",
+   "duvida": false
+  },
+  {
+   "nce": "184384",
+   "nome": "PURIFICADOR IBBL FR600 SPECIALE PRATA",
+   "g1": "111,00",
+   "g2": "177,50",
+   "duvida": false
+  },
+  {
+   "nce": "184561",
+   "nome": "PRANCHA GAMA APP2205 ELEGANZA PLUS 210G 531 154 12.80 20.6",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "185185",
+   "nome": "GRILL E SAND. ERITANIA CROME INOX 220V",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "187903",
+   "nome": "VAPORIZADOR B&D BDV2000V-B2 1200W 220V 133 0 147 37.70 60.4",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "187992",
+   "nome": "155 12.80",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "189355",
+   "nome": "LAV. COLORMAQ LCS s 10.0 SEMI-AUT 10KG BCO 92 141 94.60 151.4",
+   "g1": "94,60",
+   "g2": "151,40",
+   "duvida": false
+  },
+  {
+   "nce": "189655",
+   "nome": "LAV. COLORMAQ LCS 10. 0 SEMI-AUT 10KG PTA",
+   "g1": "94,60",
+   "g2": "151,40",
+   "duvida": false
+  },
+  {
+   "nce": "189698",
+   "nome": ".ONDL 20.60",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "190725",
+   "nome": "BATED. MONDIAL B PRTICA 3+ 40W ONALRL 55 a+R 50",
+   "g1": "64,00",
+   "g2": "102,50",
+   "duvida": false
+  },
+  {
+   "nce": "190727",
+   "nome": "LIQUID. . MONDIAL L-0B 12P 1 95 15 29.70 47.",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "190816",
+   "nome": "SECADOR TAIFF EASY 2VEL 1700W 220V",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "191231",
+   "nome": "LIQUID. MONDIAL L-550-W 2V+P 1,5L 550w",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "191745",
+   "nome": "KIT APAR. DE PELOS GAMA GC X 6 2 3 9 EM1 BI V",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "192272",
+   "nome": "SECADOR GAMA ITALY EOLIC TRAVEL 2V 1600W",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "192700",
+   "nome": "GRILL E SAND . d MULTI LASER CE044 750W PTO",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "192705",
+   "nome": "FERRO MONDIAL FSN-55-B A SECO 1000W/1200",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "192706",
+   "nome": "FERRO MONDIAL FSN-55-W A SECO 1000W/1200",
+   "g1": "72,10",
+   "g2": "115,30",
+   "duvida": false
+  },
+  {
+   "nce": "192713",
+   "nome": "BATED. MONDIAL BP-03-B PLANeT. 12VEL",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "192804",
+   "nome": "LAV. COLORMAQ LCS 20 SEMI-AUT 20KG PTA",
+   "g1": "129,00",
+   "g2": "206,40",
+   "duvida": false
+  },
+  {
+   "nce": "193266",
+   "nome": "FRITADEIRA l MONDIAL AFN40RI A.F 4L 1500W",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "193810",
+   "nome": "CLIMATIZADOR VENTISOL CLIN60 PRO 60L 150 558 148 144.10 230.7",
+   "g1": "144,10",
+   "g2": "230,70",
+   "duvida": false
+  },
+  {
+   "nce": "193857",
+   "nome": "VENT. MONDIAL VTX-40P-8P S.TUR PARED 40C 1",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "194073",
+   "nome": "MAQ. SINGER M2405 8 PONTOS VEL.750 C/LED",
+   "g1": "112,50",
+   "g2": "179,90",
+   "duvida": false
+  },
+  {
+   "nce": "194459",
+   "nome": "FURAD. PHILCO PFU03MF 1 IMPAC 650W C/MAL",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "194461",
+   "nome": "SERRA PHILCO PTTO1 TICO-TICO CABO 1,88M",
+   "g1": "19,70",
+   "g2": "31,60",
+   "duvida": false
+  },
+  {
+   "nce": "194466",
+   "nome": "ESMERILHADEIRA PHILCO PEMO2 DISCO DESBA.",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "195074",
+   "nome": "ESCOVA MONDIAL ES11BI SECADORA 1200W/130",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196259",
+   "nome": "ESCOVA BRITANIA BEC07R SOFT SECAD 1300W",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "196262",
+   "nome": "CORTADOR R GAMA ITALY T923 P/CABELO USB M-",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "196469",
+   "nome": "UMIDIFICADOR MULTILASER F.PRIC HC115 3,4 580 163 22.9 36.60",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "196470",
+   "nome": "CORTADOR MONDIAL C CR-02 CABELO H.STYLO",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196511",
+   "nome": "PRANCHA GAMA BECHS2598 ERGOSTYLER BABOSA",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "196516",
+   "nome": "SECADOR GAMA BECHD2794 ELEGANZ PLUS",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196587",
+   "nome": "ESCOVA BRITANIA BEC02PR SEC. 2V 3T 1300W",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "196647",
+   "nome": "PRANCHA LIZZ JJ1000 NEO TITANIUM 230C BI",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196648",
+   "nome": "PRANCHA LIZZ CF5000 EMPIRE 230C BIV AZUL",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "196650",
+   "nome": "ESCOVA LIZZ FT5000 EASY ROTATIVA JON",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196651",
+   "nome": "SECADOR LIZZ JF1001 MINI 2V DOBRAV. BIV 129 153 22.9 36.60",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "196671",
+   "nome": "UMIDIFICADOR BRITANIA BUDO4B 4, 8L BIV BR",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196700",
+   "nome": "VENT . BRITANIA BVT400 MAXX FORCE 2EM1 40 1 4 4 148 29.7€ 47.6",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "196701",
+   "nome": "VENT. BRITANIA BVT450 MAXX FORCE COL 40C",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "197053",
+   "nome": "FOGAO ITATIAIA STAR NEW 4 4BCS A.AUT. BRAN",
+   "g1": "118,70",
+   "g2": "190,00",
+   "duvida": false
+  },
+  {
+   "nce": "197054",
+   "nome": "FOGAO ITATIAIA STAR e NEW 4BCS A.AUT. PRET",
+   "g1": "118,70",
+   "g2": "190,00",
+   "duvida": false
+  },
+  {
+   "nce": "197111",
+   "nome": "FORNO PHILCO PFE52P ELETRICO 50L 2000w p 76 131 89.70 143.",
+   "g1": "89,70",
+   "g2": "143,50",
+   "duvida": false
+  },
+  {
+   "nce": "197199",
+   "nome": "VENT. BRITANIA BVT3 01 MESA 30CM 220V 1 4 4 148 29.7 47.6",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "197206",
+   "nome": "LIQUID.",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "197223",
+   "nome": "REFRIG. LG GN–B392PLM2 FF 2 PT 395L 220V 124 135 443.0 708.80",
+   "g1": "443,00",
+   "g2": "708,80",
+   "duvida": false
+  },
+  {
+   "nce": "197368",
+   "nome": "FOGAO DAKO MAGISTER INOX 5B PTO BIV",
+   "g1": "188,80",
+   "g2": "302,20",
+   "duvida": false
+  },
+  {
+   "nce": "197474",
+   "nome": "BIC. HOUSTON c NCN161S NIC A-16 AZUL ESCUR",
+   "g1": "79,90",
+   "g2": "127,90",
+   "duvida": false
+  },
+  {
+   "nce": "197475",
+   "nome": "BIC. HOUSTON NCN163S NIC A-16 LARANJA",
+   "g1": "79,90",
+   "g2": "127,90",
+   "duvida": false
+  },
+  {
+   "nce": "197925",
+   "nome": "FOGAO MUELLER MFV5BB 5B MV AC.AUT PTO FC",
+   "g1": "173,30",
+   "g2": "277,40",
+   "duvida": false
+  },
+  {
+   "nce": "198158",
+   "nome": "CLIMATIZADOR SYMPHONY WINTER 80L BRANCO 558 148 194.50 311.2",
+   "g1": "194,50",
+   "g2": "311,20",
+   "duvida": false
+  },
+  {
+   "nce": "198194",
+   "nome": "PARAFUSADEIRA FURAD. BOSCH 06019F40E3 GS",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "198289",
+   "nome": "TEL. CEL. POSITIVO P38 3G DUAL CHIP PRET 502 193 38.30 61.3",
+   "g1": "38,30",
+   "g2": "61,30",
+   "duvida": false
+  },
+  {
+   "nce": "198308",
+   "nome": "FOGAO ATLAS COOKTOP UTOP 5Q TC 5BCS PRET 74 933.50",
+   "g1": "81,10",
+   "g2": "129,80",
+   "duvida": false
+  },
+  {
+   "nce": "198359",
+   "nome": "LIQUID. ARNO LN63 POWER MAX 1 5 V + P 1 400W",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "198376",
+   "nome": "FRITADEIRA BRITANIA BFR50 A.F 5,5L 1500W",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "198397",
+   "nome": "FOGAO ATLAS MILAO GLASS 2.4 4B A.AUT MV P",
+   "g1": "118,70",
+   "g2": "190,00",
+   "duvida": false
+  },
+  {
+   "nce": "198449",
+   "nome": "ESCOVA GAMA ITALY ELEGANZA PLUS SECAD",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "198509",
+   "nome": "ESP. BRITANIA DE FRUTA TURBO PRO 260W 1,",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "198512",
+   "nome": "ESCOVA MONDIAL ES-JU-03 SECADORA 1300W B",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "198514",
+   "nome": "SAND. MONDIAL S-07 GRILL PREMIUM IN 800W 128 157 22.9 0 36.60",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "198516",
+   "nome": "SAND. MONDIAL S-19 GRILL 800W VM/IN 220V 128 157 22.9 ( 36.60",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "198752",
+   "nome": "TEL. CEL. XIAOMI CX401PRE REDMI 14C 256G 5",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "198753",
+   "nome": "TEL. CEL. XIAOMI CX401VRD REDMI 14C 256G 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "198935",
+   "nome": "TEL. CEL. MOTOROLA XT2523-2 G05 4/128GB",
+   "g1": "74,40",
+   "g2": "119,00",
+   "duvida": false
+  },
+  {
+   "nce": "199226",
+   "nome": "FERRO AMVOX AF2110 A VAPOR 2000W 220V",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "199227",
+   "nome": "FERRO PHILCO PFE010 RETRO SECO 1000W",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "199229",
+   "nome": "CIRC. BRITANIA C50 OSCILLATION 3VEL 200W 4 3 148 56.10 89.7€",
+   "g1": "56,10",
+   "g2": "89,70",
+   "duvida": false
+  },
+  {
+   "nce": "199495",
+   "nome": "SECADOR TAIFF BLACK ION 2000W 220V 129 153 45.80 73.3",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "199518",
+   "nome": "CAP MoNDIaL C-30-18 ELeTR. 18XIC 55 2",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "199520",
+   "nome": "SECADOR MONDIAL SCP-JU-03 04 ELEM. 2000W",
+   "g1": "56,10",
+   "g2": "89,70",
+   "duvida": false
+  },
+  {
+   "nce": "199522",
+   "nome": "BATED. MONDCAL B-03-W PLANET. 12VEL",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "199703",
+   "nome": "TEL. CEL. MULTILASER P9139 UP 4G PRETO 502 193 38.3 61.3",
+   "g1": "38,30",
+   "g2": "61,30",
+   "duvida": false
+  },
+  {
+   "nce": "200530",
+   "nome": "TEL. CEL. INFINIX HOT 50I 4/256GB 6.7\" P 502 193 128.70 205.9",
+   "g1": "128,70",
+   "g2": "205,90",
+   "duvida": false
+  },
+  {
+   "nce": "200581",
+   "nome": "ESMERILHADEIRA BOSCH GWS 700 710W 220V",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "200595",
+   "nome": "FOGAO ESMALTEC IDEAL MAST T4ITP",
+   "g1": "157,90",
+   "g2": "252,57",
+   "duvida": false
+  },
+  {
+   "nce": "200603",
+   "nome": "REFRIG. ELECTROLUX RE21 DEFROST 1 P 213L",
+   "g1": "218,40",
+   "g2": "349,40",
+   "duvida": false
+  },
+  {
+   "nce": "200610",
+   "nome": "TEL. CEL. SAMSUNG A075M A07 128GB 6.7 \" F 502 193 85.80 137.3",
+   "g1": "85,80",
+   "g2": "137,30",
+   "duvida": false
+  },
+  {
+   "nce": "200632",
+   "nome": "CLIMATIZADOR CLIMAT CLM-70LT TP 70L 280W 558 148 211.60 338.6",
+   "g1": "211,60",
+   "g2": "338,60",
+   "duvida": false
+  },
+  {
+   "nce": "200642",
+   "nome": "TEL. CEL. SAMSUNG GA175F A17 128GB 6.7 \" A 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "200643",
+   "nome": "TEL. CEL. SAMSUNG A175F A17 128GB 6.7\" C 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "200644",
+   "nome": "TEL. CEL. SAMSUNG A175F A17 128GB 6.7 \" P 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "200685",
+   "nome": "TEL. CEL. MOTOROLA XT2535-1 G06 4/128GB 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "200686",
+   "nome": "TEL. CEL. MOTOROLA XT2535-1 G06 4/128GB 502 193 177.30 283.7",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "200698",
+   "nome": "REFRIG. ELECTROLUX TF41 F.FREE 380LTS 2 22",
+   "g1": "443,00",
+   "g2": "708,80",
+   "duvida": false
+  },
+  {
+   "nce": "200755",
+   "nome": "FRITADEIRA BRITANIA A.F BFR36A 4,2L",
+   "g1": "64,00",
+   "g2": "102,50",
+   "duvida": false
+  },
+  {
+   "nce": "200757",
+   "nome": "FRITADEIRA PHILCO A.F PAF40A 4L 1500W",
+   "g1": "38,60",
+   "g2": "61,70",
+   "duvida": false
+  },
+  {
+   "nce": "200759",
+   "nome": "FERRO BRITANIA BFV07 VAPOR 1600W AZ 220V",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "200789",
+   "nome": "TEL. CEL. XIAOMI CX417AZU REDMI A5 128GB 502 193 157.30 251.7",
+   "g1": "157,30",
+   "g2": "251,70",
+   "duvida": false
+  },
+  {
+   "nce": "200790",
+   "nome": "TEL. CEL. XIAOMI CX417DRD REDMI A5 128GB 502 193 157.3 251.7",
+   "g1": "157,30",
+   "g2": "251,70",
+   "duvida": false
+  },
+  {
+   "nce": "200811",
+   "nome": "REFRIG. CONTINENTAL TC42 F.FREE 2P 380L 124 135 399.40 639.0",
+   "g1": "399,40",
+   "g2": "639,00",
+   "duvida": false
+  },
+  {
+   "nce": "200831",
+   "nome": "LAV. PAN. NA-F150B1WB AUT. 15KG 220V",
+   "g1": "386,90",
+   "g2": "619,10",
+   "duvida": false
+  },
+  {
+   "nce": "200844",
+   "nome": "SubGru Cod.AON S SEGURO 1ANO SEGURO 2ANOS",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "200845",
+   "nome": "CORTADOR MONDIAL CR-10-BI P/CABELO 220V",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "200865",
+   "nome": "VENT. BRITANIA BVC31A COL. 30CM 4 220V",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "200869",
+   "nome": "FRITADEIRA BRITANIA BAF11A OVEN 11L",
+   "g1": "56,10",
+   "g2": "89,70",
+   "duvida": false
+  },
+  {
+   "nce": "200871",
+   "nome": "CORTADOR BRITANIA BCR03 P/CABELO 18W",
+   "g1": "12,80",
+   "g2": "20,60",
+   "duvida": false
+  },
+  {
+   "nce": "200900",
+   "nome": "CHAPA TAIFF C GLOSS ROSE 230GRAUS BIVOLT R",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "200901",
+   "nome": "ESCOVA TAIFF GLOSS ROSE SECAD. 1200W BIV",
+   "g1": "57,90",
+   "g2": "92,60",
+   "duvida": false
+  },
+  {
+   "nce": "200912",
+   "nome": "CHURRASQ. BRITANIA BCQ40 ELETRICA 1800W",
+   "g1": "47,60",
+   "g2": "76,10",
+   "duvida": false
+  },
+  {
+   "nce": "200913",
+   "nome": "LIQUID. B0 9 5 155 22.30 3 6, .",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "200945",
+   "nome": "LIQUID. ARNO LN63 POWER MAX 1 5 V + P 22 00W",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "200946",
+   "nome": "LIQUID. ARNO LN64 POWER MAX 15V + P 2200w",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "200947",
+   "nome": "LIQUID . ARNO LN6 6 POWER MAX 15V+P 2200W",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "200957",
+   "nome": "FRITADEIRA MONDIAL AFN-50-BI AF 5L 1900W",
+   "g1": "93,80",
+   "g2": "150,00",
+   "duvida": false
+  },
+  {
+   "nce": "201025",
+   "nome": "REFRIG. ESMALTEC ROC35 PRO ) DF INV I 291L P 124 135 218.40 349.4",
+   "g1": "218,40",
+   "g2": "349,40",
+   "duvida": false
+  },
+  {
+   "nce": "201027",
+   "nome": "REFRIG. ESMALTEC RCD38 PRO DF INV 338L B",
+   "g1": "330,70",
+   "g2": "529,20",
+   "duvida": false
+  },
+  {
+   "nce": "201029",
+   "nome": "REFRIG. ESMALTEC RCD38 PRO DF INV 338L P 124 135 330.70 529.2",
+   "g1": "330,70",
+   "g2": "529,20",
+   "duvida": false
+  },
+  {
+   "nce": "201073",
+   "nome": "LIOUID. PHILCO PLQ15A 12V+P 1500W 220V",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "201085",
+   "nome": "FOGAO s SUGGAR FGICS420PT ST STAR 4BCS PRETO",
+   "g1": "118,70",
+   "g2": "190,00",
+   "duvida": false
+  },
+  {
+   "nce": "201105",
+   "nome": "FREEZER ELECTROLUX HB150 HOR INV 141L 1T",
+   "g1": "308,90",
+   "g2": "494,20",
+   "duvida": false
+  },
+  {
+   "nce": "201106",
+   "nome": "REFRIG. CONTINENTAL TC45 F.FREE 2P 400L 124 135 443.00 708.8",
+   "g1": "443,00",
+   "g2": "708,80",
+   "duvida": false
+  },
+  {
+   "nce": "201166",
+   "nome": "ESCOVA MONDIAL ERB-11-KR ROTAT. 1000W BI",
+   "g1": "29,70",
+   "g2": "47,60",
+   "duvida": false
+  },
+  {
+   "nce": "201183",
+   "nome": "TEL. CEL. OPPO A6X 4+8GB RAM 128GB AZUI 502 193 177.30 283.7 (",
+   "g1": "177,30",
+   "g2": "283,70",
+   "duvida": false
+  },
+  {
+   "nce": "201237",
+   "nome": "TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB",
+   "g1": "257,40",
+   "g2": "411,80",
+   "duvida": false
+  },
+  {
+   "nce": "201238",
+   "nome": "TEL. CEL. MOTOROLA XT2623-1 G17 4/256GB",
+   "g1": "257,40",
+   "g2": "411,80",
+   "duvida": false
+  },
+  {
+   "nce": "201321",
+   "nome": "FORNO MONDIAL FRN-52-WI-2 2 ELET. 52L",
+   "g1": "47,60",
+   "g2": "76,10",
+   "duvida": false
+  },
+  {
+   "nce": "201322",
+   "nome": "FORNO MONDIAL FRN-60-WI-2 2 ELET. 60L",
+   "g1": "89,70",
+   "g2": "143,50",
+   "duvida": false
+  },
+  {
+   "nce": "201424",
+   "nome": "SAND. CADENCE SAN400 ANTIAD. 800W PTO 22 128 157 18.20 29.2",
+   "g1": "18,20",
+   "g2": "29,20",
+   "duvida": false
+  },
+  {
+   "nce": "201489",
+   "nome": "REFRIG. MIDEA MDRT533EVD012 FF 2P 394L 2 1 2 4 135 330.7 0 529.2",
+   "g1": "330,70",
+   "g2": "529,20",
+   "duvida": false
+  },
+  {
+   "nce": "201602",
+   "nome": "VENT. BRITANIA BVC41A COL. 40CM 220V 1 4 4 14 8 45,80 73.3",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "201627",
+   "nome": "LIQUID ARNO LQ10 POWER MIX 3V+P 2 2L 200W",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "201635",
+   "nome": "TEL. CEL. 1 MOTOROLA XT2623-1 G17 4/128GB",
+   "g1": "257,40",
+   "g2": "411,80",
+   "duvida": false
+  },
+  {
+   "nce": "201636",
+   "nome": "TEL. CEL. MOTOROLA X XT2623-1 G17 4/128GB",
+   "g1": "257,40",
+   "g2": "411,80",
+   "duvida": false
+  },
+  {
+   "nce": "201639",
+   "nome": "FOGAO ATLAS 1 MILAO 25 4BCS PTO 220 81.10",
+   "g1": "96,00",
+   "g2": "153,60",
+   "duvida": false
+  },
+  {
+   "nce": "201643",
+   "nome": "FOGAO ATLAS MILAO ) GLASS 25 4B A.AUT MV P 74 130 118.7 190.00",
+   "g1": "118,70",
+   "g2": "190,00",
+   "duvida": false
+  },
+  {
+   "nce": "201644",
+   "nome": "FOGAO ATLAS MILAO GLASS 25 5B A.AUT MV P",
+   "g1": "138,10",
+   "g2": "221,00",
+   "duvida": false
+  },
+  {
+   "nce": "201675",
+   "nome": "VENT . DOMINA OSCILANTE 43CM COL. ACAI 22 1 4 4 14 8 37.7 0 60.40",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "201676",
+   "nome": "VENT. DOMINA OSCILANTE 43CM 4 COL. BRONZE",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "201722",
+   "nome": "REFRIG. LG GN–B372PQW2 FF 2PT 375L INV. 124 135 399.40 639.0",
+   "g1": "399,40",
+   "g2": "639,00",
+   "duvida": false
+  },
+  {
+   "nce": "201730",
+   "nome": "CONG. ELECTROLUX HI440T HORIZ IN 400L 1T 49 227 583.40",
+   "g1": "583,40",
+   "g2": "933,50",
+   "duvida": false
+  },
+  {
+   "nce": "201771",
+   "nome": "LAV. SUGGAR LX1022BR LAVAMAX 10KG : BR 220 92.",
+   "g1": "68,80",
+   "g2": "110,10",
+   "duvida": false
+  },
+  {
+   "nce": "201772",
+   "nome": "LAV. SUGGAR LX1022PT LAVAMAX 10KG PT",
+   "g1": "68,80",
+   "g2": "110,10",
+   "duvida": false
+  },
+  {
+   "nce": "201774",
+   "nome": "LAV. SUGGAR LE2022BR LAVAMAX ECO 20KG BR",
+   "g1": "111,80",
+   "g2": "178,90",
+   "duvida": false
+  },
+  {
+   "nce": "201776",
+   "nome": "LAV. SUGGAR LE2022PT LAVAMAX ECO 20KG PT",
+   "g1": "111,80",
+   "g2": "178,90",
+   "duvida": false
+  },
+  {
+   "nce": "201809",
+   "nome": "TEL. CEL. SAMSUNG A276B A27 256GB 5G 6.7 50 2 193 314.60 503.4",
+   "g1": "314,60",
+   "g2": "503,40",
+   "duvida": false
+  },
+  {
+   "nce": "201820",
+   "nome": "SECADOR GAMA BECHD2428 NEW LUMINA 2200W 129 153 45.80 73.3",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "202022",
+   "nome": "LIQUID. ARNO LN88 POWER MAX XXL 2200W 22",
+   "g1": "45,80",
+   "g2": "73,30",
+   "duvida": false
+  },
+  {
+   "nce": "202030",
+   "nome": "TV. TCL QLED 50P7L UHD 4K SMT IA BT 3HDM",
+   "g1": "386,10",
+   "g2": "617,80",
+   "duvida": false
+  },
+  {
+   "nce": "202032",
+   "nome": "TV. TCL QLED 55T6C UHD 4K : SMT IA BT 3HDM 1",
+   "g1": "386,10",
+   "g2": "617,80",
+   "duvida": false
+  },
+  {
+   "nce": "202069",
+   "nome": "ESCOVA PHILCO PERO2 ROTATIVA 1300W BIV C",
+   "g1": "57,90",
+   "g2": "92,60",
+   "duvida": false
+  },
+  {
+   "nce": "202071",
+   "nome": "FRITADEIRA BRITANIA A.F BAF65A 6.5L",
+   "g1": "80,10",
+   "g2": "128,20",
+   "duvida": false
+  },
+  {
+   "nce": "202077",
+   "nome": "5 MDELADR TA CUVEs 210C 150B3 9 5 155 37.70 50.4",
+   "g1": "37,70",
+   "g2": "60,40",
+   "duvida": false
+  },
+  {
+   "nce": "202083",
+   "nome": "GRILL E SAND. BRITANIA BGR02PI 750W 220V",
+   "g1": "22,90",
+   "g2": "36,60",
+   "duvida": false
+  },
+  {
+   "nce": "202089",
+   "nome": "CLIMATIZADOR VENTISOL CLIN60 PRO02 DP 60 558 148 246.00 393.6",
+   "g1": "246,00",
+   "g2": "393,60",
+   "duvida": false
+  },
+  {
+   "nce": "202129",
+   "nome": "CAIXA PHILIPS TROLLEY TAX200T/78 BT 650W",
+   "g1": "125,70",
+   "g2": "201,20",
+   "duvida": false
+  }
+ ]
+}
