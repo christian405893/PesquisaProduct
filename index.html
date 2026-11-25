@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v21</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v22</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -79,6 +79,11 @@
       <button id="csv" class="btn">Exportar CSV</button>
       <button id="backup" class="btn">Backup</button>
       <label class="btn">Restaurar<input id="restore" type="file" accept="application/json" hidden></label>
+    </div>
+    <div class="card">
+      <b>📦 Tabela que já vem no app</b>
+      <p class="hint">Carrega direto, sem tela de conferência (rápido). Não apaga estoque/preço que você já tem; só completa o que estiver vazio e atualiza o resto.</p>
+      <button id="baseBtn" class="btn primary">Carregar tabela do app</button>
     </div>
     <div class="card">
       <b>📥 Ler arquivo .json</b>

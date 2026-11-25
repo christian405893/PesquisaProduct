@@ -411,6 +411,19 @@ $('#descartar').onclick = limparLote;
 function limparLote() { $('#pdfResumo').hidden = true; lote = []; recusadas = []; pendentes = { esq: [], dir: [] }; renderPartes(); renderRecusa(); $('#fila').innerHTML = ''; $('#revisao').hidden = true; $('#linhas').innerHTML = ''; }
 
 /* ---------- Tabela / backup ---------- */
+// Tabela pronta embutida no app (tabela-lida.json): grava direto, sem tela de conferência
+$('#baseBtn').onclick = async () => {
+  const b = $('#baseBtn'); if (b.disabled) return; b.disabled = true; const t0 = b.textContent; b.textContent = 'Carregando…';
+  try {
+    const d = await (await fetch('tabela-lida.json')).json();
+    const ok = x => /^\d{6}$/.test(x.nce || '');
+    const itens = (d.produtos || []).filter(ok).map(x => ({ tipo: 'produtos', nce: x.nce, nome: x.nome || '', cor: x.cor || '', qtd: x.qtd || '', preco: x.preco || '', g1: '', g2: '', pagina: 1, raw: '' }))
+      .concat((d.seguros || []).filter(ok).map(x => ({ tipo: 'seguro', nce: x.nce, nome: x.nome || '', g1: x.g1 || '', g2: x.g2 || '', pagina: 2, raw: '' })));
+    await salvarItens(itens); aposMudar('scan');
+    toast(`${itens.length} linhas carregadas`); renderTabela(); buscar();
+  } catch (e) { toast('Não consegui carregar: ' + (e.message || e)); }
+  b.disabled = false; b.textContent = t0;
+};
 // Quadro de pendências: produtos com dados faltando
 const CAMPOS_FALTA = [['preco', 'Sem preço'], ['qtd', 'Sem estoque'], ['g1', 'Sem seguro 1 ano'], ['g2', 'Sem seguro 2 anos'], ['nome', 'Sem descrição']];
 let filtroFalta = '';
@@ -435,11 +448,13 @@ async function renderTabela() {
   const por = {};
   itens.forEach(i => (por[i.folha] ||= []).push(i));
   const ks = Object.keys(por).sort((a, b) => b - a);
-  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card"><summary class="folha">${k == 0 ? 'Sem folha de produtos (só seguro ou cadastro manual)' : 'Folha ' + k} · ${por[k].length} itens</summary>
-    <button data-delf="${k}" style="border:0;background:none;color:var(--bad)">Apagar esta folha</button>
-    <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th><th>G1</th><th>G2</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td><td>${esc(i.g1)}</td><td>${esc(i.g2)}</td></tr>`).join('')}</table></details>`).join('')
+  const linhasF = k => `<button data-delf="${k}" style="border:0;background:none;color:var(--bad)">Apagar esta folha</button>
+    <table><tr><th>NCE</th><th>Produto</th><th>Qtd</th><th>R$</th><th>G1</th><th>G2</th></tr>${por[k].map(i => `<tr><td>${esc(i.nce)}</td><td>${esc(i.nome)}</td><td>${esc(i.qtd)}</td><td>${esc(i.preco)}</td><td>${esc(i.g1)}</td><td>${esc(i.g2)}</td></tr>`).join('')}</table>`;
+  window._folhasLazy = linhasF;
+  $('#folhas').innerHTML = ks.length ? ks.map(k => `<details class="card" data-k="${k}"><summary class="folha">${k == 0 ? 'Sem folha de produtos (só seguro ou cadastro manual)' : 'Folha ' + k} · ${por[k].length} itens</summary><div class="lazy"></div></details>`).join('')
     : '<div class="empty">Tabela vazia.</div>';
 }
+$('#folhas').addEventListener('toggle', e => { const d = e.target; if (d.open && d.dataset.k !== undefined) { const z = d.querySelector('.lazy'); if (z && !z.innerHTML) z.innerHTML = window._folhasLazy(d.dataset.k); } }, true);
 $('#folhas').addEventListener('click', async e => {
   const k = e.target.dataset.delf; if (!k || !confirm(`Apagar a folha ${k}?`)) return;
   const t = db.transaction('itens', 'readwrite'), s = t.objectStore('itens');
