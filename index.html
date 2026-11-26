@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v24</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v23</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -76,25 +76,15 @@
   <!-- DIGITAR -->
   <section id="tab-digitar" class="tab">
     <div class="muted" id="digLoja"></div>
-    <div id="digInicio">
-      <h2>Adicionar tabela</h2>
-      <p class="hint">Qual tabela você vai digitar agora? O app junta as duas pelo NCE: cada produto fica com seguro, preço e estoque num cadastro só. Pode digitar as folhas em qualquer ordem, e até pessoas diferentes em aparelhos diferentes.</p>
-      <button id="digEscSeguro" class="btn primary big">🛡️ Tabela de seguros (garantia)</button>
-      <button id="digEscProdutos" class="btn primary big">📦 Tabela de produtos</button>
-      <div id="digResumo" class="card"></div>
+    <div class="chips" id="digModo"></div>
+    <p class="hint" id="digDica"></p>
+    <div id="digLinhas"></div>
+    <div class="row">
+      <button id="digAdd" class="btn">➕ Linha</button>
+      <button id="digLimpar" class="btn">Limpar</button>
     </div>
-    <div id="digTela" hidden>
-      <button id="digTrocar" class="mini" style="align-self:auto">← trocar de tabela</button>
-      <div class="chips" id="digModo"></div>
-      <p class="hint" id="digDica"></p>
-      <div id="digLinhas"></div>
-      <div class="row">
-        <button id="digAdd" class="btn">➕ Linha</button>
-        <button id="digLimpar" class="btn">Limpar</button>
-      </div>
-      <p id="digMsg" class="hint"></p>
-      <button id="digSalvar" class="btn primary big">Salvar</button>
-    </div>
+    <p id="digMsg" class="hint"></p>
+    <button id="digSalvar" class="btn primary big">Salvar</button>
   </section>
 
   <!-- TABELA -->
