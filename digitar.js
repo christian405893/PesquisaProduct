@@ -1,10 +1,10 @@
 // Digitação manual da tabela da loja: 1) garantia (seguro)  2) produtos. Funciona no celular e no PC.
 (() => {
   const MODOS = {
-    seguro: { titulo: '1 · Garantia', salvar: 'Salvar tabela de garantia', campos: [['grupo', 'Grupo', 'text'], ['nce', 'NCE', 'numeric'], ['nome', 'Descrição', 'text'], ['g1', 'Seguro 1 ano', 'decimal'], ['g2', 'Seguro 2 anos', 'decimal']] },
-    produtos: { titulo: '2 · Produtos', salvar: 'Salvar tabela de produtos', campos: [['grupo', 'Grupo', 'text'], ['nce', 'NCE', 'numeric'], ['cor', 'Nome da cor', 'text'], ['nome', 'Descrição', 'text'], ['qtd', 'Saldo', 'numeric'], ['preco', 'Preço', 'decimal']] }
+    seguro: { titulo: '🛡️ Seguros', salvar: 'Salvar tabela de garantia', campos: [['grupo', 'Grupo', 'text'], ['nce', 'NCE', 'numeric'], ['nome', 'Descrição', 'text'], ['g1', 'Seguro 1 ano', 'decimal'], ['g2', 'Seguro 2 anos', 'decimal']] },
+    produtos: { titulo: '📦 Produtos', salvar: 'Salvar tabela de produtos', campos: [['grupo', 'Grupo', 'text'], ['nce', 'NCE', 'numeric'], ['cor', 'Nome da cor', 'text'], ['nome', 'Descrição', 'text'], ['qtd', 'Saldo', 'numeric'], ['preco', 'Preço', 'decimal']] }
   };
-  let modo = 'seguro', linhas = { seguro: [], produtos: [] }, existentes = {}, tidCarregado = null;
+  let escolhido = false, modo = 'seguro', linhas = { seguro: [], produtos: [] }, existentes = {}, tidCarregado = null;
   const vazia = g => ({ grupo: g || '', nce: '', cor: '', nome: '', qtd: '', preco: '', g1: '', g2: '' });
   const chave = () => 'nce-dig-' + tidAtual;
   const lerRascunho = () => { try { const d = JSON.parse(localStorage.getItem(chave()) || 'null'); if (d) linhas = { seguro: d.seguro || [], produtos: d.produtos || [] }; } catch (e) { } };
@@ -16,16 +16,27 @@
     if (tidCarregado !== tidAtual) { linhas = { seguro: [], produtos: [] }; lerRascunho(); tidCarregado = tidAtual; }
     existentes = {}; (await todos()).forEach(i => { existentes[i.nce] = i; });
     ['seguro', 'produtos'].forEach(m => { if (!linhas[m].length) linhas[m].push(vazia()); });
-    render();
+    escolhido = false; render();
+  }
+  function resumo() {
+    const v = Object.values(existentes), tem = {
+      s: i => String(i.g1 || '').trim() || String(i.g2 || '').trim(),
+      p: i => String(i.preco || '').trim() || String(i.qtd || '').trim()
+    };
+    const ambos = v.filter(i => tem.s(i) && tem.p(i)).length, so_s = v.filter(i => tem.s(i) && !tem.p(i)).length, so_p = v.filter(i => !tem.s(i) && tem.p(i)).length;
+    $('#digResumo').innerHTML = v.length ? `<b>Nesta tabela já tem ${v.length} produtos (NCE)</b><br>✅ completos (seguro + produto): <b>${ambos}</b><br>🛡️ só com seguro, falta digitar o produto: <b>${so_s}</b><br>📦 só com produto, falta digitar o seguro: <b>${so_p}</b>` : '<span class="hint">Tabela ainda vazia. Escolha acima por onde começar.</span>';
   }
   function status(t, erro) { const s = $('#digMsg'); if (s) { s.textContent = t || ''; s.className = 'hint' + (erro ? ' erro' : ''); } }
   function render() {
+    $('#digLoja').textContent = 'Tabela: ' + rotuloLoja();
+    $('#digInicio').hidden = escolhido; $('#digTela').hidden = !escolhido;
+    if (!escolhido) return resumo();
     const M = MODOS[modo], L = linhas[modo], n = L.filter(r => !vazioTudo(r)).length;
     $('#digLoja').textContent = 'Tabela: ' + rotuloLoja();
     $('#digModo').innerHTML = Object.keys(MODOS).map(k => `<button data-modo="${k}" class="chip ${k === modo ? 'on' : ''}">${MODOS[k].titulo}</button>`).join('');
     $('#digDica').textContent = modo === 'seguro'
-      ? 'Digite primeiro a garantia: grupo, NCE, descrição e os dois seguros. O grupo se repete sozinho nas linhas novas.'
-      : 'Agora os produtos: grupo, NCE, nome da cor, descrição, saldo e preço. Se o NCE já tem garantia, a descrição e o grupo aparecem sozinhos.';
+      ? 'Tabela de seguros: grupo, NCE, descrição e os dois seguros. O grupo se repete sozinho nas linhas novas.'
+      : 'Tabela de produtos: grupo, NCE, nome da cor, descrição, saldo e preço. Se o NCE já foi digitado na outra tabela, a descrição e o grupo aparecem sozinhos.';
     $('#digLinhas').innerHTML = L.map((r, i) => `<div class="drow m-${modo}" data-i="${i}"><span class="dn">${i + 1}</span>${M.campos.map(([f, rot, im]) =>
       `<label class="df df-${f}">${rot}<input data-f="${f}" value="${esc(r[f])}" inputmode="${im}" autocomplete="off" ${f === 'nce' ? 'maxlength="6"' : ''} enterkeyhint="next"></label>`).join('')}<button class="dx" data-del="${i}" aria-label="Apagar linha">✕</button></div>`).join('');
     $('#digSalvar').textContent = M.salvar + (n ? ` (${n})` : '');
@@ -53,6 +64,9 @@
     linhas[modo].splice(+d.dataset.del, 1); if (!linhas[modo].length) linhas[modo].push(vazia()); gravarRascunho(); render();
   });
   $('#digModo').addEventListener('click', e => { const b = e.target.closest('[data-modo]'); if (b) { modo = b.dataset.modo; status(''); render(); } });
+  $('#digEscSeguro').onclick = () => { modo = 'seguro'; escolhido = true; status(''); render(); };
+  $('#digEscProdutos').onclick = () => { modo = 'produtos'; escolhido = true; status(''); render(); };
+  $('#digTrocar').onclick = () => { escolhido = false; render(); };
   $('#digAdd').onclick = () => { const L = linhas[modo]; L.push(vazia(L.length ? L[L.length - 1].grupo : '')); gravarRascunho(); render(); const i = L.length - 1; const c = $('#digLinhas').querySelector(`.drow[data-i="${i}"] input[data-f="nce"]`); if (c) c.focus(); };
   $('#digLimpar').onclick = () => { if (!confirm('Apagar tudo que está digitado nesta tabela (ainda não salvo)?')) return; linhas[modo] = [vazia()]; gravarRascunho(); status(''); render(); };
   $('#digSalvar').onclick = async () => {
@@ -73,10 +87,11 @@
     await salvarItens(itens); aposMudar();
     linhas[modo] = [vazia(L.length ? L[L.length - 1].grupo : '')]; gravarRascunho();
     toast(`${itens.length} linhas salvas em ${rotuloLoja()}`);
-    status(`✅ ${itens.length} linhas salvas.` + (suspeitos ? ` ${suspeitos} com seguro 2 anos fora do normal (~1,6× o de 1 ano): confira no quadro.` : '') + (modo === 'seguro' ? ' Agora digite os produtos (aba 2).' : ''));
-    if (modo === 'seguro') modo = 'produtos';
-    await abrirTab(); buscar();
+    status(`✅ ${itens.length} linhas salvas.` + (suspeitos ? ` ${suspeitos} com seguro 2 anos fora do normal (~1,6× o de 1 ano): confira no quadro.` : ''));
+    existentes = {}; (await todos()).forEach(i => { existentes[i.nce] = i; }); render(); buscar();
   };
-  document.querySelector('nav button[data-tab="digitar"]').addEventListener('click', abrirTab);
-  window.abrirDigitar = abrirTab; window._dig = () => ({ linhas, modo });
+  const corpo = () => $('#tabelaCorpo');
+  $('#digAbrir').onclick = async () => { await abrirTab(); $('#digPainel').hidden = false; $('#digAbrir').hidden = true; corpo().hidden = true; };
+  $('#digFechar').onclick = () => { $('#digPainel').hidden = true; $('#digAbrir').hidden = false; corpo().hidden = false; renderTabela(); };
+  window.abrirDigitar = abrirTab; window._dig = () => ({ linhas, modo, escolhido });
 })();

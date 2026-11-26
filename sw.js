@@ -1,4 +1,4 @@
-const CACHE = "nce-v23";
+const CACHE = "nce-v26";
 const FILES = [
   "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "nuvem.js", "pdfimport.js", "nuvem-config.js", "digitar.js", "lojas.js", "parser.js", "tabela-lida.json", "paddle.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
@@ -6,7 +6,7 @@ const FILES = [
   "ocr/paddle/det.onnx", "ocr/paddle/rec.onnx", "ocr/paddle/dict.txt"
 ];
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => Promise.all(FILES.map(f => fetch(f, { cache: 'reload' }).then(r => { if (!r.ok) throw new Error(f); return c.put(f, r); })))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));

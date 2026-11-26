@@ -640,6 +640,7 @@ $('#simEnt').addEventListener('click', e => {
   $('#entrada').value = fmtDin(Number(b.dataset.ent)); renderSim();
 });
 
+const pct = t => t ? (t * 100).toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%' : 'a definir';
 function renderSim() {
   if ($('#simBox').hidden) return;
   renderEntradaSugerida();
@@ -657,9 +658,10 @@ function renderSim() {
   const r = (cred ? Sim.crediario : Sim.cartao)({ preco, garantia, entrada });
   if (r.financiado <= 0) return msg('A entrada cobre o valor total.');
   box.innerHTML =
+    `<p class="juros">Juros: <b>${pct(cred ? Sim.CFG.crediario.taxa : Sim.CFG.cartao.taxa)}</b> ao mês, <b>${cred ? 'a partir da 4ª parcela' : 'de 7x a 12x'}</b> (até ${cred ? Sim.CFG.crediario.semJuros : Sim.CFG.cartao.semJuros}x sem juros)</p>` +
     `<p class="hint">A parcelar: <b>${Sim.brl(r.financiado)}</b> (${Sim.brl(preco)}${garantia ? ' + seguro ' + Sim.brl(garantia) : ''}${entrada ? ' − entrada ' + Sim.brl(entrada) : ''})</p>` +
     r.lista.map(l => l.semTaxa ? `<div class="par"><span>${l.n}x</span><small class="tot">taxa ainda não cadastrada</small><span></span><span></span></div>` : `<div class="par"><span>${l.n}x de</span><b>${Sim.brl(l.parcela)}</b>
-      <small class="tot">total ${Sim.brl(l.total)}</small>${l.semJuros ? '<small class="sj">(SEM JUROS)</small>' : '<span></span>'}</div>`).join('') +
+      <small class="tot">total ${Sim.brl(l.total)}</small>${l.semJuros ? '<small class="sj">(SEM JUROS)</small>' : `<small class="jr">juros ${Sim.brl(l.total - entrada - r.financiado)}</small>`}</div>`).join('') +
     (cred && entrada > 0 ? '<p class="hint">Com entrada, o crediário vai até 11x.</p>' : '') +
     (!cred && r.faltaTaxa ? '<p class="hint">7x a 12x com juros: taxa ainda não cadastrada no app.</p>' : '');
 }
