@@ -40,7 +40,9 @@ async function salvarItens(itens) {
       if (it.g1) r.g1 = it.g1; // não apaga um seguro que já existia se este veio em branco
       if (it.g2) r.g2 = it.g2;
       if (!r.nome) r.nome = it.nome;
+      if (it.grupo) r.grupo = it.grupo;
     } else {
+      if (it.grupo) r.grupo = it.grupo;
       r.nome = it.nome || r.nome; r.cor = it.cor || r.cor || '';
       if (it.qtd !== '' && it.qtd !== undefined) r.qtd = it.qtd; // campo não lido não apaga o que já estava guardado
       if (it.preco) r.preco = it.preco;

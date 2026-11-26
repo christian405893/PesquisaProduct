@@ -1,6 +1,6 @@
-const CACHE = "nce-v22";
+const CACHE = "nce-v23";
 const FILES = [
-  "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "nuvem.js", "pdfimport.js", "nuvem-config.js", "lojas.js", "parser.js", "tabela-lida.json", "paddle.js", "style.css", "manifest.webmanifest",
+  "./", "index.html", "app.js", "ocr-worker.js", "rec-worker.js", "simulador.js", "nuvem.js", "pdfimport.js", "nuvem-config.js", "digitar.js", "lojas.js", "parser.js", "tabela-lida.json", "paddle.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
   "ocr/ort/ort.wasm.min.js", "ocr/ort/ort-wasm-simd-threaded.mjs", "ocr/ort/ort-wasm-simd-threaded.wasm",
   "ocr/paddle/det.onnx", "ocr/paddle/rec.onnx", "ocr/paddle/dict.txt"

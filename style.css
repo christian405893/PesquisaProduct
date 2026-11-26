@@ -97,3 +97,16 @@ table.falta td,table.falta th{padding:6px 4px;border-top:1px solid var(--bd);tex
 table.falta tr[data-abrir]{cursor:pointer}
 .tag{display:inline-block;background:#ffe3e0;color:#b3261e;border-radius:6px;padding:1px 6px;font-size:12px;margin:1px}
 @media (prefers-color-scheme:dark){.tag{background:#4a1f1b;color:#ffb4a9}}
+
+.drow{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 34px 10px 30px;margin:8px 0}
+.drow .dn{position:absolute;left:8px;top:10px;font-size:12px;color:var(--mut)}
+.drow .dx{position:absolute;right:4px;top:4px;border:0;background:none;color:var(--bad);font-size:16px;padding:6px}
+.df{display:flex;flex-direction:column;font-size:11px;color:var(--mut);gap:2px;min-width:0}
+.df input{font-size:16px;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg,transparent);color:inherit;width:100%;box-sizing:border-box}
+.df-nome{grid-column:1/-1}
+@media (min-width:820px){
+  .drow.m-seguro{grid-template-columns:110px 100px 1fr 120px 120px}
+  .drow.m-produtos{grid-template-columns:110px 100px 170px 1fr 80px 120px}
+  .df-nome{grid-column:auto}
+  main{max-width:1100px;margin-left:auto;margin-right:auto}
+}

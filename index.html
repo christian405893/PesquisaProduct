@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v22</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v23</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -73,6 +73,20 @@
     </div>
   </section>
 
+  <!-- DIGITAR -->
+  <section id="tab-digitar" class="tab">
+    <div class="muted" id="digLoja"></div>
+    <div class="chips" id="digModo"></div>
+    <p class="hint" id="digDica"></p>
+    <div id="digLinhas"></div>
+    <div class="row">
+      <button id="digAdd" class="btn">➕ Linha</button>
+      <button id="digLimpar" class="btn">Limpar</button>
+    </div>
+    <p id="digMsg" class="hint"></p>
+    <button id="digSalvar" class="btn primary big">Salvar</button>
+  </section>
+
   <!-- TABELA -->
   <section id="tab-tabela" class="tab">
     <div class="row">
@@ -98,6 +112,7 @@
 <nav>
   <button data-tab="busca" class="on">🔍<span>Buscar</span></button>
   <button data-tab="scan">📷<span>Escanear</span></button>
+  <button data-tab="digitar">✍️<span>Digitar</span></button>
   <button data-tab="tabela">📋<span>Tabela</span></button>
 </nav>
 
@@ -192,6 +207,7 @@
 <script src="nuvem.js"></script>
 <script src="pdfimport.js"></script>
 <script src="app.js"></script>
+<script src="digitar.js"></script>
 <script src="lojas.js"></script>
 </body>
 </html>
