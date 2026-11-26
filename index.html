@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Pesquisa NCE</h1>
-  <span id="total" class="muted"></span><small id="ver" class="muted">v26</small>
+  <span id="total" class="muted"></span><small id="ver" class="muted">v27</small>
   <button id="lojaBtn" class="lojabtn">📍 Só neste aparelho</button>
 </header>
 
@@ -89,6 +89,11 @@
     <div id="digTela" hidden>
       <button id="digTrocar" class="mini" style="align-self:auto">← trocar de tabela</button>
       <div class="chips" id="digModo"></div>
+      <div class="row">
+        <label class="btn">📷 Ler foto e preencher<input id="digCam" type="file" accept="image/*" capture="environment" hidden></label>
+        <label class="btn">🖼️ Fotos da galeria<input id="digGal" type="file" accept="image/*" multiple hidden></label>
+      </div>
+      <div id="digProg" class="hint" hidden></div>
       <p class="hint" id="digDica"></p>
       <div id="digLinhas"></div>
       <div class="row">

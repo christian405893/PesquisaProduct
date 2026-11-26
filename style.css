@@ -114,3 +114,6 @@ table.falta tr[data-abrir]{cursor:pointer}
 .juros{margin:8px 0;padding:8px 10px;border-radius:10px;background:#fff4d6;color:#7a5200;font-size:14px}
 @media (prefers-color-scheme:dark){.juros{background:#3d3210;color:#ffd98a}}
 .par small.jr{color:var(--mut);font-size:12px}
+
+.df.bad input{border-color:#d93025;background:#fdecea}
+@media (prefers-color-scheme:dark){.df.bad input{background:#4a1f1b}}

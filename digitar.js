@@ -38,7 +38,7 @@
       ? 'Tabela de seguros: grupo, NCE, descrição e os dois seguros. O grupo se repete sozinho nas linhas novas.'
       : 'Tabela de produtos: grupo, NCE, nome da cor, descrição, saldo e preço. Se o NCE já foi digitado na outra tabela, a descrição e o grupo aparecem sozinhos.';
     $('#digLinhas').innerHTML = L.map((r, i) => `<div class="drow m-${modo}" data-i="${i}"><span class="dn">${i + 1}</span>${M.campos.map(([f, rot, im]) =>
-      `<label class="df df-${f}">${rot}<input data-f="${f}" value="${esc(r[f])}" inputmode="${im}" autocomplete="off" ${f === 'nce' ? 'maxlength="6"' : ''} enterkeyhint="next"></label>`).join('')}<button class="dx" data-del="${i}" aria-label="Apagar linha">✕</button></div>`).join('');
+      `<label class="df df-${f}${r._bad && r._bad[f] ? ' bad' : ''}">${rot}<input data-f="${f}" value="${esc(r[f])}" inputmode="${im}" autocomplete="off" ${f === 'nce' ? 'maxlength="6"' : ''} enterkeyhint="next"></label>`).join('')}<button class="dx" data-del="${i}" aria-label="Apagar linha">✕</button></div>`).join('');
     $('#digSalvar').textContent = M.salvar + (n ? ` (${n})` : '');
   }
   function proximo(inp) {
@@ -52,6 +52,7 @@
     const f = e.target.dataset.f; if (!f) return; const i = +e.target.closest('.drow').dataset.i, r = linhas[modo][i];
     if (f === 'nce') e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
     r[f] = e.target.value;
+    if (r._bad && r._bad[f]) { delete r._bad[f]; e.target.closest('.df').classList.remove('bad'); }
     if (f === 'nce' && r.nce.length === 6 && existentes[r.nce]) { // já existe: completa o que estiver vazio
       const x = existentes[r.nce], row = e.target.closest('.drow');
       [['nome', x.nome], ['cor', x.cor], ['grupo', x.grupo]].forEach(([k, v]) => { if (v && !String(r[k] || '').trim() && (modo === 'produtos' || k !== 'cor')) { r[k] = v; const inp = row.querySelector(`[data-f="${k}"]`); if (inp) inp.value = v; } });
@@ -67,6 +68,45 @@
   $('#digEscSeguro').onclick = () => { modo = 'seguro'; escolhido = true; status(''); render(); };
   $('#digEscProdutos').onclick = () => { modo = 'produtos'; escolhido = true; status(''); render(); };
   $('#digTrocar').onclick = () => { escolhido = false; render(); };
+  // Ler foto (OCR no próprio aparelho) e preencher a grade; o que ficou duvidoso vem em vermelho para conferir
+  async function lerFotos(files) {
+    files = [...files].filter(f => f.type.startsWith('image/')); if (!files.length) return;
+    if (ocupado) return toast('Aguarde: ainda lendo');
+    ocupado = true; const M = modo, avisos = []; let total = 0;
+    try {
+      for (let n = 0; n < files.length; n++) {
+        const rot = `Lendo foto ${n + 1} de ${files.length}…`; setProg(0.01, rot);
+        const onp = (f, txt) => setProg(f, txt || rot); let lido;
+        if (typeof OffscreenCanvas !== 'undefined') { try { lido = await lerNoWorker({ file: files[n] }, onp); } catch (e) { if (!e.prep) throw e; } }
+        if (!lido) { const { img } = await prepararImagem(files[n]); lido = await lerNoWorker(img, onp); }
+        const tipoReal = Parser.detectarTipo(lido.linhas);
+        const itens = Parser.parsePagina(lido.linhas, tipoReal === 'esq' ? 'produtos' : M, lido.meta).filter(i => /^\d{6}$/.test(i.nce));
+        if (tipoReal === 'seguro' && M === 'produtos') avisos.push(`foto ${n + 1} parece tabela de SEGUROS`);
+        if (tipoReal === 'produtos' && M === 'seguro') avisos.push(`foto ${n + 1} parece tabela de PRODUTOS`);
+        if (tipoReal === 'esq') avisos.push(`foto ${n + 1} é só a metade esquerda: sem saldo/preço`);
+        if (!itens.length) { avisos.push(`foto ${n + 1}: nenhuma linha reconhecida`); continue; }
+        const L = linhas[M]; while (L.length && vazioTudo(L[L.length - 1])) L.pop();
+        let g = L.length ? L[L.length - 1].grupo : '';
+        itens.forEach(it => {
+          const lim = (Parser.LIM ?? 0.7), bad = {}, c = it.conf || {};
+          const campos = M === 'seguro' ? ['nce', 'g1', 'g2'] : ['nce', 'qtd', 'preco'];
+          campos.forEach(k => { if (k !== 'nce' ? (!it[k] || (c[k] !== undefined && c[k] < lim)) : (c.nce !== undefined && c.nce < lim)) bad[k] = true; });
+          if (M === 'seguro' && it.g1 && it.g2) { const q = Sim.cents(it.g2) / Sim.cents(it.g1); if (!(q > 1.55 && q < 1.66)) { bad.g1 = true; bad.g2 = true; } }
+          let r = L.find(x => x.nce === it.nce);
+          if (!r) { r = vazia(g); L.push(r); }
+          const nv = { nce: it.nce, nome: it.nome || '', cor: it.cor || '', qtd: it.qtd || '', preco: it.preco || '', g1: it.g1 || '', g2: it.g2 || '' };
+          Object.keys(nv).forEach(k => { if (nv[k] !== '' && (!String(r[k] || '').trim() || k === 'nce')) r[k] = nv[k]; });
+          r._bad = Object.assign(r._bad || {}, bad); total++;
+        });
+        L.push(vazia(g));
+      }
+      fimProg(); gravarRascunho(); render();
+      status(`📷 ${total} linhas preenchidas pela foto. Confira os campos em vermelho antes de salvar.` + (avisos.length ? ' Avisos: ' + avisos.join('; ') + '.' : ''), avisos.length > 0);
+    } catch (e) { console.error(e); fimProg(); status(e.message === 'cancelado' ? 'Leitura cancelada' : 'Erro ao ler a imagem: ' + (e.message || e), true); }
+    finally { ocupado = false; }
+  }
+  $('#digCam').onchange = e => { const f = [...e.target.files]; e.target.value = ''; lerFotos(f); };
+  $('#digGal').onchange = e => { const f = [...e.target.files]; e.target.value = ''; lerFotos(f); };
   $('#digAdd').onclick = () => { const L = linhas[modo]; L.push(vazia(L.length ? L[L.length - 1].grupo : '')); gravarRascunho(); render(); const i = L.length - 1; const c = $('#digLinhas').querySelector(`.drow[data-i="${i}"] input[data-f="nce"]`); if (c) c.focus(); };
   $('#digLimpar').onclick = () => { if (!confirm('Apagar tudo que está digitado nesta tabela (ainda não salvo)?')) return; linhas[modo] = [vazia()]; gravarRascunho(); status(''); render(); };
   $('#digSalvar').onclick = async () => {
